@@ -48,14 +48,19 @@ export const useExternalApi = () => {
   const getPublicResource = async () => {
     setSelectedAccessControlLevel(AccessControlLevel.PUBLIC)
 
-    setApiEndpoint('GET /api/messages/public')
+    setApiEndpoint('post /api/messages/public')
 
     const config = {
       url: `${apiServerUrl}/api/messages/public`,
-      method: 'GET',
+      method: 'post',
       headers: {
-        'content-type': 'application/json'
+        'Content-Type': 'application/json'
+
+      },
+      data: {
+        firstName: 'Fred'
       }
+
     }
 
     const data = await makeRequest({ config })
