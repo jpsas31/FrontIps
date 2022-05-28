@@ -64,6 +64,7 @@ export const useExternalApi = () => {
     const data = await makeRequest({ config, authenticated: true })
     setApiResponse(data)
     setPaciente(data)
+    // console.log(data)
     let apano = new Date(data.nacimiento)
     apano = apano.setDate(apano.getDate() + 1)
     setFecha(apano)
@@ -71,7 +72,10 @@ export const useExternalApi = () => {
 
   const updatePaciente = async (datos, key) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-    // console.log(datos)
+    let apano = new Date(datos.nacimiento)
+    apano = new Date(apano.setDate(apano.getDate() - 1))
+    apano = apano.toISOString()
+
     setApiEndpoint('PUT /api/info-paciente/actualizar-paciente')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/actualizar-paciente`,
@@ -90,7 +94,7 @@ export const useExternalApi = () => {
         telefono: datos.telefono,
         correo: datos.correo,
         edad: datos.edad,
-        nacimiento: datos.nacimiento
+        nacimiento: apano
       }
     }
 
@@ -99,12 +103,40 @@ export const useExternalApi = () => {
     setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
+  const updatePw = async (datos, key, key2, setResponsePw) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('PUT /api/info-paciente/actualizar-pw')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/actualizar-pw`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: key,
+        tipo_usuario: key2,
+        clave: datos.fieldnewPw,
+        nuevaClave: datos.newPw1,
+        nuevaClave2: datos.newPw2
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    if (data.err === 0) {
+      setResponsePw('La contraseña ha sido actualizada')
+    } else {
+      setResponsePw('La contraseña no ha sido actualizada')
+    }
+  }
+
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
     getInfoPaciente,
-    updatePaciente
+    updatePaciente,
+    updatePw
     // getRbacResource,
     // checkCorsAllowedMethod
   }
