@@ -10,35 +10,36 @@ import LayersIcon from '@mui/icons-material/Layers'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import { Link } from 'react-router-dom'
 
-export const mainListItems = (
-  <React.Fragment>
-    <ListItemButton component={Link} to={'inicio'}>
-      <ListItemIcon>
-        <AdjustIcon />
-      </ListItemIcon>
-      <ListItemText primary="Inicio" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'data'}>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-)
+export function MainListItems () {
+  return (
+    <React.Fragment>
+      <ListItemButton component={Link} to={'inicio'}>
+        <ListItemIcon>
+          <AdjustIcon />
+        </ListItemIcon>
+        <ListItemText primary="Inicio" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'data'}>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reports" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'info-paciente'} >
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Información Paciente" />
+      </ListItemButton>
+    </React.Fragment>
+  )
+}
 
 export const secondaryListItems = (
   <React.Fragment>
