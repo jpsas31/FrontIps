@@ -7,6 +7,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import LogoutIcon from '@mui/icons-material/Logout'
+import AddReactionIcon from '@mui/icons-material/AddReaction'
 import { Link } from 'react-router-dom'
 
 export default function MainListItems () {
@@ -19,6 +20,25 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Inicio" />
     </ListItemButton>
+
+    { /* Se agrega opcion RegistroUsuario de panel administrativo */ }
+
+    <ListItemButton component = {Link} to = {'personal'}>
+      <ListItemIcon>
+        <AddReactionIcon/>
+      </ListItemIcon>
+      <ListItemText primary="Regist Usuarios (Panel Admin)" /> 
+    </ListItemButton>
+
+    { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
+
+    <ListItemButton component = {Link} to = {'activa'}>
+      <ListItemIcon>
+        <AddReactionIcon/>
+      </ListItemIcon>
+      <ListItemText primary="Personal" /> 
+    </ListItemButton>
+
     <ListItemButton component={Link} to={'data'}>
       <ListItemIcon>
         <DashboardIcon />

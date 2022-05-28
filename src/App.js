@@ -1,6 +1,8 @@
 import MainWindow from './MainWindow'
 import React from 'react'
 import Inicio from './inicio/Inicio'
+import Personal from './personal/Personal'
+import ActivaUser from './personal/activaUser'
 import Dashboard from './dashboard/Dashboard'
 import ProtectedRoute from './auth0/ProtectedRoute'
 import ExternalApi from './external-api'
@@ -25,6 +27,8 @@ export default function App () {
       />
       <Route path="data" element={<ExternalApi />} />
       <Route path="inicio" element={<Inicio />} />
+      <Route path="personal" element={<Personal/>} /> 
+      <Route path="activa" element = {<ActivaUser/>} />
     </Route>
 
   </Routes>

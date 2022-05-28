@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
+import esLocale from 'date-fns/locale/es'
 
 import './calendario/main.css'
 // import reportWebVitals from './reportWebVitals'
@@ -12,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
     <Auth0ProviderWithHistory>
-      <App />
+      <MuiPickersUtilsProvider utils = { DateFnsUtils } locale = { esLocale } >
+        <App />
+      </MuiPickersUtilsProvider>
     </Auth0ProviderWithHistory>
   </BrowserRouter>
 )
