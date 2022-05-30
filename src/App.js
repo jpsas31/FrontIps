@@ -26,7 +26,7 @@ export default function App () {
       />
       <Route path="data" element={<ExternalApi />} />
       <Route path="inicio" element={<Inicio />} />
-      <Route path="personal" element={<Personal/>} /> 
+      <Route path="personal" element={<Personal/>} />
       <Route path="activa" element = {<ActivaUser/>} />
     </Route>
   </Routes>

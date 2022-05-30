@@ -27,7 +27,7 @@ export default function MainListItems () {
       <ListItemIcon>
         <AddReactionIcon/>
       </ListItemIcon>
-      <ListItemText primary="Regist Usuarios (Panel Admin)" /> 
+      <ListItemText primary="Regist Usuarios (Panel Admin)" />
     </ListItemButton>
 
     { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
@@ -36,7 +36,7 @@ export default function MainListItems () {
       <ListItemIcon>
         <AddReactionIcon/>
       </ListItemIcon>
-      <ListItemText primary="Personal" /> 
+      <ListItemText primary="Personal" />
     </ListItemButton>
 
     <ListItemButton component={Link} to={'data'}>

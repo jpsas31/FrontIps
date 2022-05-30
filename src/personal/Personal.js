@@ -36,32 +36,12 @@ export default function Personal () {
   const [leyenEmail, setLeyenEmail] = useState('')
   const [errorEmail, setErrorEmail] = useState(false)
 
-  const [selectedDate, setSelectedDate] = useState('')
-  const [errorEdad, setErrorEdad] = useState(variant ? true : false)
-
   const onSubmit = (data) => {
     console.log(data)
   }
 
   function verificar () {
-    return errorEmail || errorTel || errorApe || errorNomb || errorNum || errorEdad
-  }
-
-  function calculaEdad () {
-    if (selectedDate === '') {
-      setErrorEdad(true)
-      return ''
-    } else {
-      setErrorEdad(false)
-      const naci = new Date(selectedDate)
-      const monthDif = Date.now() - naci.getTime()
-
-      const agedt = Date(monthDif)
-      const year = agedt.getUTCFullYear()
-
-      const age = Math.abs(year - 1970)
-      return age
-    }
+    return errorEmail || errorTel || errorApe || errorNomb || errorNum
   }
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -142,13 +122,8 @@ export default function Personal () {
               />
           </div>
           <div>
-            <TextField label = '' defaultValue = '' type = "date" {...register('nacimiento', { required: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = 'Fecha de nacimiento' onChange = {(e) => {
-              setSelectedDate(e.target.value)
-            }}
-            />
-            <TextField label = 'Edad' defaultValue = '' color = 'secondary' variant = 'filled' { ...register('edad', { required: true })} InputProps={{ readOnly: true }}sx = { { mx: 1, my: 2, width: '20ch' }}
-              value = {calculaEdad()}
-            />
+            <TextField label = '' defaultValue = '' type = "date" {...register('nacimiento', { required: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = 'Fecha de nacimiento' />
+            <TextField label = 'Edad' defaultValue = '' color = 'secondary' variant = 'filled' { ...register('edad', { required: true })} type = 'number' sx = { { mx: 1, my: 2, width: '20ch' }}/>
              <TextField label = 'Correo electronico' defaultValue = '' { ...register('correo', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i }) } sx = { { mx: 1, my: 2, width: '40ch' } } helperText = {leyenEmail } error = {errorEmail }
               onChange = { (e) => {
                 setEmail(e.target.value)
