@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import * as React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter } from '@material-ui/core'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import Button from '@mui/material/Button'
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const USERS = []
-const STATUSES = ['Active', 'Blocked']
+const STATUSES = ['Activo', 'Bloqueado']
 
 for (let i = 0; i < 14; i++) {
   USERS[i] = {
@@ -58,6 +58,7 @@ function MTable () {
   const classes = useStyles()
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
+  const [open, setOpen] = React.useState(false)
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -65,6 +66,13 @@ function MTable () {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   return (
     <TableContainer component={Paper} className = {classes.tableContainer}>
     <Table className={classes.table} aria-label="simple table">
@@ -97,12 +105,35 @@ function MTable () {
             </TableCell>
             <TableCell >{row.joinDate}</TableCell>
 
-            <TableCell ><Button variant='outlined' href='#outlined-buttons' className={classes.status}
-            style={{
-              backgroundColor:
-              ((row.status === 'Active' && 'success')) ||
-              ((row.status === 'Blocked' && 'error'))
-            }}>{row.status}</Button></TableCell>
+            <TableCell ><Button variant = 'contained' className={classes.status}
+            color={
+              ((row.status === 'Activo' && 'success')) ||
+              ((row.status === 'Bloqueado' && 'error'))
+            }
+            onClick = {handleClickOpen}>{row.status}</Button>
+            <Dialog open = {open} onClose = {handleClose} aria-labelledby = 'alert-dialog-title' aria-describedby = 'alert-dialog-description'>
+              <DialogTitle id='alert-dialog-title'>
+                {'Cambiar estado de usuario'}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id='alert-dialog-description'>
+                  Al aceptar, usted estará cambiando el estado del usuario de {row.status} al contrario, ¿está de acuerdo?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancelar</Button>
+                <Button onClick={ () => {
+                  handleClose()
+                  console.log(row.status)
+                  if (row.status === 'Activo') {
+                    row.status = 'Bloqueado' // revisar lo del boton
+                  } else {
+                    row.status = 'Activo'
+                  }
+                }} autoFocus >Aceptar</Button>
+              </DialogActions>
+            </Dialog>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
