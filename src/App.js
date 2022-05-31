@@ -1,9 +1,10 @@
 import MainWindow from './MainWindow'
 import React from 'react'
 import Inicio from './inicio/Inicio'
-import Dashboard from './dashboard/Dashboard'
 import ProtectedRoute from './auth0/ProtectedRoute'
 import ExternalApi from './external-api'
+import Perfil from './paciente/Perfil'
+import RegMedicos from './medicos/RegMedicos'
 import Blog from './blog/Blog'
 import {
 
@@ -25,6 +26,8 @@ export default function App () {
       />
       <Route path="data" element={<ExternalApi />} />
       <Route path="inicio" element={<Inicio />} />
+      <Route path="perfil" element={<Perfil />} />
+      <Route path="medicos" element={<RegMedicos />} />
     </Route>
 
   </Routes>
