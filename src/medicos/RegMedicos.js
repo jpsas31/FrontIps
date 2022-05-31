@@ -9,22 +9,28 @@ import MenuItem from '@mui/material/MenuItem'
 import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useExternalApi } from '../hooks/InfoMedicoResponse'
 // import { width } from '@mui/system'
 
 export default function RegMedicos () {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
-  const ciudades = [
-    { value: 'General', label: 'General' },
-    { value: 'Psicologia', label: 'Psicologia' },
-    { value: 'Padiatria', label: 'Padiatria' },
-    { value: 'Cardiologia', label: 'Cardiologia' },
-    { value: 'Dermatologia', label: 'Dermatologia' },
-    { value: 'Oftalmologia', label: 'Oftalmologia' }]
+  const especialidades = [
+    { value: '1', label: 'General' },
+    { value: '2', label: 'Psicologia' },
+    { value: '3', label: 'Pediatria' },
+    { value: '4', label: 'Cardiologia' },
+    { value: '5', label: 'Dermatologia' },
+    { value: '6', label: 'Oftalmologia' }]
+
+  const {
+    createMedico
+  } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
+    createMedico(data)
   }
 
   const { logout } = useAuth0()
@@ -53,12 +59,17 @@ export default function RegMedicos () {
 
         <Grid item xs = {8}>
           <TextField fullWidth id="id" label="Identificacion" name = "Identificacion" variant="outlined" type = "number"
-          {...register('id_paciente', { required: true })}/>
+          {...register('identificacion', { required: true })}/>
         </Grid>
 
-        <Grid item xs = {10} >
+        <Grid item xs = {5} >
           <TextField fullWidth id="nombre" label="Nombre" variant="outlined" type = "text"
           {...register('nombre', { required: true })}/>
+        </Grid>
+
+        <Grid item xs = {5} >
+          <TextField fullWidth id="apellido" label="Apellido" variant="outlined" type = "text"
+          {...register('apellido', { required: true })}/>
         </Grid>
 
         <Grid item xs = {5}>
@@ -67,9 +78,9 @@ export default function RegMedicos () {
                 fullWidth
                 label="Especialidad"
                 defaultValue = {'General'}
-                {...register('tipo_id', { required: true })}
+                {...register('id_especialidad', { required: true })}
               >
-                {ciudades.map((option) => (
+                {especialidades.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>))}
