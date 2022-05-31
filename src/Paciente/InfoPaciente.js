@@ -16,9 +16,9 @@ import DialogTitle from '@mui/material/DialogTitle'
 import { AccessControlLevel, useExternalApi } from '../hooks/InfoPacienteResponse'
 import CircularProgress from '@mui/material/CircularProgress'
 import Grid from '@mui/material/Grid'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import Autocomplete from '@mui/material/Autocomplete'
 import Paper from '@mui/material/Paper'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -40,7 +40,7 @@ export default function InfoPaciente (props) {
   const [visible2, setVisible2] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [paciente, setPaciente] = useState({})
-  const [fecha, setFecha] = useState(null)
+  // const [fecha, setFecha] = useState(null)
   const [responsePw, setResponsePw] = useState('')
   const [isLoading1, setIsLoading1] = useState(false)
 
@@ -51,7 +51,7 @@ export default function InfoPaciente (props) {
   ]
 
   useEffect(() => {
-    getInfoPaciente('1', setPaciente, setFecha)
+    getInfoPaciente('1', setPaciente)
   }, [])
 
   const onSubmit = data => {
@@ -182,45 +182,32 @@ export default function InfoPaciente (props) {
                 </Grid>
               </div>
               <div>
-                <Grid container >
-                  <Controller
-                      defaultValue = {new Date(fecha).toISOString()}
-                      render={({ field }) => (
-                          <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                              label='nacimiento'
-                              onChange={(date) => {
-                                field.onChange(date.toISOString())
-                                setFecha(date.toISOString())
-                              }}
-                              value={fecha}
-                              renderInput={(params) => <TextField sx={{ mx: 1, my: 2, width: '25ch' }} {...params} />}
-                            />
-                          </LocalizationProvider>
-                      )}
-                      name="nacimiento"
-                      control={control}
-                  />
-                  <TextField
-                    label="Edad"
-                    defaultValue= {paciente.edad}
-                    type = "number"
-                    {...registro('edad', { required: true })}
-                    sx={{ mx: 1, my: 2, width: '10ch' }}
-                  />
-                  <TextField
-                    label="Correo Electrónico"
-                    type = "email"
-                    defaultValue={paciente.correo}
-                    {...registro('correo', { required: true })}
-                    sx={{ mx: 1, my: 2, width: '40ch' }}
-                  />
-                  <a href='http://www.africau.edu/images/default/sample.pdf' download='prueba.pdf'>
-                    <Button variant = 'contained' sx={{ mx: 1, my: 2, width: '20ch' }}>
-                      Antecedentes
-                    </Button>
-                  </a>
-                </Grid>
+                <TextField
+                  sx={{ mx: 1, my: 2, width: '20ch' }}
+                  defaultValue = {paciente.nacimiento.split('T')[0]}
+                  label="Nacimiento"
+                  type = "date"
+                  {...registro('nacimiento', { required: true })}
+                />
+                <TextField
+                  label="Edad"
+                  defaultValue= {paciente.edad}
+                  type = "number"
+                  {...registro('edad', { required: true })}
+                  sx={{ mx: 1, my: 2, width: '10ch' }}
+                />
+                <TextField
+                  label="Correo Electrónico"
+                  type = "email"
+                  defaultValue={paciente.correo}
+                  {...registro('correo', { required: true })}
+                  sx={{ mx: 1, my: 2, width: '40ch' }}
+                />
+                <a href='http://www.africau.edu/images/default/sample.pdf' download='prueba.pdf'>
+                  <Button variant = 'contained' sx={{ mx: 1, my: 2, width: '20ch' }}>
+                    Antecedentes
+                  </Button>
+                </a>
               </div>
             </form>
           </Paper>

@@ -46,7 +46,7 @@ export const useExternalApi = () => {
   }
 
   // Funciones api Kevin
-  const getInfoPaciente = async (datos, setPaciente, setFecha) => {
+  const getInfoPaciente = async (datos, setPaciente) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpoint('POST /api/info-paciente/infopaciente')
@@ -65,16 +65,20 @@ export const useExternalApi = () => {
     setApiResponse(data)
     setPaciente(data)
     // console.log(data)
+    /*
     let apano = new Date(data.nacimiento)
     apano = apano.setDate(apano.getDate() + 1)
     setFecha(apano)
+    */
   }
 
   const updatePaciente = async (datos, key) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    /*
     let apano = new Date(datos.nacimiento)
     apano = new Date(apano.setDate(apano.getDate() - 1))
     apano = apano.toISOString()
+    */
 
     setApiEndpoint('PUT /api/info-paciente/actualizar-paciente')
     const config = {
@@ -94,7 +98,7 @@ export const useExternalApi = () => {
         telefono: datos.telefono,
         correo: datos.correo,
         edad: datos.edad,
-        nacimiento: apano
+        nacimiento: datos.nacimiento
       }
     }
 
