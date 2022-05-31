@@ -107,8 +107,6 @@ export default function Perfil () {
         </Grid>
 
         <Grid item xs = {5}>
-          <TextField fullWidth id="id" label="id_paciente" name = "Identificacion" variant="outlined" type = "number"
-          {...register('id_paciente', { required: true })}/>
         </Grid>
 
         <Grid item xs = {5}>
