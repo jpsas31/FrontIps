@@ -3,6 +3,11 @@ import * as React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import Button from '@mui/material/Button'
+import { useExternalApi } from '../hooks/InfoPacienteResponse'
+
+const {
+  consultaUsuario
+} = useExternalApi()
 
 const useStyles = makeStyles((theme) => ({
   table: {

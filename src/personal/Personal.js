@@ -12,12 +12,16 @@ import Box from '@mui/material/Box'
 import DeleteIcon from '@mui/icons-material/Delete'
 import SendIcon from '@mui/icons-material/Send'
 import Alert from '@mui/material/Alert'
+import { useExternalApi } from '../hooks/InfoPacienteResponse'
 
 export default function Personal () {
   const { register, handleSubmit } = useForm()
 
+  const {
+    createPaciente
+  } = useExternalApi()
+
   // validaciones
-  const [tipoid, setTipoid] = useState('C.C')
   const [num, setNum] = useState('')
   const [leyenNum, setLeyenNum] = useState('')
   const [errorNum, setErrorNum] = useState(false)
@@ -30,11 +34,6 @@ export default function Personal () {
   const [leyenApe, setLeyenApe] = useState('')
   const [errorApe, setErrorApe] = useState(false)
 
-  const [dir, setDir] = useState('')
-  const [ciudad, setCiudad] = useState('Santiago de Cali')
-  const [nacimiento, setNacimiento] = useState('')
-  const [edad, setEdad] = useState('')
-
   const [tel, setTel] = useState('')
   const [leyenTel, setLeyenTel] = useState('')
   const [errorTel, setErrorTel] = useState(false)
@@ -45,19 +44,7 @@ export default function Personal () {
 
   const onSubmit = (data) => {
     console.log(data)
-  }
-
-  function limpiar () {
-    setTipoid('C.C')
-    setNum('')
-    setNomb('')
-    setApe('')
-    setDir('')
-    setCiudad('Santiago de Cali')
-    setNacimiento('')
-    setEdad('')
-    setTel('')
-    setEmail('')
+    createPaciente(data)
   }
 
   function verificar () {
@@ -77,17 +64,13 @@ export default function Personal () {
           <Paper elevation = {8} sx = {{ padding: 6 }} >
           <form onSubmit = {handleSubmit(onSubmit)} style ={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
           <div>
-            <TextField select label = 'Identificacion' defaultValue = 'C.C' { ...register(tipoid, { required: true })} sx = {{ mx: 1, my: 2, width: '15ch' }}
-              onChange = {(e) => {
-                setTipoid(e.target.value)
-              }}
-            >
+            <TextField select label = 'Identificacion' defaultValue = 'C.C' { ...register('tipo_id', { required: true })} sx = {{ mx: 1, my: 2, width: '15ch' }}>
                 {tipoids.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>))}
               </TextField>
-            <TextField label = "Numero" defaultValue = '' { ...register(num, { required: true, maxLength: 25, valueAsNumber: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = {leyenNum} error = {errorNum}
+            <TextField label = "Numero" defaultValue = '' { ...register('identificacion', { required: true, maxLength: 25, valueAsNumber: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = {leyenNum} error = {errorNum}
               onChange = {(e) => {
                 setNum(e.target.value)
                 if (/^\d+$/.test(num)) {
@@ -99,7 +82,7 @@ export default function Personal () {
                 }
               }}
               />
-            <TextField label = 'Nombre' defaultValue = '' { ...register(nomb, { required: true, pattern: /^[A-Za-z\s]*$/i }) } sx = { { mx: 1, my: 2, width: '20ch' } } helperText = { leyenNomb } error = { errorNomb }
+            <TextField label = 'Nombre' defaultValue = '' { ...register('nombre', { required: true, pattern: /^[A-Za-z\s]*$/i }) } sx = { { mx: 1, my: 2, width: '20ch' } } helperText = { leyenNomb } error = { errorNomb }
               onChange = {(e) => {
                 setNomb(e.target.value)
                 if (/^[A-Za-z\s]*$/.test(nomb)) {
@@ -111,7 +94,7 @@ export default function Personal () {
                 }
               }}
               />
-            <TextField label="Apellido" defaultValue = '' {...register(ape, { required: true, pattern: /^[A-Za-z\s]*$/i }) } sx={{ mx: 1, my: 2, width: '30ch' } } helperText = { leyenApe } error = { errorApe }
+            <TextField label="Apellido" defaultValue = '' {...register('apellido', { required: true, pattern: /^[A-Za-z\s]*$/i }) } sx={{ mx: 1, my: 2, width: '30ch' } } helperText = { leyenApe } error = { errorApe }
               onChange = {(e) => {
                 setApe(e.target.value)
                 if (/^[A-Za-z\s]*$/.test(ape)) {
@@ -125,23 +108,15 @@ export default function Personal () {
             />
           </div>
           <div>
-            <TextField id = 'textfield-direccion' label = 'Direccion' defaultValue = '' { ...register(dir, { required: true }) } sx = {{ mx: 1, my: 2, width: '30ch' }}
-              onChange = {(e) => {
-                setDir(e.target.value)
-              }}
-            />
-            <TextField select label='Ciudad' defaultValue = 'Santiago de Cali' {...register(ciudad, { required: true })} sx = {{ mx: 1, my: 2, width: '30ch' }}
-              onChange = {(e) => {
-                setCiudad(e.target.value)
-              }}
-            >
+            <TextField id = 'textfield-direccion' label = 'Direccion' defaultValue = '' { ...register('direccion', { required: true }) } sx = {{ mx: 1, my: 2, width: '30ch' }}/>
+            <TextField select label='Ciudad' defaultValue = 'Santiago de Cali' {...register('ciudad', { required: true })} sx = {{ mx: 1, my: 2, width: '30ch' }}>
               {ciudades.map((option) => (
                 <MenuItem key= {option.value} value = {option.value}>
                   {option.label}
                 </MenuItem>
               ))}
               </TextField>
-            <TextField label='Telefono' defaultValue='' {...register(tel, { required: true, minLength: 6, pattern: /^\d+$/i })} sx = {{ mx: 1, my: 2, width: '20ch' } } helperText = {leyenTel} error = {errorTel} onChange = {(e) => {
+            <TextField label='Telefono' defaultValue='' {...register('telefono', { required: true, minLength: 6, pattern: /^\d+$/i })} sx = {{ mx: 1, my: 2, width: '20ch' } } helperText = {leyenTel} error = {errorTel} onChange = {(e) => {
               setTel(e.target.value)
               if (/^\d+$/.test(tel)) {
                 setErrorTel(false)
@@ -154,16 +129,9 @@ export default function Personal () {
               />
           </div>
           <div>
-            <TextField label = '' defaultValue = '' type = "date" {...register(nacimiento, { required: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = 'Fecha de nacimiento'
-              onChange = {(e) => {
-                setNacimiento(e.target.value)
-              }}
-            />
-            <TextField label = 'Edad' defaultValue = '' color = 'secondary' variant = 'filled' { ...register(edad, { required: true })} type = 'number' sx = { { mx: 1, my: 2, width: '20ch' }}
-              onChange = {(e) => {
-                setEdad(e.target.value)
-              }}/>
-             <TextField label = 'Correo electronico' defaultValue = '' { ...register(email, { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i }) } sx = { { mx: 1, my: 2, width: '40ch' } } helperText = {leyenEmail } error = {errorEmail }
+            <TextField label = '' defaultValue = '' type = "date" {...register('nacimiento', { required: true })} sx = {{ mx: 1, my: 2, width: '20ch' }} helperText = 'Fecha de nacimiento'/>
+            <TextField label = 'Edad' defaultValue = '' color = 'secondary' variant = 'filled' { ...register('edad', { required: true })} type = 'number' sx = { { mx: 1, my: 2, width: '20ch' }}/>
+             <TextField label = 'Correo electronico' defaultValue = '' { ...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i }) } sx = { { mx: 1, my: 2, width: '40ch' } } helperText = {leyenEmail } error = {errorEmail }
               onChange = { (e) => {
                 setEmail(e.target.value)
                 if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -180,8 +148,7 @@ export default function Personal () {
           </Paper>
           {verificar() && <Alert variant="outlined" severity="error"> Hay errores en los datos — ¡Reviselos! </Alert>}
           <Box sx={{ display: 'flex', alignItems: 'center', height: 300, justifyContent: 'center', gap: 10 }}>
-          <Button variant="outlined" startIcon={<DeleteIcon />}
-            onClick = {() => limpiar()}> Limpiar </Button>
+          <Button variant="outlined" startIcon={<DeleteIcon />}> Limpiar </Button>
             <Button variant="contained" onClick= {handleSubmit(onSubmit)} endIcon={<SendIcon />}> Registrar paciente </Button>
           </Box>
           </Container>

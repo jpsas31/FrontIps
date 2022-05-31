@@ -12,7 +12,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import { AccessControlLevel, useExternalApi } from '../hooks/InfoPacienteResponse'
+import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import CircularProgress from '@mui/material/CircularProgress'
 
 /*
@@ -23,12 +23,7 @@ export default function InfoPaciente (props) {
   const { handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
   const { handleSubmit: getPwPopUp, register: registro1 } = useForm()
   const {
-    selectedAccessControlLevel,
-    // apiEndpoint,
-    apiResponse,
-
-    getInfoPaciente,
-    updatePaciente
+    createPaciente
   } = useExternalApi()
 
   const [visible, setVisible] = useState(false)
