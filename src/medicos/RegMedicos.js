@@ -77,7 +77,7 @@ export default function RegMedicos () {
                 select
                 fullWidth
                 label="Especialidad"
-                defaultValue = {'General'}
+                defaultValue = {1}
                 {...register('id_especialidad', { required: true })}
               >
                 {especialidades.map((option) => (
