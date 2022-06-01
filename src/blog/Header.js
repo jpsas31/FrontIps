@@ -8,12 +8,15 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { Link as LinkRouter } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { LoginButton } from '../auth0/buttons/login-button'
-import { SignupButton } from '../auth0/buttons/signup-button'
-import { LogoutButton } from '../auth0/buttons/logout-button'
+import DropdownLogin from './DropdownLogin'
+import DropdownRegister from './DropdownRegister'
+import { LogoutButton } from '../auth0/buttons/logout-butt'
 function Header (props) {
   const { sections, title } = props
-  const { isAuthenticated } = useAuth0()
+  const { isAuthenticated, user } = useAuth0()
+  if (isAuthenticated) {
+    console.log(user)
+  }
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -33,11 +36,12 @@ function Header (props) {
         </IconButton>
         {!isAuthenticated && (
         <>
-          <SignupButton /> &nbsp;&nbsp;&nbsp;
-          <LoginButton />
+          <DropdownRegister /> &nbsp;&nbsp;&nbsp;
+          <DropdownLogin/>
         </>
         )}
       {isAuthenticated && (
+
         <>
           <LogoutButton /> &nbsp;&nbsp;&nbsp;
           <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}>

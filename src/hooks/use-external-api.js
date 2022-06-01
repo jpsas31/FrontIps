@@ -6,8 +6,6 @@ import { useEnv } from '../context/env.context'
 export const AccessControlLevel = {
   PUBLIC: 'public',
   PROTECTED: 'requires-authentication'
-  // RBAC: 'requires-role-permission',
-  // CORS: 'requires-cors-allowed-method'
 }
 
 export const useExternalApi = () => {
@@ -45,90 +43,59 @@ export const useExternalApi = () => {
     }
   }
 
-  const getPublicResource = async () => {
-    setSelectedAccessControlLevel(AccessControlLevel.PUBLIC)
+  // const getPublicResource = async (setkk) => {
+  //   setSelectedAccessControlLevel(AccessControlLevel.PUBLIC)
+  //   console.log(user)
+  //   setApiEndpoint('post /api/messages/public')
 
-    setApiEndpoint('post /api/messages/public')
+  //   const config = {
+  //     url: `${apiServerUrl}/api/messages/public`,
+  //     method: 'post',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*'
+  //     },
+  //     data: {
+  //       firstName: 'Fred'
+  //     }
 
-    const config = {
-      url: `${apiServerUrl}/api/messages/public`,
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
+  //   }
 
-      },
-      data: {
-        firstName: 'Fred'
-      }
+  //   const data = await makeRequest({ config })
 
-    }
+  //   setkk(JSON.stringify(data, null, 2))
+  //   // setApiResponse(JSON.stringify(data, null, 2))
+  //   // console.log(apiResponse)
+  // }
 
-    const data = await makeRequest({ config })
-
-    setApiResponse(JSON.stringify(data, null, 2))
-  }
-
-  const getProtectedResource = async () => {
+  const getUserInfo = async (userId) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpoint('GET /api/messages/protected')
 
     const config = {
-      url: `${apiServerUrl}/api/messages/protected`,
-      method: 'GET',
+      url: `${apiServerUrl}/api/auth/getInfo`,
+      method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      data: {
+        userId
       }
     }
 
-    const data = await makeRequest({ config, authenticated: true })
-
-    setApiResponse(JSON.stringify(data, null, 2))
+    return await makeRequest({ config, authenticated: true })
+    // console.log(data)
+    // setApiResponse(JSON.stringify(data, null, 2))
+    // console.log(apiResponse)
   }
-
-  // const getRbacResource = async () => {
-  //   setSelectedAccessControlLevel(AccessControlLevel.RBAC)
-
-  //   setApiEndpoint('GET /api/messages/admin')
-
-  //   const config = {
-  //     url: `${apiServerUrl}/api/messages/admin`,
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   }
-
-  //   const data = await makeRequest({ config, authenticated: true })
-
-  //   setApiResponse(JSON.stringify(data, null, 2))
-  // }
-
-  // const checkCorsAllowedMethod = async () => {
-  //   setSelectedAccessControlLevel(AccessControlLevel.CORS)
-
-  //   setApiEndpoint('DELETE /api/messages/public')
-
-  //   const config = {
-  //     url: `${apiServerUrl}/api/messages/public`,
-  //     method: 'DELETE',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     }
-  //   }
-
-  //   const data = await makeRequest({ config, authenticated: true })
-
-  //   setApiResponse(JSON.stringify(data, null, 2))
-  // }
 
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
-    getPublicResource,
-    getProtectedResource
-    // getRbacResource,
-    // checkCorsAllowedMethod
+    getUserInfo
+
   }
 }

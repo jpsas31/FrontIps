@@ -46,7 +46,7 @@ export default function MainListItems () {
       <ListItemIcon>
         <LogoutIcon />
       </ListItemIcon>
-      <ListItemText primary="Ir a la pagina principal" />
+      <ListItemText primary="Log Out" />
     </ListItemButton>
   </React.Fragment>
   )
