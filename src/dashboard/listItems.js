@@ -8,6 +8,8 @@ import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import LogoutIcon from '@mui/icons-material/Logout'
 import AddReactionIcon from '@mui/icons-material/AddReaction'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+
 import { Link } from 'react-router-dom'
 
 export default function MainListItems () {
@@ -27,14 +29,14 @@ export default function MainListItems () {
       <ListItemIcon>
         <AddReactionIcon/>
       </ListItemIcon>
-      <ListItemText primary="Regist Usuarios (Panel Admin)" />
+      <ListItemText primary="GPersonal" />
     </ListItemButton>
 
     { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
 
     <ListItemButton component = {Link} to = {'activa'}>
       <ListItemIcon>
-        <AddReactionIcon/>
+        <EmojiPeopleIcon/>
       </ListItemIcon>
       <ListItemText primary="Personal" />
     </ListItemButton>
