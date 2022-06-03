@@ -6,13 +6,34 @@ import ListItemText from '@mui/material/ListItemText'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import LogoutIcon from '@mui/icons-material/Logout'
+import PersonIcon from '@mui/icons-material/Person'
 import { Link } from 'react-router-dom'
 
 export default function MainListItems () {
   const { logout } = useAuth0()
   return (
   <React.Fragment>
+    <ListItemButton component={Link} to = {'perfil'}>
+      <ListItemIcon>
+        <PersonIcon />
+      </ListItemIcon>
+      <ListItemText primary="Perfil" />
+    </ListItemButton>
+    <ListItemButton component={Link} to = {'medicos'}>
+      <ListItemIcon>
+        <HealthAndSafetyIcon />
+      </ListItemIcon>
+      <ListItemText primary="Medicos" />
+    </ListItemButton>
+    <ListItemButton component={Link} to = {'admin'}>
+      <ListItemIcon>
+        <SupervisorAccountIcon />
+      </ListItemIcon>
+      <ListItemText primary="Administrador" />
+    </ListItemButton>
     <ListItemButton component={Link} to={'inicio'}>
       <ListItemIcon>
         <AdjustIcon />
@@ -25,7 +46,6 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-
     <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
