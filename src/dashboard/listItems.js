@@ -6,34 +6,35 @@ import ListItemText from '@mui/material/ListItemText'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
+// import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
+// import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import LogoutIcon from '@mui/icons-material/Logout'
-import PersonIcon from '@mui/icons-material/Person'
+// import PersonIcon from '@mui/icons-material/Person'
+import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 
 export default function MainListItems () {
   const { logout } = useAuth0()
   return (
   <React.Fragment>
-    <ListItemButton component={Link} to = {'perfil'}>
+    {/* <ListItemButton component={Link} to = {'registropaciente'}>
       <ListItemIcon>
         <PersonIcon />
       </ListItemIcon>
       <ListItemText primary="Perfil" />
     </ListItemButton>
-    <ListItemButton component={Link} to = {'medicos'}>
+    <ListItemButton component={Link} to = {'registromedico'}>
       <ListItemIcon>
         <HealthAndSafetyIcon />
       </ListItemIcon>
       <ListItemText primary="Medicos" />
     </ListItemButton>
-    <ListItemButton component={Link} to = {'admin'}>
+    <ListItemButton component={Link} to = {'registroadmin'}>
       <ListItemIcon>
         <SupervisorAccountIcon />
       </ListItemIcon>
       <ListItemText primary="Administrador" />
-    </ListItemButton>
+    </ListItemButton> */}
     <ListItemButton component={Link} to={'inicio'}>
       <ListItemIcon>
         <AdjustIcon />
@@ -54,7 +55,7 @@ export default function MainListItems () {
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
-        <LogoutIcon />
+        <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Ir a la pagina principal" />
     </ListItemButton>

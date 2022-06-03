@@ -1,32 +1,33 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
-// {useState, useEffect, useRef, useReducer, useMemo}
+import { useAuth0 } from '@auth0/auth0-react'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
 import MenuItem from '@mui/material/MenuItem'
 import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 import { useExternalApi } from '../hooks/InfoPacienteResponse'
+import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
-export default function Perfil () {
+export default function Perfil ({ authId }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
   const ciudades = [{ value: 'Santiago de Cali', label: 'Santiago de Cali' }, { value: 'Bogota', label: 'Bogota' }, { value: 'Medellin', label: 'Medellin' }]
 
   const { logout } = useAuth0()
-
+  const nav = useNavigate()
   const {
     createPaciente
   } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
+    data.id_paciente = authId
     createPaciente(data)
+    nav('/Dashboard')
   }
 
   return (
@@ -118,7 +119,7 @@ export default function Perfil () {
         </Grid>
 
         <Grid item xs = {5}>
-          <Button variant="contained" type = "submit" onClick={handleSubmit(onSubmit)}>Enviar</Button>
+          <Button variant="contained" type = "submit" onClick={handleSubmit(onSubmit)} >Enviar</Button>
         </Grid>
 
       </Grid></Paper>

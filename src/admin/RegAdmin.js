@@ -10,9 +10,10 @@ import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useExternalApi } from '../hooks/InfoAdminResponse'
+import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
-export default function RegAdmin () {
+export default function RegAdmin ({ authId }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -20,10 +21,12 @@ export default function RegAdmin () {
   const {
     createAdmin
   } = useExternalApi()
-
+  const nav = useNavigate()
   const onSubmit = data => {
     console.log(data)
+    data.id_trabajador = authId
     createAdmin(data)
+    nav('/Dashboard')
   }
 
   const { logout } = useAuth0()

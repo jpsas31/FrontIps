@@ -40,9 +40,9 @@ export default function DropdownRegister () {
           horizontal: 'left'
         }}
       >
-        <ButtonT returnTo= '/Dashboard/inicio' action='signUp' titulo="Paciente"/>
-        <ButtonT action='signUp' titulo="Medico"/>
-        <ButtonT action='signUp' titulo="Admin"/>
+        <ButtonT returnTo= '/Dashboard/RegistroPaciente' action='signUp' titulo="Paciente"/>
+        <ButtonT returnTo= '/Dashboard/RegistroMedico' action='signUp' titulo="Medico"/>
+        <ButtonT returnTo= '/Dashboard/RegistroAdmin' action='signUp' titulo="Admin"/>
       </Menu>
     </div>
   )

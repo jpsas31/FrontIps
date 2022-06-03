@@ -56,6 +56,7 @@ export const useExternalApi = () => {
         'content-type': 'application/json'
       },
       data: {
+        id_trabajador: datos.id_trabajador,
         tipo_id: datos.tipo_id,
         identificacion: datos.identificacion,
         nombre: datos.nombre,

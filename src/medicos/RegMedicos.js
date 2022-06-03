@@ -11,8 +11,9 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useExternalApi } from '../hooks/InfoMedicoResponse'
 // import { width } from '@mui/system'
+import { useNavigate } from 'react-router'
 
-export default function RegMedicos () {
+export default function RegMedicos ({ authId }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -27,10 +28,12 @@ export default function RegMedicos () {
   const {
     createMedico
   } = useExternalApi()
-
+  const nav = useNavigate()
   const onSubmit = data => {
     console.log(data)
+    data.id_trabajador = authId
     createMedico(data)
+    nav('/Dashboard')
   }
 
   const { logout } = useAuth0()
