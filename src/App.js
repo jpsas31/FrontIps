@@ -7,6 +7,7 @@ import Perfil from './paciente/Perfil'
 import RegMedicos from './medicos/RegMedicos'
 import RegAdmin from './admin/RegAdmin'
 import Blog from './blog/Blog'
+// import  DemoApp from './calendario/DemoApp'
 import {
 
   Routes,
