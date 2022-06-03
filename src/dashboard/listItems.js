@@ -7,6 +7,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import LogoutIcon from '@mui/icons-material/Logout'
 import PersonIcon from '@mui/icons-material/Person'
 import { Link } from 'react-router-dom'
@@ -26,6 +27,12 @@ export default function MainListItems () {
         <HealthAndSafetyIcon />
       </ListItemIcon>
       <ListItemText primary="Medicos" />
+    </ListItemButton>
+    <ListItemButton component={Link} to = {'admin'}>
+      <ListItemIcon>
+        <SupervisorAccountIcon />
+      </ListItemIcon>
+      <ListItemText primary="Administrador" />
     </ListItemButton>
     <ListItemButton component={Link} to={'inicio'}>
       <ListItemIcon>

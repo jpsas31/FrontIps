@@ -9,35 +9,28 @@ import MenuItem from '@mui/material/MenuItem'
 import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useExternalApi } from '../hooks/InfoMedicoResponse'
+import { useExternalApi } from '../hooks/InfoAdminResponse'
 // import { width } from '@mui/system'
 
-export default function RegMedicos () {
+export default function RegAdmin () {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
-  const especialidades = [
-    { value: '1', label: 'General' },
-    { value: '2', label: 'Psicologia' },
-    { value: '3', label: 'Pediatria' },
-    { value: '4', label: 'Cardiologia' },
-    { value: '5', label: 'Dermatologia' },
-    { value: '6', label: 'Oftalmologia' }]
 
   const {
-    createMedico
+    createAdmin
   } = useExternalApi()
 
   const onSubmit = data => {
     console.log(data)
-    createMedico(data)
+    createAdmin(data)
   }
 
   const { logout } = useAuth0()
 
   return (
   <div>
-    <h1 align="center">Registro de medicos</h1>
+    <h1 align="center">Registro de administrador</h1>
     <div align = "center">
     <form onSubmit={handleSubmit(onSubmit)}>
     <Paper width = '50%' elevation = {8} sx = {{ padding: 4 }} >
@@ -73,21 +66,6 @@ export default function RegMedicos () {
         </Grid>
 
         <Grid item xs = {5}>
-        <TextField
-                select
-                fullWidth
-                label="Especialidad"
-                defaultValue = {1}
-                {...register('id_especialidad', { required: true })}
-              >
-                {especialidades.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>))}
-          </TextField>
-        </Grid>
-
-        <Grid item xs = {5}>
           <TextField fullWidth id="direccion" label="Direccion" variant="outlined"
           {...register('direccion', { required: true })}/>
         </Grid>
@@ -100,6 +78,9 @@ export default function RegMedicos () {
         <Grid item xs = {5}>
             <TextField fullWidth id="correo" label="Correo" variant="outlined"
             {...register('correo', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i })}/>
+        </Grid>
+
+        <Grid item xs = {5}>
         </Grid>
 
         <Grid item xs = {5}>
