@@ -107,40 +107,12 @@ export const useExternalApi = () => {
     setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
-  const updatePw = async (datos, key, key2, setResponsePw) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-
-    setApiEndpoint('PUT /api/info-paciente/actualizar-pw')
-    const config = {
-      url: `${apiServerUrl}/api/info-paciente/actualizar-pw`,
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      data: {
-        id_usuario: key,
-        tipo_usuario: key2,
-        clave: datos.fieldnewPw,
-        nuevaClave: datos.newPw1,
-        nuevaClave2: datos.newPw2
-      }
-    }
-    const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
-    if (data.err === 0) {
-      setResponsePw('La contraseña ha sido actualizada')
-    } else {
-      setResponsePw('La contraseña no ha sido actualizada')
-    }
-  }
-
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
     getInfoPaciente,
-    updatePaciente,
-    updatePw
+    updatePaciente
     // getRbacResource,
     // checkCorsAllowedMethod
   }
