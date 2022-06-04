@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import UserContext from '../context/user.context'
 export default function AuthRedirect ({ Component, tipo }) {
   const [userType, setUserType] = useContext(UserContext)
+  console.log(userType)
   useEffect(() => {
     setUserType(window.localStorage.getItem('titulo'))
   }, [])

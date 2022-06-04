@@ -19,6 +19,7 @@ import Grid from '@mui/material/Grid'
 import Autocomplete from '@mui/material/Autocomplete'
 import Paper from '@mui/material/Paper'
 import LinearProgress from '@mui/material/LinearProgress'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function InfoPaciente (props) {
   const { control, handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
@@ -34,6 +35,7 @@ export default function InfoPaciente (props) {
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [paciente, setPaciente] = useState({})
+  const { user } = useAuth0()
 
   const ciudades = [
     { value: 'Cali', label: 'Cali' },
@@ -42,12 +44,12 @@ export default function InfoPaciente (props) {
   ]
 
   useEffect(() => {
-    getInfoPaciente('google-oauth2|117325936244745258417', setPaciente)
+    getInfoPaciente(user.sub, setPaciente)
   }, [])
 
   const onSubmit = data => {
     setIsLoading(true)
-    updatePaciente(data, 'google-oauth2|117325936244745258417')
+    updatePaciente(data, user.sub)
     handleClickOpen()
     setTimeout(() => {
       setIsLoading(false)
@@ -203,7 +205,6 @@ export default function InfoPaciente (props) {
           </Paper>
         </Container>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <Button variant = 'contained' onClick={handleClickOpen} >Cambiar contraseña</Button>
           <Button variant = 'contained' onClick={ getInfoPacienteSubmit(onSubmit) } className={`messages-grid__option ${
                   selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
                   'messages-grid__option--active'

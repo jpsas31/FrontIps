@@ -5,6 +5,7 @@ import UserContext from '../../context/user.context'
 export const ButtonT = ({ titulo, action, returnTo }) => {
   const { loginWithRedirect } = useAuth0()
   const [userType, setUserType] = useContext(UserContext)
+  console.log(userType)
   return (
     <MenuItem className="button__sign-up" variant="outlined" size="small" onClick={() => {
       window.localStorage.setItem('titulo', titulo)
