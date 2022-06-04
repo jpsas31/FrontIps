@@ -6,12 +6,10 @@ import ListItemText from '@mui/material/ListItemText'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
-// import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
-// import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import LogoutIcon from '@mui/icons-material/Logout'
-// import PersonIcon from '@mui/icons-material/Person'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
+import LayersIcon from '@mui/icons-material/Layers'
 
 export default function MainListItems () {
   const { logout } = useAuth0()
@@ -53,6 +51,12 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItemButton>
+    <ListItemButton component={Link} to={'info-paciente'} >
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Información Paciente" />
+    </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
         <HomeIcon />
@@ -72,29 +76,3 @@ export default function MainListItems () {
   </React.Fragment>
   )
 }
-
-// export const secondaryListItems = (
-//   <React.Fragment>
-//     <ListSubheader component="div" inset>
-//       Saved reports
-//     </ListSubheader>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Current month" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Last quarter" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Year-end sale" />
-//     </ListItemButton>
-//   </React.Fragment>
-// )
