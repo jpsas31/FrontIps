@@ -100,6 +100,10 @@ export default function RegMedicos ({ authId, authEmail }) {
           <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type = "number"
           {...register('telefono', { required: true, minLength: 10 })}/>
         </Grid>
+
+        <Grid item xs = {5}>
+        </Grid>
+
         <Grid item xs = {5}>
           <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
             returnTo: window.location.origin

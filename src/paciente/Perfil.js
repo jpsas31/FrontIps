@@ -93,7 +93,7 @@ export default function Perfil ({ authId, authEmail }) {
           {...register('telefono', { required: true, minLength: 10 })}/>
         </Grid>
 
-        <Grid item xs = {10}>
+        <Grid item xs = {5}>
           <TextField fullWidth id="nacimiento" label="" helperText = "Fecha de nacimiento" variant="outlined" type = "date"
           {...register('nacimiento', { required: true })}/>
         </Grid>

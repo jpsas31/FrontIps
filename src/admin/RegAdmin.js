@@ -80,9 +80,6 @@ export default function RegAdmin ({ authId, authEmail }) {
         </Grid>
 
         <Grid item xs = {5}>
-        </Grid>
-
-        <Grid item xs = {5}>
           <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
             returnTo: window.location.origin
           })
