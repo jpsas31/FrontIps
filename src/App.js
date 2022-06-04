@@ -10,6 +10,9 @@ import InfoPaciente from './Paciente/InfoPaciente'
 import Dashboard from './dashboard/Dashboard'
 import AuthRedirect from './auth0/authRedirect'
 import UserContext from './context/user.context'
+import Personal from './personal/Personal'
+import ActivaUser from './personal/activaUser'
+
 // import  DemoApp from './calendario/DemoApp'
 import {
 
@@ -36,6 +39,8 @@ export default function App () {
         <Route path="RegistroPaciente" element={<AuthRedirect Component={Perfil} tipo='Paciente' />}/>
         <Route path="RegistroMedico" element={<AuthRedirect Component={RegMedicos} tipo= 'Medico' />} />
         <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
+        <Route path="personal" element={<Personal/>} />
+        <Route path="activa" element = {<ActivaUser/>} />
       </Route>
     </Routes>
   </UserContext.Provider>

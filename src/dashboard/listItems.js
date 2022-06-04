@@ -10,29 +10,13 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
+import AddReactionIcon from '@mui/icons-material/AddReaction'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 
 export default function MainListItems () {
   const { logout } = useAuth0()
   return (
   <React.Fragment>
-    {/* <ListItemButton component={Link} to = {'registropaciente'}>
-      <ListItemIcon>
-        <PersonIcon />
-      </ListItemIcon>
-      <ListItemText primary="Perfil" />
-    </ListItemButton>
-    <ListItemButton component={Link} to = {'registromedico'}>
-      <ListItemIcon>
-        <HealthAndSafetyIcon />
-      </ListItemIcon>
-      <ListItemText primary="Medicos" />
-    </ListItemButton>
-    <ListItemButton component={Link} to = {'registroadmin'}>
-      <ListItemIcon>
-        <SupervisorAccountIcon />
-      </ListItemIcon>
-      <ListItemText primary="Administrador" />
-    </ListItemButton> */}
     <ListItemButton component={Link} to={'inicio'}>
       <ListItemIcon>
         <AdjustIcon />
@@ -45,7 +29,7 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -62,6 +46,21 @@ export default function MainListItems () {
         <HomeIcon />
       </ListItemIcon>
       <ListItemText primary="Ir a la pagina principal" />
+    </ListItemButton>
+    <ListItemButton component = {Link} to = {'personal'}>
+      <ListItemIcon>
+        <AddReactionIcon/>
+      </ListItemIcon>
+      <ListItemText primary="GPersonal" />
+    </ListItemButton>
+
+    { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
+
+    <ListItemButton component = {Link} to = {'activa'}>
+      <ListItemIcon>
+        <EmojiPeopleIcon/>
+      </ListItemIcon>
+      <ListItemText primary="Personal" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'} onClick={() =>
       logout({

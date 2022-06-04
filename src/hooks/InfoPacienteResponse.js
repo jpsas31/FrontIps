@@ -25,7 +25,6 @@ export const useExternalApi = () => {
     try {
       if (options.authenticated) {
         const token = await getAccessTokenSilently()
-
         options.config.headers = {
           ...options.config.headers,
           Authorization: `Bearer ${token}`
@@ -103,7 +102,6 @@ export const useExternalApi = () => {
     }
 
     await makeRequest({ config, authenticated: true })
-
     setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
@@ -131,10 +129,64 @@ export const useExternalApi = () => {
         nacimiento: datos.nacimiento
       }
     }
-
     await makeRequest({ config, authenticated: true })
-
     setApiResponse('El paciente se ha registrado con exito')
+  }
+
+  const consultaPacientes = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpoint('POST /api/info-paciente/consultar-pacientes')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-pacientes`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    // console.log('holi', data)
+    return data
+  }
+
+  const consultaTrabajadores = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpoint('POST /api/info-paciente/consultar-trabajadores')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-trabajadores`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    // console.log('HOLA',data)
+    return data
+  }
+
+  const cambEstado = async (datos, setResponsePw) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpoint('PUT /api/info-paciente/cambEst-usuario')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/cambEst-usuario`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: datos.id_usuario,
+        estado: datos.estado
+      }
+    }
+    await makeRequest({ config, authenticated: true })
+    setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
   return {
@@ -143,7 +195,10 @@ export const useExternalApi = () => {
     apiResponse,
     getInfoPaciente,
     updatePaciente,
-    createPaciente
+    createPaciente,
+    consultaPacientes,
+    consultaTrabajadores,
+    cambEstado
     // getRbacResource,
     // checkCorsAllowedMethod
   }
