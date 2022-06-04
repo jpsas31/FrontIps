@@ -7,10 +7,11 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import LogoutIcon from '@mui/icons-material/Logout'
+import HomeIcon from '@mui/icons-material/Home'
+import { Link } from 'react-router-dom'
+import LayersIcon from '@mui/icons-material/Layers'
 import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
-
-import { Link } from 'react-router-dom'
 
 export default function MainListItems () {
   const { logout } = useAuth0()
@@ -22,9 +23,30 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Inicio" />
     </ListItemButton>
-
-    { /* Se agrega opcion RegistroUsuario de panel administrativo */ }
-
+    <ListItemButton component={Link} to={'data'}>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'/'}>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Reports" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'info-paciente'} >
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Información Paciente" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'/'}>
+      <ListItemIcon>
+        <HomeIcon />
+      </ListItemIcon>
+      <ListItemText primary="Ir a la pagina principal" />
+    </ListItemButton>
     <ListItemButton component = {Link} to = {'personal'}>
       <ListItemIcon>
         <AddReactionIcon/>
@@ -40,26 +62,6 @@ export default function MainListItems () {
       </ListItemIcon>
       <ListItemText primary="Personal" />
     </ListItemButton>
-
-    <ListItemButton component={Link} to={'data'}>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'/'}>
-      <ListItemIcon>
-        <LogoutIcon />
-      </ListItemIcon>
-      <ListItemText primary="Ir a la pagina principal" />
-    </ListItemButton>
     <ListItemButton component={Link} to={'/'} onClick={() =>
       logout({
         returnTo: window.location.origin
@@ -68,34 +70,8 @@ export default function MainListItems () {
       <ListItemIcon>
         <LogoutIcon />
       </ListItemIcon>
-      <ListItemText primary="Ir a la pagina principal" />
+      <ListItemText primary="Log Out" />
     </ListItemButton>
   </React.Fragment>
   )
 }
-
-// export const secondaryListItems = (
-//   <React.Fragment>
-//     <ListSubheader component="div" inset>
-//       Saved reports
-//     </ListSubheader>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Current month" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Last quarter" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Year-end sale" />
-//     </ListItemButton>
-//   </React.Fragment>
-// )

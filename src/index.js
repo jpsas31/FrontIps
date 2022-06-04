@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
     <Auth0ProviderWithHistory>
-        <App />
+      <App />
     </Auth0ProviderWithHistory>
   </BrowserRouter>
 )
