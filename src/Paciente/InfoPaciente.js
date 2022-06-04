@@ -36,7 +36,7 @@ export default function InfoPaciente (props) {
   const [paciente, setPaciente] = useState({})
 
   const ciudades = [
-    { value: 'Santiago de Cali', label: 'Santiago de Cali' },
+    { value: 'Cali', label: 'Cali' },
     { value: 'Bogota', label: 'Bogota' },
     { value: 'Medellin', label: 'Medellin' }
   ]
