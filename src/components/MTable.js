@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import { faker } from '@faker-js/faker'
-import { makeStyles } from '@material-ui/core/styles'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, CircularProgress } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, CircularProgress } from '@mui/material'
 import Button from '@mui/material/Button'
 import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import { useState, useEffect } from 'react'
@@ -76,6 +76,7 @@ export default function MTable () {
 
   const [pacientes, setPacientes] = React.useState([])
   const [trabajadores, setTrabajadores] = React.useState([])
+  const [USERS, setUsers] = React.useState([])
 
   useEffect(() => {
     consultaPacientes()
@@ -92,6 +93,10 @@ export default function MTable () {
         setIsLoading(false)
       })
   }, [])
+
+  useEffect(() => {
+    setUsers(pacientes.concat(trabajadores))
+  }, [pacientes, trabajadores])
 
   const refreshPage = () => {
     window.location.reload()
@@ -114,7 +119,7 @@ export default function MTable () {
     }
   }
 
-  if (pacientes.length === 0 || trabajadores.length === 0 || pacientes === undefined || trabajadores === undefined) {
+  if (pacientes.length === 0 || trabajadores.length === 0 || pacientes === undefined || trabajadores === undefined || USERS.length === 0 || USERS.length === undefined) {
     return (
       <Box sx={{ width: '100%' }}>
         <LinearProgress />
@@ -125,7 +130,6 @@ export default function MTable () {
       </Box>
     )
   } else {
-    const USERS = pacientes.concat(trabajadores)
     // console.log('ayudaa', USERS)
     return (
       <div>
