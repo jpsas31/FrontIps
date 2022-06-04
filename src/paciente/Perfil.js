@@ -11,7 +11,7 @@ import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
-export default function Perfil ({ authId }) {
+export default function Perfil ({ authId, authEmail }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -26,6 +26,7 @@ export default function Perfil ({ authId }) {
   const onSubmit = data => {
     console.log(data)
     data.id_paciente = authId
+    data.correo = authEmail
     createPaciente(data)
     nav('/Dashboard')
   }
@@ -90,11 +91,6 @@ export default function Perfil ({ authId }) {
         <Grid item xs = {5}>
           <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type = "number"
           {...register('telefono', { required: true, minLength: 10 })}/>
-        </Grid>
-
-        <Grid item xs = {5}>
-          <TextField fullWidth id="correo" label="Correo" variant="outlined"
-          {...register('correo', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i })}/>
         </Grid>
 
         <Grid item xs = {10}>

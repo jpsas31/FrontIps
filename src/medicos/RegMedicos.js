@@ -13,7 +13,7 @@ import { useExternalApi } from '../hooks/InfoMedicoResponse'
 // import { width } from '@mui/system'
 import { useNavigate } from 'react-router'
 
-export default function RegMedicos ({ authId }) {
+export default function RegMedicos ({ authId, authEmail }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -32,6 +32,7 @@ export default function RegMedicos ({ authId }) {
   const onSubmit = data => {
     console.log(data)
     data.id_trabajador = authId
+    data.correo = authEmail
     createMedico(data)
     nav('/Dashboard')
   }
@@ -99,12 +100,6 @@ export default function RegMedicos ({ authId }) {
           <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type = "number"
           {...register('telefono', { required: true, minLength: 10 })}/>
         </Grid>
-
-        <Grid item xs = {5}>
-            <TextField fullWidth id="correo" label="Correo" variant="outlined"
-            {...register('correo', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i })}/>
-        </Grid>
-
         <Grid item xs = {5}>
           <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
             returnTo: window.location.origin

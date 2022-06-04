@@ -21,5 +21,5 @@ export default function AuthRedirect ({ Component, tipo }) {
     }
     fetchData()
   }, [])
-  return <Component authId={user.sub}/>
+  return <Component authId={user.sub} authEmail={user.email}/>
 }

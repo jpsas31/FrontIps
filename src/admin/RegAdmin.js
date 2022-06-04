@@ -13,7 +13,7 @@ import { useExternalApi } from '../hooks/InfoAdminResponse'
 import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
-export default function RegAdmin ({ authId }) {
+export default function RegAdmin ({ authId, authEmail }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -25,6 +25,7 @@ export default function RegAdmin ({ authId }) {
   const onSubmit = data => {
     console.log(data)
     data.id_trabajador = authId
+    data.correo = authEmail
     createAdmin(data)
     nav('/Dashboard')
   }
@@ -76,11 +77,6 @@ export default function RegAdmin ({ authId }) {
         <Grid item xs = {5}>
           <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type = "number"
           {...register('telefono', { required: true, minLength: 10 })}/>
-        </Grid>
-
-        <Grid item xs = {5}>
-            <TextField fullWidth id="correo" label="Correo" variant="outlined"
-            {...register('correo', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i })}/>
         </Grid>
 
         <Grid item xs = {5}>
