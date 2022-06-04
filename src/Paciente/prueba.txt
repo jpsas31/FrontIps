@@ -1,0 +1,34 @@
+<TextField
+              select
+              label="Ciudad"
+              defaultValue = {paciente.ciudad}
+              {...registro('ciudad', { required: true })}
+              sx={{ mx: 1, my: 2, width: '30ch' }}
+              >
+                {ciudades.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>))}
+            </TextField>
+
+
+<TextField
+                label="Fecha de nacimiento"
+                defaultValue={paciente.nacimiento.split('T')[0]}
+                {...registro('nacimiento', { required: true })}
+                sx={{ mx: 1, my: 2, width: '20ch' }}
+                />
+
+<Controller
+                  render={({ field }) => (
+                      <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                          label='nacimiento'
+                          onChange={(date) => field.onChange(date.toISOString())}
+                          value={field.value}
+                          renderInput={(params) => <TextField sx={{ mx: 1, my: 2, width: '30ch' }} {...params} />}
+                        />
+                      </LocalizationProvider>
+                  )}
+                  name="nacimiento"
+                  c

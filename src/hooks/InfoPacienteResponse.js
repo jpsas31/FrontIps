@@ -46,7 +46,7 @@ export const useExternalApi = () => {
   }
 
   // Funciones api Kevin
-  const getInfoPaciente = async (datos, setPaciente, setFecha) => {
+  const getInfoPaciente = async (datos, setPaciente) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpoint('POST /api/info-paciente/infopaciente')
@@ -65,16 +65,20 @@ export const useExternalApi = () => {
     setApiResponse(data)
     setPaciente(data)
     // console.log(data)
+    /*
     let apano = new Date(data.nacimiento)
     apano = apano.setDate(apano.getDate() + 1)
     setFecha(apano)
+    */
   }
 
   const updatePaciente = async (datos, key) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    /*
     let apano = new Date(datos.nacimiento)
     apano = new Date(apano.setDate(apano.getDate() - 1))
     apano = apano.toISOString()
+    */
 
     setApiEndpoint('PUT /api/info-paciente/actualizar-paciente')
     const config = {
@@ -84,7 +88,7 @@ export const useExternalApi = () => {
         'content-type': 'application/json'
       },
       data: {
-        id_paciente: datos.id_paciente,
+        id_paciente: key,
         tipo_id: datos.tipo_id,
         identificacion: datos.identificacion,
         nombre: datos.nombre,
@@ -94,7 +98,7 @@ export const useExternalApi = () => {
         telefono: datos.telefono,
         correo: datos.correo,
         edad: datos.edad,
-        nacimiento: apano
+        nacimiento: datos.nacimiento
       }
     }
 
@@ -133,40 +137,12 @@ export const useExternalApi = () => {
     setApiResponse('El paciente se ha registrado con exito')
   }
 
-  const updatePw = async (datos, key, key2, setResponsePw) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-
-    setApiEndpoint('PUT /api/info-paciente/actualizar-pw')
-    const config = {
-      url: `${apiServerUrl}/api/info-paciente/actualizar-pw`,
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      data: {
-        id_usuario: key,
-        tipo_usuario: key2,
-        clave: datos.fieldnewPw,
-        nuevaClave: datos.newPw1,
-        nuevaClave2: datos.newPw2
-      }
-    }
-    const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
-    if (data.err === 0) {
-      setResponsePw('La contraseña ha sido actualizada')
-    } else {
-      setResponsePw('La contraseña no ha sido actualizada')
-    }
-  }
-
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
     getInfoPaciente,
     updatePaciente,
-    updatePw,
     createPaciente
     // getRbacResource,
     // checkCorsAllowedMethod
