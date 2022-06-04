@@ -107,12 +107,43 @@ export const useExternalApi = () => {
     setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
+  const createPaciente = async (datos, key) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('PUT /api/info-paciente/registrar-paciente')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/registrar-paciente`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_paciente: datos.id_paciente,
+        tipo_id: datos.tipo_id,
+        identificacion: datos.identificacion,
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        direccion: datos.direccion,
+        ciudad: datos.ciudad,
+        telefono: datos.telefono,
+        correo: datos.correo,
+        edad: datos.edad,
+        nacimiento: datos.nacimiento
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+
+    setApiResponse('El paciente se ha registrado con exito')
+  }
+
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
     getInfoPaciente,
-    updatePaciente
+    updatePaciente,
+    createPaciente
     // getRbacResource,
     // checkCorsAllowedMethod
   }

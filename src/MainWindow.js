@@ -15,7 +15,7 @@ import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import { MainListItems, secondaryListItems } from './dashboard/listItems'
+import MainListItems from './dashboard/listItems'
 
 const drawerWidth = 240
 
@@ -126,7 +126,7 @@ export default function MainWindow () {
           <List component="nav">
             <MainListItems/>
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+
           </List>
         </Drawer>
         <Box
