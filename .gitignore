@@ -12,5 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 /.changelog
 .npm/
+.env
+env
 api_express_javascript_hello-world/
 spa_react_javascript_hello-world/
