@@ -106,7 +106,7 @@ export const useExternalApi = () => {
         'content-type': 'application/json'
       },
       data: {
-        id_paciente: '3',
+        id_paciente: '1',
         tipo_id: datos.tipo_id,
         identificacion: String(datos.identificacion),
         nombre: datos.nombre,
@@ -161,19 +161,50 @@ export const useExternalApi = () => {
         'content-type': 'application/json'
       },
       data: {
-        id_paciente: datos
+        id_usuario: datos
       }
     }
     const data = await makeRequest({ config, authenticated: true })
     setApiResponse(data)
-    console.log('Holi', data)
-    // console.log(data)
+    // console.log('holi', data)
     return data
   }
 
-  const consultaMedicos = async (datos, key) => {
+  const consultaTrabajadores = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-    setApiEndpoint('GET /api/info-paciente/consultar-medicos')
+    setApiEndpoint('POST /api/info-paciente/consultar-trabajadores')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-trabajadores`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    // console.log('HOLA',data)
+    return data
+  }
+
+  const cambEstado = async (datos, setResponsePw) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpoint('PUT /api/info-paciente/cambEst-usuario')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/cambEst-usuario`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_usuario: datos.id_usuario,
+        estado: datos.estado
+      }
+    }
+    await makeRequest({ config, authenticated: true })
+    setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
   return {
@@ -185,7 +216,8 @@ export const useExternalApi = () => {
     updatePw,
     createPaciente,
     consultaPacientes,
-    consultaMedicos
+    consultaTrabajadores,
+    cambEstado
     // getRbacResource,
     // checkCorsAllowedMethod
   }

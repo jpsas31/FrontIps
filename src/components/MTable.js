@@ -1,11 +1,12 @@
 import * as React from 'react'
 // import { faker } from '@faker-js/faker'
 import { makeStyles } from '@material-ui/core/styles'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, CircularProgress } from '@material-ui/core'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, CircularProgress } from '@material-ui/core'
 import Button from '@mui/material/Button'
 import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 
 const useStyles = makeStyles((theme) => ({
@@ -52,141 +53,141 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const USERS = []
-// const STATUSES = ['Activo', 'Bloqueado']
 export default function MTable () {
   const classes = useStyles()
-  const [loading, setLoading] = useState(false)
-
   const {
-    consultaPacientes
+    consultaPacientes,
+    consultaTrabajadores,
+    cambEstado
   } = useExternalApi()
-  const [pacientes, setPacientes] = useState({})
 
-  useEffect(() => {
-    setLoading(true)
-    const info = consultaPacientes()
-    console.log(info)
-    setPacientes(info)
-    setTimeout(() => {
-      setLoading(false)
-      setTitulo('Gestion de personal')
-      console.log('hola', pacientes)
-    }, 2000)
-  }, [])
-
+  const [loading, setIsLoading] = useState(true)
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
-  const [open, setOpen] = React.useState(false)
   const [titulo, setTitulo] = React.useState('Cargando...')
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
-  const handleClickOpen = () => {
-    setOpen(true)
+
+  const [pacientes, setPacientes] = React.useState([])
+  const [trabajadores, setTrabajadores] = React.useState([])
+
+  useEffect(() => {
+    consultaPacientes()
+      .then(res => {
+        // console.log(res)
+        setPacientes(res)
+        setTitulo('Gestion de personal')
+        setIsLoading(false)
+      })
+    consultaTrabajadores()
+      .then(res => {
+        // console.log(res)
+        setTrabajadores(res)
+        setIsLoading(false)
+      })
+  }, [])
+
+  const refreshPage = () => {
+    window.location.reload()
   }
-  const handleClose = () => {
-    setOpen(false)
+
+  function handleClick (us, est) {
+    const json = {
+      id_usuario: us,
+      estado: !est
+    }
+    cambEstado(json)
+    refreshPage()
   }
-  if (JSON.stringify(pacientes) === '{}') {
-    return (
-      <Box sx={{ width: '100%' }}>
-        <LinearProgress />
-      </Box>
-    )
+
+  function verificarEstado (bol) {
+    if (bol) {
+      return 'Activo'
+    } else {
+      return 'Bloqueado'
+    }
+  }
+
+  if (pacientes.length === 0 || trabajadores.length === 0 || pacientes === undefined || trabajadores === undefined) {
+    <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box>
   } else {
+    const USERS = pacientes.concat(trabajadores)
+    // console.log('ayudaa', USERS)
     return (
       <div>
-      <Box className= {classes.fondo} >
-      <Grid container alignItems = 'center'>
-        <Grid item>{loading && <CircularProgress/>}</Grid>
-        <Grid item><Typography className = {classes.titulo}> {titulo} </Typography></Grid>
-      </Grid>
-      <TableContainer component={Paper} className = {classes.tableContainer}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.tableHeaderCell}>Info de usuario</TableCell>
-            <TableCell className={classes.tableHeaderCell}>Rol</TableCell>
-            <TableCell className={classes.tableHeaderCell}>Joining date</TableCell>
-            <TableCell className={classes.tableHeaderCell}>Estado</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell>
-                <Grid container>
-                  <Grid item lg = {2}>
-                  <Avatar alt={row.name} src = '.' className={classes.avatar}/>
+        <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', mb: 2 }} >
+        <Box className= {classes.fondo} >
+          <Grid container alignItems = 'center'>
+            <Grid item>{loading && <CircularProgress/>}</Grid>
+            <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+          </Grid>
+
+          <TableContainer component={Paper} className = {classes.tableContainer}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell className={classes.tableHeaderCell}>Info de usuario</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Rol</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Direccion</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Estado</TableCell>
+                </TableRow>
+              </TableHead>
+            <TableBody>
+              {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                <TableRow key={row.id_usuario}>
+                  <TableCell>
+                  <Grid container>
+                    <Grid item lg = {2}>
+                      <Avatar alt={row.nombre + ' ' + row.apellido} src = '.' className={classes.avatar}/>
+                    </Grid>
+                    <Grid item lg = {10}>
+                      <Typography className={classes.name}>{row.nombre + ' ' + row.apellido}</Typography>
+                      <Typography color= 'textSecondary' variant= 'body2'>{row.correo}</Typography>
+                      <Typography color= 'textSecondary' variant= 'body2'>{row.tipo_id + ' ' + row.identificacion}</Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item lg = {10}>
-                    <Typography className={classes.name}>{row.name}</Typography>
-                    <Typography color= 'textSecondary' variant= 'body2'>{row.email}</Typography>
-                    <Typography color= 'textSecondary' variant= 'body2'>{row.phone}</Typography>
-                  </Grid>
-                </Grid>
-              </TableCell>
-              <TableCell>
-                <Typography color= 'primary' variant= 'subtitle'>{row.jobTitle}</Typography>
-                <Typography color= 'textSecondary' variant= 'body2'>{row.company}</Typography>
-              </TableCell>
-              <TableCell >{row.joinDate}</TableCell>
-              <TableCell ><Button variant = 'contained' className={classes.status}
-              color={
-                ((row.status === 'Activo' && 'success')) ||
-                ((row.status === 'Bloqueado' && 'error'))
-              }
-              onClick = {handleClickOpen}>{row.status}</Button>
-              <Dialog open = {open} onClose = {handleClose} aria-labelledby = 'alert-dialog-title' aria-describedby = 'alert-dialog-description'>
-                <DialogTitle id='alert-dialog-title'>
-                  {'Cambiar estado de usuario'}
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText id='alert-dialog-description'>
-                    Al aceptar, usted estará cambiando el estado del usuario de {row.status} al contrario, ¿está de acuerdo?
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>Cancelar</Button>
-                  <Button onClick={ () => {
-                    handleClose()
-                    console.log(row.status)
-                    if (row.status === 'Activo') {
-                      row.status = 'Bloqueado' // revisar lo del boton
-                    } else {
-                      row.status = 'Activo'
-                    }
-                  }} autoFocus >Aceptar</Button>
-                </DialogActions>
-              </Dialog>
+                  </TableCell>
+                  <TableCell>
+                    <Typography color= 'primary' variant= 'subtitle1'>{row.rol}</Typography>
+                    <Typography color= 'textSecondary' variant= 'body2'>IPS</Typography>
+                  </TableCell>
+                  <TableCell >{row.direccion}</TableCell>
+                  <TableCell ><Button variant = 'contained' className={classes.status}
+                  color = {((row.estado === true && 'success') || (row.estado === false && 'error'))}
+                  onClick = {() => { handleClick(row.id_usuario, row.estado) }}>{verificarEstado(row.estado)}</Button>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <tr>
-            <td>
-            <TablePagination
-            rowsPerPageOptions = {[5, 10, 15]}
-            component = 'div'
-            count = {USERS.length}
-            rowsPerPage = {rowsPerPage}
-            page = {page}
-            onPageChange = {handleChangePage}
-            onRowsPerPageChange = {handleChangeRowsPerPage}
-            />
-            </td>
-          </tr>
-        </TableFooter>
-      </Table>
-    </TableContainer>
-      </Box>
-    </div>
+              ))}
+          </TableBody>
+          <TableFooter>
+            <tr>
+              <td>
+              <TablePagination
+              rowsPerPageOptions = {[5, 10, 15]}
+              component = 'div'
+              count = {USERS.length}
+              rowsPerPage = {rowsPerPage}
+              page = {page}
+              onPageChange = {handleChangePage}
+              onRowsPerPageChange = {handleChangeRowsPerPage}
+              />
+              </td>
+            </tr>
+          </TableFooter>
+        </Table>
+      </TableContainer>
+        </Box>
+        </Container>
+      </div>
     )
   }
 }
