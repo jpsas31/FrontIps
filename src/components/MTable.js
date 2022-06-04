@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.dark,
     fontSize: '2rem',
     padding: '3px 10px'
-
   }
 }))
 
@@ -98,10 +97,10 @@ export default function MTable () {
     window.location.reload()
   }
 
-  function handleClick (us, est) {
+  function handleClick (row) {
     const json = {
-      id_usuario: us,
-      estado: !est
+      id_usuario: row.id_usuario,
+      estado: !row.estado
     }
     cambEstado(json)
     refreshPage()
@@ -116,9 +115,15 @@ export default function MTable () {
   }
 
   if (pacientes.length === 0 || trabajadores.length === 0 || pacientes === undefined || trabajadores === undefined) {
-    <Box sx={{ width: '100%' }}>
-      <LinearProgress />
-    </Box>
+    return (
+      <Box sx={{ width: '100%' }}>
+        <LinearProgress />
+        <Grid container alignItems = 'center' sx = {{ display: 'flex' }}>
+          <Grid item>{loading && <CircularProgress/>}</Grid>
+          <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+        </Grid>
+      </Box>
+    )
   } else {
     const USERS = pacientes.concat(trabajadores)
     // console.log('ayudaa', USERS)
@@ -127,7 +132,6 @@ export default function MTable () {
         <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', mb: 2 }} >
         <Box className= {classes.fondo} >
           <Grid container alignItems = 'center'>
-            <Grid item>{loading && <CircularProgress/>}</Grid>
             <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
           </Grid>
 
@@ -147,7 +151,7 @@ export default function MTable () {
                   <TableCell>
                   <Grid container>
                     <Grid item lg = {2}>
-                      <Avatar alt={row.nombre + ' ' + row.apellido} src = '.' className={classes.avatar}/>
+                      <Avatar alt = {row.nombre + ' ' + row.apellido} src= '.' className= {classes.avatar} />
                     </Grid>
                     <Grid item lg = {10}>
                       <Typography className={classes.name}>{row.nombre + ' ' + row.apellido}</Typography>
@@ -163,7 +167,7 @@ export default function MTable () {
                   <TableCell >{row.direccion}</TableCell>
                   <TableCell ><Button variant = 'contained' className={classes.status}
                   color = {((row.estado === true && 'success') || (row.estado === false && 'error'))}
-                  onClick = {() => { handleClick(row.id_usuario, row.estado) }}>{verificarEstado(row.estado)}</Button>
+                  onClick = {() => { handleClick(row) }}>{verificarEstado(row.estado)}</Button>
               </TableCell>
             </TableRow>
               ))}
