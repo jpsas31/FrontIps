@@ -95,12 +95,8 @@ export default function MTable () {
   }, [])
 
   useEffect(() => {
-    setUsers(pacientes.concat(trabajadores))
+    setUsers([...pacientes, ...trabajadores])
   }, [pacientes, trabajadores])
-
-  const refreshPage = () => {
-    window.location.reload()
-  }
 
   function handleClick (row) {
     const json = {
@@ -108,7 +104,21 @@ export default function MTable () {
       estado: !row.estado
     }
     cambEstado(json)
-    refreshPage()
+      .then(() => {
+        consultaPacientes()
+          .then(res => {
+          // console.log(res)
+            setPacientes(res)
+            setTitulo('Gestion de personal')
+            setIsLoading(false)
+          })
+        consultaTrabajadores()
+          .then(res => {
+          // console.log(res)
+            setTrabajadores(res)
+            setIsLoading(false)
+          })
+      })
   }
 
   function verificarEstado (bol) {
@@ -130,7 +140,6 @@ export default function MTable () {
       </Box>
     )
   } else {
-    // console.log('ayudaa', USERS)
     return (
       <div>
         <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', mb: 2 }} >
