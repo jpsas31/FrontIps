@@ -1,6 +1,6 @@
 // import React from "react"
 import { Outlet } from 'react-router-dom'
-import * as React from 'react'
+import React, { useState } from 'react'
 import MuiAppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
@@ -15,8 +15,7 @@ import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import MainListItems from './dashboard/listItems'
-
+import ListChooser from './ListChooser'
 const drawerWidth = 240
 
 const AppBar = styled(MuiAppBar, {
@@ -66,7 +65,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme()
 
 export default function MainWindow () {
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = useState(true)
   const toggleDrawer = () => {
     setOpen(!open)
   }
@@ -124,7 +123,8 @@ export default function MainWindow () {
           </Toolbar>
           <Divider />
           <List component="nav">
-            <MainListItems/>
+
+            <ListChooser/>
             <Divider sx={{ my: 1 }} />
 
           </List>

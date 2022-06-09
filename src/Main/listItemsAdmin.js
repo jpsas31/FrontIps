@@ -13,7 +13,7 @@ import LayersIcon from '@mui/icons-material/Layers'
 import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 
-export default function MainListItems () {
+export default function MainListItemsAdmin () {
   const { logout } = useAuth0()
   return (
   <React.Fragment>
@@ -21,37 +21,37 @@ export default function MainListItems () {
       <ListItemIcon>
         <AdjustIcon />
       </ListItemIcon>
-      <ListItemText primary="Inicio" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Admin" />
     </ListItemButton>
     <ListItemButton component={Link} to={'data'}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Dashboard" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Reports" />
     </ListItemButton>
     <ListItemButton component={Link} to={'info-paciente'} >
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
-        <ListItemText primary="Información Paciente" />
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Información Usuario" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
         <HomeIcon />
       </ListItemIcon>
-      <ListItemText primary="Ir a la pagina principal" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
     </ListItemButton>
     <ListItemButton component = {Link} to = {'personal'}>
       <ListItemIcon>
         <AddReactionIcon/>
       </ListItemIcon>
-      <ListItemText primary="GPersonal" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="GPersonal" />
     </ListItemButton>
 
     { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
@@ -60,7 +60,7 @@ export default function MainListItems () {
       <ListItemIcon>
         <EmojiPeopleIcon/>
       </ListItemIcon>
-      <ListItemText primary="Personal" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Personal" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'} onClick={() =>
       logout({
@@ -70,7 +70,7 @@ export default function MainListItems () {
       <ListItemIcon>
         <LogoutIcon />
       </ListItemIcon>
-      <ListItemText primary="Log Out" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Log Out" />
     </ListItemButton>
   </React.Fragment>
   )

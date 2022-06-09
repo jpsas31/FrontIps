@@ -1,4 +1,4 @@
-import MainWindow from './MainWindow'
+import MainWindow from './Main/MainWindow'
 import React, { useState } from 'react'
 import Inicio from './inicio/Inicio'
 import ProtectedRoute from './auth0/ProtectedRoute'

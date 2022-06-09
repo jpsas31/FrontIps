@@ -1,15 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React, { useContext } from 'react'
+import React from 'react'
 import MenuItem from '@mui/material/MenuItem'
-import UserContext from '../../context/user.context'
+
 export const ButtonT = ({ titulo, action, returnTo }) => {
   const { loginWithRedirect } = useAuth0()
-  const [userType, setUserType] = useContext(UserContext)
-  console.log(userType)
+
   return (
     <MenuItem className="button__sign-up" variant="outlined" size="small" onClick={() => {
-      window.localStorage.setItem('titulo', titulo)
-      setUserType(titulo)
+      window.localStorage.setItem('tipo', titulo)
       loginWithRedirect({
         action,
         appState: {
