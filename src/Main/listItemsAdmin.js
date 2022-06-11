@@ -35,11 +35,11 @@ export default function MainListItemsAdmin () {
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Reports" />
     </ListItemButton>
-    <ListItemButton component={Link} to={'info-paciente'} >
+    <ListItemButton component={Link} to={'info-admin'} >
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
-        <ListItemText style={{ whiteSpace: 'normal' }} primary="Información Usuario" />
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Información Admin" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>

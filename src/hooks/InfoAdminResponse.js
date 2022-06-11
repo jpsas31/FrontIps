@@ -73,11 +73,68 @@ export const useExternalApi = () => {
     setApiResponse('Los datos se han enviado correctamente')
   }
 
+  const getInfoAdmin = async (datos, setAdmin) => {
+    console.log(datos)
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('POST /api/info-admin/infoadmin')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/infoadmin`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    setAdmin(data)
+    // console.log(data)
+  }
+
+  const updateAdmin = async (datos, key) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    /*
+    let apano = new Date(datos.nacimiento)
+    apano = new Date(apano.setDate(apano.getDate() - 1))
+    apano = apano.toISOString()
+    */
+
+    setApiEndpoint('PUT /api/info-admin/actualizar-admin')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/actualizar-admin`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: key,
+        tipo_id_cargo: datos.tipo_id_cargo,
+        identificacion: datos.identificacion,
+        tipo_id: datos.tipo_id,
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        direccion: datos.direccion,
+        telefono: datos.telefono,
+        correo: datos.correo,
+        salario: datos.salario
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+    setApiResponse('Los datos han sido actualizados exitosamente')
+  }
+
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
-    createAdmin
+    createAdmin,
+    getInfoAdmin,
+    updateAdmin
     // getRbacResource,
     // checkCorsAllowedMethod
   }

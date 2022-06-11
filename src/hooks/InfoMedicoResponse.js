@@ -73,11 +73,70 @@ export const useExternalApi = () => {
     setApiResponse('Los datos se han enviado correctamente')
   }
 
+  const getInfoMedico = async (datos, setAdmin) => {
+    console.log(datos)
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('POST /api/info-medico/infomedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infomedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    setAdmin(data)
+    console.log(data)
+  }
+
+  const updateMedico = async (datos, key) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    /*
+    let apano = new Date(datos.nacimiento)
+    apano = new Date(apano.setDate(apano.getDate() - 1))
+    apano = apano.toISOString()
+    */
+
+    setApiEndpoint('PUT /api/info-medico/actualizar-medico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/actualizar-medico`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: key,
+        tipo_id_cargo: datos.tipo_id_cargo,
+        identificacion: datos.identificacion,
+        tipo_id: datos.tipo_id,
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        direccion: datos.direccion,
+        telefono: datos.telefono,
+        correo: datos.correo,
+        salario: datos.salario,
+        id_especialidad: datos.id_especialidad,
+        certificacion_del_titutlo: datos.certificacion_del_titutlo
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+    setApiResponse('Los datos han sido actualizados exitosamente')
+  }
+
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
-    createMedico
+    createMedico,
+    getInfoMedico,
+    updateMedico
     // getRbacResource,
     // checkCorsAllowedMethod
   }
