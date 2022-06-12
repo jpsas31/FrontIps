@@ -11,11 +11,11 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpoint, setApiEndpoint] = useState('')
-  const [apiResponse, setApiResponse] = useState(
+  const [apiEndpointMedico, setApiEndpointMedico] = useState('')
+  const [apiResponseMedico, setApiResponseMedico] = useState(
     ''
   )
-  const [selectedAccessControlLevel, setSelectedAccessControlLevel] =
+  const [selectedAccessControlLevelMedico, setSelectedAccessControlLevelMedico] =
     useState(null)
 
   const { getAccessTokenSilently } = useAuth0()
@@ -46,9 +46,9 @@ export const useExternalApi = () => {
   }
 
   const createMedico = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('PUT /api/info-medico/registrar-medico')
+    setApiEndpointMedico('PUT /api/info-medico/registrar-medico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/registrar-medico`,
       method: 'PUT',
@@ -70,14 +70,68 @@ export const useExternalApi = () => {
 
     await makeRequest({ config, authenticated: true })
 
-    setApiResponse('Los datos se han enviado correctamente')
+    setApiResponseMedico('Los datos se han enviado correctamente')
+  }
+
+  const getInfoMedico = async (datos, setAdmin) => {
+    console.log(datos)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infomedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infomedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    setAdmin(data)
+    console.log(data)
+  }
+
+  const updateMedico = async (datos, key) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('PUT /api/info-medico/actualizar-medico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/actualizar-medico`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: key,
+        tipo_id_cargo: datos.tipo_id_cargo,
+        identificacion: datos.identificacion,
+        tipo_id: datos.tipo_id,
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        direccion: datos.direccion,
+        telefono: datos.telefono,
+        correo: datos.correo,
+        salario: datos.salario,
+        id_especialidad: datos.id_especialidad,
+        certificacion_del_titutlo: datos.certificacion_del_titutlo
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+    setApiResponseMedico('Los datos han sido actualizados exitosamente')
   }
 
   return {
-    selectedAccessControlLevel,
-    apiEndpoint,
-    apiResponse,
-    createMedico
+    selectedAccessControlLevelMedico,
+    apiEndpointMedico,
+    apiResponseMedico,
+    createMedico,
+    getInfoMedico,
+    updateMedico
     // getRbacResource,
     // checkCorsAllowedMethod
   }

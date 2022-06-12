@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import Box from '@mui/material/Box'
@@ -13,43 +13,36 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import { AccessControlLevel, useExternalApi } from '../hooks/InfoPacienteResponse'
+import { AccessControlLevel, useExternalApi } from '../hooks/InfoAdminResponse'
 import CircularProgress from '@mui/material/CircularProgress'
 import Grid from '@mui/material/Grid'
-import Autocomplete from '@mui/material/Autocomplete'
 import Paper from '@mui/material/Paper'
 import LinearProgress from '@mui/material/LinearProgress'
 import { useAuth0 } from '@auth0/auth0-react'
 
-export default function InfoPaciente (props) {
-  const { control, handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
+export default function InfoAdmin (props) {
+  const { handleSubmit: getInfoAdminSubmit, register: registro } = useForm()
   const {
-    selectedAccessControlLevelPaciente,
+    selectedAccessControlLevel,
     // apiEndpoint,
-    apiResponsePaciente,
+    apiResponse,
 
-    getInfoPaciente,
-    updatePaciente
+    getInfoAdmin,
+    updateAdmin
   } = useExternalApi()
 
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [paciente, setPaciente] = useState({})
+  const [admin, setAdmin] = useState({})
   const { user } = useAuth0()
 
-  const ciudades = [
-    { value: 'Cali', label: 'Cali' },
-    { value: 'Bogota', label: 'Bogota' },
-    { value: 'Medellin', label: 'Medellin' }
-  ]
-
   useEffect(() => {
-    getInfoPaciente(user.sub, setPaciente)
+    getInfoAdmin(user.sub, setAdmin)
   }, [])
 
   const onSubmit = data => {
     setIsLoading(true)
-    updatePaciente(data, user.sub)
+    updateAdmin(data, user.sub)
     handleClickOpen()
     setTimeout(() => {
       setIsLoading(false)
@@ -60,8 +53,9 @@ export default function InfoPaciente (props) {
   const handleClose = () => { setVisible(false) }
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
+  const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
 
-  if (JSON.stringify(paciente) === '{}') {
+  if (JSON.stringify(admin) === '{}') {
     return (
       <Box sx={{ width: '100%' }}>
         <LinearProgress />
@@ -79,12 +73,12 @@ export default function InfoPaciente (props) {
 
         <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', borderColor: 'lightgray', mb: 2 }} >
           <Paper elevation = {8} sx = {{ padding: 6 }}>
-            <form onSubmit = {getInfoPacienteSubmit(onSubmit)}>
+            <form onSubmit = {getInfoAdminSubmit(onSubmit)}>
               <div>
                 <TextField
                   select
                   label="Identificación"
-                  defaultValue = {paciente.tipo_id}
+                  defaultValue = {admin.tipo_id}
                   {...registro('tipo_id', { required: true })}
                   sx={{ mx: 1, my: 2, width: '15ch' }}
                 >
@@ -95,7 +89,7 @@ export default function InfoPaciente (props) {
                 </TextField>
                 <TextField
                   label="Número"
-                  defaultValue = {paciente.identificacion}
+                  defaultValue = {admin.identificacion}
                   {...registro('identificacion', { required: true })}
                   InputProps={{
                     readOnly: true
@@ -104,109 +98,79 @@ export default function InfoPaciente (props) {
                 />
                 <TextField
                   label="Nombre"
-                  defaultValue = {paciente.nombre}
+                  defaultValue = {admin.nombre}
                   {...registro('nombre', { required: true })}
                   sx={{ mx: 1, my: 2, width: '20ch' }}
                 />
                 <TextField
                   label="Apellido"
-                  defaultValue = {paciente.apellido}
+                  defaultValue = {admin.apellido}
                   {...registro('apellido', { required: true })}
                   sx={{ mx: 1, my: 2, width: '30ch' }}
                 />
               </div>
               <div>
-                <Grid container >
+              <Grid container >
+                  <TextField
+                      select
+                      label="Cargo"
+                      defaultValue = {admin.tipo_id_cargo}
+                      InputProps={{
+                        readOnly: true
+                      }}
+                      {...registro('tipo_id_cargo', { required: true })}
+                      sx={{ mx: 1, my: 2, width: '15ch' }}
+                    >
+                      {cargos.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>))}
+                    </TextField>
                   <TextField
                     id="textfield-direccion"
                     label="Dirección"
-                    defaultValue = {paciente.direccion}
+                    defaultValue = {admin.direccion}
                     {...registro('direccion', { required: true })}
                     sx={{ mx: 1, my: 2, width: '30ch' }}
-                  />
-                  <Controller
-                    name="ciudad"
-                    control={control}
-                    defaultValue = {paciente.ciudad}
-                    render={({ field: { onChange, value } }) => (
-                      <Autocomplete
-                        id = 'ciudad'
-                        options = {ciudades}
-                        getOptionLabel = {(ciudad) => ciudad.label}
-                        isOptionEqualToValue={(option, value) => option.value === value.value}
-                        renderInput = {(params) => (
-                          <TextField
-                            required
-                            {...params}
-                            label = "Ciudad"
-                            sx={{ mx: 1, my: 2, width: '25ch' }}
-                          />
-                        )}
-                        onChange = {(_, data) => {
-                          if (data === null) {
-                            onChange(paciente.ciudad)
-                            return paciente.ciudad
-                          } else {
-                            onChange(data.value)
-                            return data.value
-                          }
-                        }}
-                        defaultValue = {{ value: paciente.ciudad, label: paciente.ciudad }}
-                      />
-                    )}
                   />
                   <TextField
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
                     type = "number"
-                    defaultValue={paciente.telefono}
+                    defaultValue={admin.telefono}
                     {...registro('telefono', { required: true })}
                   />
                 </Grid>
               </div>
               <div>
                 <TextField
-                  sx={{ mx: 1, my: 2, width: '20ch' }}
-                  defaultValue = {paciente.nacimiento.split('T')[0]}
-                  label="Nacimiento"
-                  type = "date"
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  {...registro('nacimiento', { required: true })}
-                />
-                <TextField
-                  label="Edad"
-                  defaultValue= {paciente.edad}
-                  type = "number"
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  {...registro('edad', { required: true })}
-                  sx={{ mx: 1, my: 2, width: '10ch' }}
-                />
-                <TextField
                   label="Correo Electrónico"
                   type = "email"
                   InputProps={{
                     readOnly: true
                   }}
-                  defaultValue={paciente.correo}
+                  defaultValue={admin.correo}
                   {...registro('correo', { required: true })}
                   sx={{ mx: 1, my: 2, width: '40ch' }}
                 />
-                <a href='http://www.africau.edu/images/default/sample.pdf' download='prueba.pdf'>
-                  <Button variant = 'contained' sx={{ mx: 1, my: 2, width: '20ch' }}>
-                    Antecedentes
-                  </Button>
-                </a>
+                <TextField
+                    sx={{ mx: 1, my: 2, width: '25ch' }}
+                    label="Salario"
+                    type = "number"
+                    defaultValue={admin.salario}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                    {...registro('salario', { required: true })}
+                  />
               </div>
             </form>
           </Paper>
         </Container>
+
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <Button variant = 'contained' onClick={ getInfoPacienteSubmit(onSubmit) } className={`messages-grid__option ${
-                  selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+          <Button variant = 'contained' onClick={ getInfoAdminSubmit(onSubmit) } className={`messages-grid__option ${
+                  selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
                   'messages-grid__option--active'
                 }` } >Actualizar Información</Button>
         </Box>
@@ -216,7 +180,7 @@ export default function InfoPaciente (props) {
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && apiResponsePaciente}
+            {!isLoading && apiResponse}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -225,7 +189,6 @@ export default function InfoPaciente (props) {
             </Button>
           </DialogActions>
         </Dialog>
-
       </>
     )
   }

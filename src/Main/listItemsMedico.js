@@ -19,7 +19,7 @@ export default function MainListItemsMedico () {
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Medico" />
     </ListItemButton>
-    <ListItemButton component={Link} to={'info-paciente'} >
+    <ListItemButton component={Link} to={'info-medico'} >
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>

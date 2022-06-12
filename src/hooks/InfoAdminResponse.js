@@ -11,11 +11,11 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpoint, setApiEndpoint] = useState('')
-  const [apiResponse, setApiResponse] = useState(
+  const [apiEndpointAdmin, setApiEndpointAdmin] = useState('')
+  const [apiResponseAdmin, setApiResponseAdmin] = useState(
     ''
   )
-  const [selectedAccessControlLevel, setSelectedAccessControlLevel] =
+  const [selectedAccessControlLevelAdmin, setSelectedAccessControlLevelAdmin] =
     useState(null)
 
   const { getAccessTokenSilently } = useAuth0()
@@ -46,9 +46,9 @@ export const useExternalApi = () => {
   }
 
   const createAdmin = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('PUT /api/info-admin/registrar-admin')
+    setApiEndpointAdmin('PUT /api/info-admin/registrar-admin')
     const config = {
       url: `${apiServerUrl}/api/info-admin/registrar-admin`,
       method: 'PUT',
@@ -70,14 +70,176 @@ export const useExternalApi = () => {
 
     await makeRequest({ config, authenticated: true })
 
-    setApiResponse('Los datos se han enviado correctamente')
+    setApiResponseAdmin('Los datos se han enviado correctamente')
+  }
+
+  const getInfoAdmin = async (datos, setAdmin) => {
+    console.log(datos)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/infoadmin')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/infoadmin`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    setAdmin(data)
+    // console.log(data)
+  }
+
+  const updateAdmin = async (datos, key) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('PUT /api/info-admin/actualizar-admin')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/actualizar-admin`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: key,
+        tipo_id_cargo: datos.tipo_id_cargo,
+        identificacion: datos.identificacion,
+        tipo_id: datos.tipo_id,
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        direccion: datos.direccion,
+        telefono: datos.telefono,
+        correo: datos.correo,
+        salario: datos.salario
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+
+    setApiResponseAdmin('Los datos han sido actualizados exitosamente')
+  }
+
+  const getPacientes = async (setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/listPacientes')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listPacientes`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.id_paciente,
+        item.tipo_id,
+        item.identificacion,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.ciudad,
+        item.telefono,
+        item.correo,
+        item.edad,
+        item.nacimiento.split('T')[0],
+        item.antecdentes
+      ]
+    })
+
+    console.log(arr)
+    setInfo(arr)
+  }
+
+  const getMedicos = async (setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/listMedicos')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listMedicos`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.id_trabajador,
+        item.tipo_id,
+        item.identificacion,
+        item.tipo_id_cargo,
+        item.medicos.id_especialidad,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.telefono,
+        item.correo,
+        item.salario,
+        item.medicos.certificacion_del_titulo
+      ]
+    })
+
+    console.log(arr)
+    setInfo(arr)
+  }
+
+  const getAdmins = async (setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/listAdmins')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listAdmins`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.id_trabajador,
+        item.tipo_id,
+        item.identificacion,
+        item.tipo_id_cargo,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.telefono,
+        item.correo,
+        item.salario
+      ]
+    })
+
+    console.log(arr)
+    setInfo(arr)
   }
 
   return {
-    selectedAccessControlLevel,
-    apiEndpoint,
-    apiResponse,
-    createAdmin
+    selectedAccessControlLevelAdmin,
+    apiEndpointAdmin,
+    apiResponseAdmin,
+    createAdmin,
+    getInfoAdmin,
+    updateAdmin,
+    getPacientes,
+    getAdmins,
+    getMedicos
     // getRbacResource,
     // checkCorsAllowedMethod
   }
