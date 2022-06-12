@@ -11,11 +11,11 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpoint, setApiEndpoint] = useState('')
-  const [apiResponse, setApiResponse] = useState(
+  const [apiEndpointMedico, setApiEndpointMedico] = useState('')
+  const [apiResponseMedico, setApiResponseMedico] = useState(
     ''
   )
-  const [selectedAccessControlLevel, setSelectedAccessControlLevel] =
+  const [selectedAccessControlLevelMedico, setSelectedAccessControlLevelMedico] =
     useState(null)
 
   const { getAccessTokenSilently } = useAuth0()
@@ -46,9 +46,9 @@ export const useExternalApi = () => {
   }
 
   const createMedico = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('PUT /api/info-medico/registrar-medico')
+    setApiEndpointMedico('PUT /api/info-medico/registrar-medico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/registrar-medico`,
       method: 'PUT',
@@ -70,14 +70,14 @@ export const useExternalApi = () => {
 
     await makeRequest({ config, authenticated: true })
 
-    setApiResponse('Los datos se han enviado correctamente')
+    setApiResponseMedico('Los datos se han enviado correctamente')
   }
 
   const getInfoMedico = async (datos, setAdmin) => {
     console.log(datos)
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-medico/infomedico')
+    setApiEndpointMedico('POST /api/info-medico/infomedico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/infomedico`,
       method: 'POST',
@@ -90,20 +90,20 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponseMedico(data)
     setAdmin(data)
     console.log(data)
   }
 
   const updateMedico = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
     /*
     let apano = new Date(datos.nacimiento)
     apano = new Date(apano.setDate(apano.getDate() - 1))
     apano = apano.toISOString()
     */
 
-    setApiEndpoint('PUT /api/info-medico/actualizar-medico')
+    setApiEndpointMedico('PUT /api/info-medico/actualizar-medico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/actualizar-medico`,
       method: 'PUT',
@@ -127,13 +127,13 @@ export const useExternalApi = () => {
     }
 
     await makeRequest({ config, authenticated: true })
-    setApiResponse('Los datos han sido actualizados exitosamente')
+    setApiResponseMedico('Los datos han sido actualizados exitosamente')
   }
 
   return {
-    selectedAccessControlLevel,
-    apiEndpoint,
-    apiResponse,
+    selectedAccessControlLevelMedico,
+    apiEndpointMedico,
+    apiResponseMedico,
     createMedico,
     getInfoMedico,
     updateMedico

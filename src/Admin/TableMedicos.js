@@ -7,13 +7,10 @@ import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import BorderColorIcon from '@mui/icons-material/BorderColor'
 
-export default function TablePacientes (props) {
+export default function TableMedicos (props) {
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
-  const ciudades = [
-    { value: 'Cali', label: 'Cali' },
-    { value: 'Bogota', label: 'Bogota' },
-    { value: 'Medellin', label: 'Medellin' }
-  ]
+  const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
+  const especialidades = [{ value: 1, label: 'General' }, { value: 2, label: 'Psicologia' }, { value: 3, label: 'Pediatria' }, { value: 4, label: 'Cardiologia' }, { value: 5, label: 'Dermatologia' }, { value: 6, label: 'Oftalmologia' }]
 
   const columns = [
     {
@@ -59,7 +56,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               type = "number"
               variant="standard"
               InputProps={{
@@ -67,6 +63,60 @@ export default function TablePacientes (props) {
               }}
               sx={{ width: '18ch' }}
             />
+            }
+            onChange={event => updateValue(event.target.value)}
+          />
+        )
+      }
+    },
+    {
+      name: 'Cargo',
+      options: {
+        filter: false,
+        customBodyRender: (value, tableMeta, updateValue) => (
+          <FormControlLabel
+            label=""
+            value={value}
+            control={<TextField
+                  select
+                  variant="standard"
+                  InputProps={{
+                    disableUnderline: true
+                  }}
+                  sx={{ width: '15ch' }}
+                >
+                  {cargos.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>))}
+              </TextField>
+            }
+            onChange={event => updateValue(event.target.value)}
+          />
+        )
+      }
+    },
+    {
+      name: 'Especialidad',
+      options: {
+        filter: false,
+        customBodyRender: (value, tableMeta, updateValue) => (
+          <FormControlLabel
+            label=""
+            value={value}
+            control={<TextField
+              select
+              variant="standard"
+              InputProps={{
+                disableUnderline: true
+              }}
+              sx={{ width: '20ch' }}
+            >
+              {especialidades.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>))}
+          </TextField>
             }
             onChange={event => updateValue(event.target.value)}
           />
@@ -82,7 +132,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -104,7 +153,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -126,7 +174,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -134,34 +181,6 @@ export default function TablePacientes (props) {
               sx={{ width: '30ch' }}
             />
             }
-            onChange={event => updateValue(event.target.value)}
-          />
-        )
-      }
-    },
-    {
-      name: 'Ciudad',
-      options: {
-        filter: false,
-        customBodyRender: (value, tableMeta, updateValue) => (
-          <FormControlLabel
-            label=""
-            value={value}
-            control={
-                <TextField
-                select
-                label=""
-                variant="standard"
-                InputProps={{
-                  disableUnderline: true
-                }}
-                sx={{ width: '15ch' }}>
-                {ciudades.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>))}
-              </TextField>
-              }
             onChange={event => updateValue(event.target.value)}
           />
         )
@@ -176,7 +195,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               type = "number"
               variant="standard"
               InputProps={{
@@ -199,7 +217,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -213,7 +230,7 @@ export default function TablePacientes (props) {
       }
     },
     {
-      name: 'Edad',
+      name: 'Salario',
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
@@ -221,7 +238,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
               type = "number"
               variant="standard"
               InputProps={{
@@ -236,7 +252,7 @@ export default function TablePacientes (props) {
       }
     },
     {
-      name: 'Nacimiento',
+      name: 'Certificado',
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
@@ -244,30 +260,6 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={<TextField
-              label=""
-              variant="standard"
-              InputProps={{
-                disableUnderline: true
-              }}
-              type = "date"
-              sx={{ width: '20ch' }}
-            />
-            }
-            onChange={event => updateValue(event.target.value)}
-          />
-        )
-      }
-    },
-    {
-      name: 'Antecedentes',
-      options: {
-        filter: false,
-        customBodyRender: (value, tableMeta, updateValue) => (
-          <FormControlLabel
-            label=""
-            value={value}
-            control={<TextField
-              label=""
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -285,15 +277,16 @@ export default function TablePacientes (props) {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
-          <IconButton onClick={() => props.actualizarPaciente(tableMeta.rowData)} className={`messages-grid__option ${
-            props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
+          <IconButton onClick={() => props.actualizarMedico(tableMeta.rowData)} className={`messages-grid__option ${
+            props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
             'messages-grid__option--active'
           }` }>
             <BorderColorIcon />
           </IconButton>
         )
       }
-    }]
+    }
+  ]
 
   const options = {
     filter: false,
@@ -306,7 +299,7 @@ export default function TablePacientes (props) {
   return (
       <Box sx = {{ mt: 8, ml: 1, mr: 1 }}>
           <MUIDataTable
-            title={'Pacientes'}
+            title={'Medicos'}
             data={props.info}
             columns={columns}
             options={options}

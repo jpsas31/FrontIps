@@ -11,11 +11,11 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpoint, setApiEndpoint] = useState('')
-  const [apiResponse, setApiResponse] = useState(
+  const [apiEndpointAdmin, setApiEndpointAdmin] = useState('')
+  const [apiResponseAdmin, setApiResponseAdmin] = useState(
     ''
   )
-  const [selectedAccessControlLevel, setSelectedAccessControlLevel] =
+  const [selectedAccessControlLevelAdmin, setSelectedAccessControlLevelAdmin] =
     useState(null)
 
   const { getAccessTokenSilently } = useAuth0()
@@ -46,9 +46,9 @@ export const useExternalApi = () => {
   }
 
   const createAdmin = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('PUT /api/info-admin/registrar-admin')
+    setApiEndpointAdmin('PUT /api/info-admin/registrar-admin')
     const config = {
       url: `${apiServerUrl}/api/info-admin/registrar-admin`,
       method: 'PUT',
@@ -70,14 +70,14 @@ export const useExternalApi = () => {
 
     await makeRequest({ config, authenticated: true })
 
-    setApiResponse('Los datos se han enviado correctamente')
+    setApiResponseAdmin('Los datos se han enviado correctamente')
   }
 
   const getInfoAdmin = async (datos, setAdmin) => {
     console.log(datos)
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-admin/infoadmin')
+    setApiEndpointAdmin('POST /api/info-admin/infoadmin')
     const config = {
       url: `${apiServerUrl}/api/info-admin/infoadmin`,
       method: 'POST',
@@ -90,20 +90,20 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponseAdmin(data)
     setAdmin(data)
     // console.log(data)
   }
 
   const updateAdmin = async (datos, key) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
     /*
     let apano = new Date(datos.nacimiento)
     apano = new Date(apano.setDate(apano.getDate() - 1))
     apano = apano.toISOString()
     */
 
-    setApiEndpoint('PUT /api/info-admin/actualizar-admin')
+    setApiEndpointAdmin('PUT /api/info-admin/actualizar-admin')
     const config = {
       url: `${apiServerUrl}/api/info-admin/actualizar-admin`,
       method: 'PUT',
@@ -125,13 +125,13 @@ export const useExternalApi = () => {
     }
 
     await makeRequest({ config, authenticated: true })
-    setApiResponse('Los datos han sido actualizados exitosamente')
+    setApiResponseAdmin('Los datos han sido actualizados exitosamente')
   }
 
   const getPacientes = async (setInfo) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-admin/listPacientes')
+    setApiEndpointAdmin('POST /api/info-admin/listPacientes')
     const config = {
       url: `${apiServerUrl}/api/info-admin/listPacientes`,
       method: 'POST',
@@ -141,7 +141,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponseAdmin(data)
     console.log(data)
 
     const arr = data.map((item) => {
@@ -166,9 +166,9 @@ export const useExternalApi = () => {
   }
 
   const getMedicos = async (setInfo) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-admin/listMedicos')
+    setApiEndpointAdmin('POST /api/info-admin/listMedicos')
     const config = {
       url: `${apiServerUrl}/api/info-admin/listMedicos`,
       method: 'POST',
@@ -178,15 +178,34 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
-    setInfo(data)
-    // console.log(data)
+    setApiResponseAdmin(data)
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.id_trabajador,
+        item.tipo_id,
+        item.identificacion,
+        item.tipo_id_cargo,
+        item.medicos.id_especialidad,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.telefono,
+        item.correo,
+        item.salario,
+        item.medicos.certificacion_del_titulo
+      ]
+    })
+
+    console.log(arr)
+    setInfo(arr)
   }
 
   const getAdmins = async (setInfo) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-admin/listAdmins')
+    setApiEndpointAdmin('POST /api/info-admin/listAdmins')
     const config = {
       url: `${apiServerUrl}/api/info-admin/listAdmins`,
       method: 'POST',
@@ -196,15 +215,15 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponseAdmin(data)
     setInfo(data)
     // console.log(data)
   }
 
   return {
-    selectedAccessControlLevel,
-    apiEndpoint,
-    apiResponse,
+    selectedAccessControlLevelAdmin,
+    apiEndpointAdmin,
+    apiResponseAdmin,
     createAdmin,
     getInfoAdmin,
     updateAdmin,

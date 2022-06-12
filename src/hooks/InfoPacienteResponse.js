@@ -11,8 +11,8 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpointPaciente, setApiEndpoint] = useState('')
-  const [apiResponsePaciente, setApiResponse] = useState(
+  const [apiEndpointPaciente, setApiEndpointPaciente] = useState('')
+  const [apiResponsePaciente, setApiResponsePaciente] = useState(
     ''
   )
   const [selectedAccessControlLevelPaciente, setSelectedAccessControlLevel] =
@@ -48,7 +48,7 @@ export const useExternalApi = () => {
   const getInfoPaciente = async (datos, setPaciente) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('POST /api/info-paciente/infopaciente')
+    setApiEndpointPaciente('POST /api/info-paciente/infopaciente')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/infopaciente`,
       method: 'POST',
@@ -61,7 +61,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponsePaciente(data)
     setPaciente(data)
     // console.log(data)
     /*
@@ -79,7 +79,7 @@ export const useExternalApi = () => {
     apano = apano.toISOString()
     */
 
-    setApiEndpoint('PUT /api/info-paciente/actualizar-paciente')
+    setApiEndpointPaciente('PUT /api/info-paciente/actualizar-paciente')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/actualizar-paciente`,
       method: 'PUT',
@@ -102,13 +102,13 @@ export const useExternalApi = () => {
     }
 
     await makeRequest({ config, authenticated: true })
-    setApiResponse('Los datos han sido actualizados exitosamente')
+    setApiResponsePaciente('Los datos han sido actualizados exitosamente')
   }
 
   const createPaciente = async (datos, key) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
-    setApiEndpoint('PUT /api/info-paciente/registrar-paciente')
+    setApiEndpointPaciente('PUT /api/info-paciente/registrar-paciente')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/registrar-paciente`,
       method: 'PUT',
@@ -130,12 +130,12 @@ export const useExternalApi = () => {
       }
     }
     await makeRequest({ config, authenticated: true })
-    setApiResponse('El paciente se ha registrado con exito')
+    setApiResponsePaciente('El paciente se ha registrado con exito')
   }
 
   const consultaPacientes = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-    setApiEndpoint('POST /api/info-paciente/consultar-pacientes')
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-pacientes')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/consultar-pacientes`,
       method: 'POST',
@@ -147,14 +147,14 @@ export const useExternalApi = () => {
       }
     }
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponsePaciente(data)
     // console.log('holi', data)
     return data
   }
 
   const consultaTrabajadores = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-    setApiEndpoint('POST /api/info-paciente/consultar-trabajadores')
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-trabajadores')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/consultar-trabajadores`,
       method: 'POST',
@@ -166,14 +166,14 @@ export const useExternalApi = () => {
       }
     }
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponse(data)
+    setApiResponsePaciente(data)
     // console.log('HOLA',data)
     return data
   }
 
   const cambEstado = async (datos, setResponsePw) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
-    setApiEndpoint('PUT /api/info-paciente/cambEst-usuario')
+    setApiEndpointPaciente('PUT /api/info-paciente/cambEst-usuario')
     const config = {
       url: `${apiServerUrl}/api/info-paciente/cambEst-usuario`,
       method: 'PUT',
@@ -186,7 +186,7 @@ export const useExternalApi = () => {
       }
     }
     await makeRequest({ config, authenticated: true })
-    setApiResponse('Los datos han sido actualizados exitosamente')
+    setApiResponsePaciente('Los datos han sido actualizados exitosamente')
   }
 
   return {
