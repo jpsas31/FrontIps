@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
 import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+import PeopleIcon from '@mui/icons-material/People'
 
 export default function MainListItemsAdmin () {
   const { logout } = useAuth0()
@@ -40,6 +41,12 @@ export default function MainListItemsAdmin () {
           <LayersIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información Admin" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'info-usuarios'} >
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Información usuarios" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>

@@ -128,13 +128,87 @@ export const useExternalApi = () => {
     setApiResponse('Los datos han sido actualizados exitosamente')
   }
 
+  const getPacientes = async (setInfo) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('POST /api/info-admin/listPacientes')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listPacientes`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.tipo_id,
+        item.identificacion,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.ciudad,
+        item.telefono,
+        item.correo,
+        item.edad,
+        item.nacimiento.split('T')[0]
+      ]
+    })
+
+    console.log(arr)
+    setInfo([data, arr])
+  }
+
+  const getMedicos = async (setInfo) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('POST /api/info-admin/listMedicos')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listMedicos`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    setInfo(data)
+    // console.log(data)
+  }
+
+  const getAdmins = async (setInfo) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpoint('POST /api/info-admin/listAdmins')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/listAdmins`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponse(data)
+    setInfo(data)
+    // console.log(data)
+  }
+
   return {
     selectedAccessControlLevel,
     apiEndpoint,
     apiResponse,
     createAdmin,
     getInfoAdmin,
-    updateAdmin
+    updateAdmin,
+    getPacientes,
+    getAdmins,
+    getMedicos
     // getRbacResource,
     // checkCorsAllowedMethod
   }

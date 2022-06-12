@@ -8,6 +8,7 @@ import RegAdmin from './Admin/RegAdmin'
 import Blog from './blog/Blog'
 import InfoPaciente from './Paciente/InfoPaciente'
 import InfoAdmin from './Admin/InfoAdmin'
+import InfoUsuarios from './Admin/InfoUsuarios'
 import InfoMedico from './Medicos/InfoMedico'
 import Dashboard from './dashboard/Dashboard'
 import AuthRedirect from './auth0/authRedirect'
@@ -40,6 +41,7 @@ export default function App () {
         <Route path="info-paciente" element={<InfoPaciente />} />
         <Route path="info-admin" element={<InfoAdmin />} />
         <Route path="info-medico" element={<InfoMedico />} />
+        <Route path="info-usuarios" element={<InfoUsuarios />} />
         <Route path="RegistroPaciente" element={<AuthRedirect Component={Perfil} tipo='Paciente' />}/>
         <Route path="RegistroMedico" element={<AuthRedirect Component={RegMedicos} tipo= 'Medico' />} />
         <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
