@@ -7,10 +7,9 @@ import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import BorderColorIcon from '@mui/icons-material/BorderColor'
 
-export default function TableMedicos (props) {
+export default function TableAdmins (props) {
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
   const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
-  const especialidades = [{ value: 1, label: 'General' }, { value: 2, label: 'Psicologia' }, { value: 3, label: 'Pediatria' }, { value: 4, label: 'Cardiologia' }, { value: 5, label: 'Dermatologia' }, { value: 6, label: 'Oftalmologia' }]
 
   const columns = [
     {
@@ -90,33 +89,6 @@ export default function TableMedicos (props) {
                       {option.label}
                     </MenuItem>))}
               </TextField>
-            }
-            onChange={event => updateValue(event.target.value)}
-          />
-        )
-      }
-    },
-    {
-      name: 'Especialidad',
-      options: {
-        filter: false,
-        customBodyRender: (value, tableMeta, updateValue) => (
-          <FormControlLabel
-            label=""
-            value={value}
-            control={<TextField
-              select
-              variant="standard"
-              InputProps={{
-                disableUnderline: true
-              }}
-              sx={{ width: '20ch' }}
-            >
-              {especialidades.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>))}
-          </TextField>
             }
             onChange={event => updateValue(event.target.value)}
           />
@@ -243,27 +215,6 @@ export default function TableMedicos (props) {
               InputProps={{
                 disableUnderline: true
               }}
-              sx={{ width: '25ch' }}
-            />
-            }
-            onChange={event => updateValue(event.target.value)}
-          />
-        )
-      }
-    },
-    {
-      name: 'Certificado',
-      options: {
-        filter: false,
-        customBodyRender: (value, tableMeta, updateValue) => (
-          <FormControlLabel
-            label=""
-            value={value}
-            control={<TextField
-              variant="standard"
-              InputProps={{
-                disableUnderline: true
-              }}
               sx={{ width: '15ch' }}
             />
             }
@@ -277,8 +228,8 @@ export default function TableMedicos (props) {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
-          <IconButton onClick={() => props.actualizarMedico(tableMeta.rowData)} className={`messages-grid__option ${
-            props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
+          <IconButton onClick={() => props.actualizarAdmin(tableMeta.rowData)} className={`messages-grid__option ${
+            props.selectedAccessControlLevelAdmin === props.AccessControlLevelAdmin.PROTECTED &&
             'messages-grid__option--active'
           }` }>
             <BorderColorIcon />

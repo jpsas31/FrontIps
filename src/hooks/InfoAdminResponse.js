@@ -97,11 +97,6 @@ export const useExternalApi = () => {
 
   const updateAdmin = async (datos, key) => {
     setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
-    /*
-    let apano = new Date(datos.nacimiento)
-    apano = new Date(apano.setDate(apano.getDate() - 1))
-    apano = apano.toISOString()
-    */
 
     setApiEndpointAdmin('PUT /api/info-admin/actualizar-admin')
     const config = {
@@ -125,6 +120,7 @@ export const useExternalApi = () => {
     }
 
     await makeRequest({ config, authenticated: true })
+
     setApiResponseAdmin('Los datos han sido actualizados exitosamente')
   }
 
@@ -141,7 +137,6 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseAdmin(data)
     console.log(data)
 
     const arr = data.map((item) => {
@@ -178,7 +173,6 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseAdmin(data)
     console.log(data)
 
     const arr = data.map((item) => {
@@ -215,9 +209,25 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseAdmin(data)
-    setInfo(data)
-    // console.log(data)
+    console.log(data)
+
+    const arr = data.map((item) => {
+      return [
+        item.id_trabajador,
+        item.tipo_id,
+        item.identificacion,
+        item.tipo_id_cargo,
+        item.nombre,
+        item.apellido,
+        item.direccion,
+        item.telefono,
+        item.correo,
+        item.salario
+      ]
+    })
+
+    console.log(arr)
+    setInfo(arr)
   }
 
   return {

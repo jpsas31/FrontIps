@@ -16,15 +16,17 @@ import DialogTitle from '@mui/material/DialogTitle'
 import CircularProgress from '@mui/material/CircularProgress'
 import TablePacientes from './TablePacientes'
 import TableMedicos from './TableMedicos'
+import TableAdmins from './TableAdmins'
 
 export default function InfoAdmin (props) {
   const {
     selectedAccessControlLevelAdmin,
     // apiEndpoint,
-    // apiResponse,
+    apiResponseAdmin,
     getPacientes,
-    getMedicos
-    // getAdmins
+    getMedicos,
+    getAdmins,
+    updateAdmin
   } = useExternalApiAdmin()
 
   const {
@@ -49,10 +51,13 @@ export default function InfoAdmin (props) {
   const [isUpdated, setIsUpdated] = useState(false)
   const [selPaciente, setSelPaciente] = useState(false)
   const [selMedico, setSelMedico] = useState(false)
+  const [selAdmin, setSelAdmin] = useState(false)
+
   const getInfoPacientes = () => {
     setIsUpdated(true)
 
     setSelMedico(false)
+    setSelAdmin(false)
     setSelPaciente(true)
     setInfo('waiting')
   }
@@ -61,13 +66,18 @@ export default function InfoAdmin (props) {
     setIsUpdated(true)
 
     setSelMedico(true)
+    setSelAdmin(false)
     setSelPaciente(false)
     setInfo('waiting')
   }
 
   const getInfoAdmins = () => {
+    setIsUpdated(true)
+
+    setSelAdmin(true)
+    setSelMedico(false)
+    setSelPaciente(false)
     setInfo('waiting')
-    // getAdmins(setInfo)
   }
 
   useEffect(() => {
@@ -76,9 +86,11 @@ export default function InfoAdmin (props) {
         getPacientes(setInfo)
       } else if (selMedico) {
         getMedicos(setInfo)
+      } else if (selAdmin) {
+        getAdmins(setInfo)
       }
     }
-  }, [isUpdated, selPaciente, selMedico])
+  }, [isUpdated, selPaciente, selMedico, selAdmin])
 
   const handleClickOpen = () => { setVisible(true) }
   const handleClose = () => { setVisible(false) }
@@ -145,6 +157,35 @@ export default function InfoAdmin (props) {
     }, 2000)
   }
 
+  const actualizarAdmin = (data) => {
+    const transformJson = JSON.parse(JSON.stringify(
+      {
+        tipo_id: data[1],
+        identificacion: data[2],
+        tipo_id_cargo: data[3],
+        nombre: data[4],
+        apellido: data[5],
+        direccion: data[6],
+        telefono: data[7],
+        correo: data[8],
+        salario: data[9]
+      }
+    ))
+
+    const key = data[0]
+
+    setIsLoading(true)
+    setIsUpdated(false)
+    setSelAdmin(false)
+    updateAdmin(transformJson, key)
+    handleClickOpen()
+    setTimeout(() => {
+      setIsUpdated(true)
+      setSelAdmin(true)
+      setIsLoading(false)
+    }, 2000)
+  }
+
   return (
         <>
           {(info === 'waiting') && <LinearProgress />}
@@ -154,19 +195,19 @@ export default function InfoAdmin (props) {
           </Typography>
 
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}>
-            <Button variant = 'contained' onClick={getInfoPacientes} className={`messages-grid__option ${
+            <Button disabled = {selPaciente} variant = 'contained' onClick={getInfoPacientes} className={`messages-grid__option ${
                   selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
                   'messages-grid__option--active'
                 }` }>
                 Pacientes
             </Button>
-            <Button variant = 'contained' onClick={getInfoMedicos} className={`messages-grid__option ${
+            <Button disabled = {selMedico} variant = 'contained' onClick={getInfoMedicos} className={`messages-grid__option ${
                   selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
                   'messages-grid__option--active'
                 }` }>
                 Médicos
             </Button>
-            <Button variant = 'contained' onClick={getInfoAdmins} className={`messages-grid__option ${
+            <Button disabled = {selAdmin} variant = 'contained' onClick={getInfoAdmins} className={`messages-grid__option ${
                   selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
                   'messages-grid__option--active'
                 }` }>
@@ -189,6 +230,14 @@ export default function InfoAdmin (props) {
             actualizarMedico = {actualizarMedico}
           />
           }
+          {(info !== 'waiting' && info !== '' && isUpdated && selAdmin) &&
+            <TableAdmins
+            info={info}
+            selectedAccessControlLevelAdmin = {selectedAccessControlLevelAdmin}
+            AccessControlLevelAdmin = {AccessControlLevelAdmin}
+            actualizarAdmin = {actualizarAdmin}
+          />
+          }
 
           <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
             <DialogTitle>Alerta</DialogTitle>
@@ -197,6 +246,23 @@ export default function InfoAdmin (props) {
               {isLoading && <CircularProgress />}
               {(!isLoading && selPaciente) && apiResponsePaciente}
               {(!isLoading && selMedico) && apiResponseMedico}
+              {(!isLoading && selAdmin) && apiResponseAdmin}
+              {
+                useEffect(() => {
+                  console.log(apiResponseAdmin)
+                }, [apiResponseAdmin])
+              }
+              {
+                useEffect(() => {
+                  console.log(apiResponsePaciente)
+                }, [apiResponsePaciente])
+              }
+              {
+                useEffect(() => {
+                  console.log(apiResponseMedico)
+                }, [apiResponseMedico])
+              }
+
               </DialogContentText>
             </DialogContent>
             <DialogActions>

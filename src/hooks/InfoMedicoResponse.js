@@ -97,11 +97,6 @@ export const useExternalApi = () => {
 
   const updateMedico = async (datos, key) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
-    /*
-    let apano = new Date(datos.nacimiento)
-    apano = new Date(apano.setDate(apano.getDate() - 1))
-    apano = apano.toISOString()
-    */
 
     setApiEndpointMedico('PUT /api/info-medico/actualizar-medico')
     const config = {
