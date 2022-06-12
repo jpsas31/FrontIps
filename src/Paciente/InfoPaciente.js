@@ -24,9 +24,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 export default function InfoPaciente (props) {
   const { control, handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
   const {
-    selectedAccessControlLevel,
+    selectedAccessControlLevelPaciente,
     // apiEndpoint,
-    apiResponse,
+    apiResponsePaciente,
 
     getInfoPaciente,
     updatePaciente
@@ -206,7 +206,7 @@ export default function InfoPaciente (props) {
         </Container>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
           <Button variant = 'contained' onClick={ getInfoPacienteSubmit(onSubmit) } className={`messages-grid__option ${
-                  selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                  selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
                   'messages-grid__option--active'
                 }` } >Actualizar Información</Button>
         </Box>
@@ -216,7 +216,7 @@ export default function InfoPaciente (props) {
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && apiResponse}
+            {!isLoading && apiResponsePaciente}
             </DialogContentText>
           </DialogContent>
           <DialogActions>

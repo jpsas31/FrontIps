@@ -146,6 +146,7 @@ export const useExternalApi = () => {
 
     const arr = data.map((item) => {
       return [
+        item.id_paciente,
         item.tipo_id,
         item.identificacion,
         item.nombre,
@@ -155,12 +156,13 @@ export const useExternalApi = () => {
         item.telefono,
         item.correo,
         item.edad,
-        item.nacimiento.split('T')[0]
+        item.nacimiento.split('T')[0],
+        item.antecdentes
       ]
     })
 
     console.log(arr)
-    setInfo([data, arr])
+    setInfo(arr)
   }
 
   const getMedicos = async (setInfo) => {

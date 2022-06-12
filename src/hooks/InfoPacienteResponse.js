@@ -11,11 +11,11 @@ export const AccessControlLevel = {
 }
 
 export const useExternalApi = () => {
-  const [apiEndpoint, setApiEndpoint] = useState('')
-  const [apiResponse, setApiResponse] = useState(
+  const [apiEndpointPaciente, setApiEndpoint] = useState('')
+  const [apiResponsePaciente, setApiResponse] = useState(
     ''
   )
-  const [selectedAccessControlLevel, setSelectedAccessControlLevel] =
+  const [selectedAccessControlLevelPaciente, setSelectedAccessControlLevel] =
     useState(null)
 
   const { getAccessTokenSilently } = useAuth0()
@@ -190,9 +190,9 @@ export const useExternalApi = () => {
   }
 
   return {
-    selectedAccessControlLevel,
-    apiEndpoint,
-    apiResponse,
+    selectedAccessControlLevelPaciente,
+    apiEndpointPaciente,
+    apiResponsePaciente,
     getInfoPaciente,
     updatePaciente,
     createPaciente,
