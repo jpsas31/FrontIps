@@ -61,17 +61,12 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponsePaciente(data)
+    // setApiResponsePaciente(data)
     setPaciente(data)
     // console.log(data)
-    /*
-    let apano = new Date(data.nacimiento)
-    apano = apano.setDate(apano.getDate() + 1)
-    setFecha(apano)
-    */
   }
 
-  const updatePaciente = async (datos, key) => {
+  const updatePaciente = async (datos, key, setMessage) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
     /*
     let apano = new Date(datos.nacimiento)
@@ -101,8 +96,13 @@ export const useExternalApi = () => {
       }
     }
 
-    await makeRequest({ config, authenticated: true })
-    setApiResponsePaciente('Los datos han sido actualizados exitosamente')
+    const data = await makeRequest({ config, authenticated: true })
+
+    if (typeof data !== 'object') {
+      setMessage('Ha ocurrido un error con la conexión, intentalo nuevamente')
+    } else {
+      setMessage('Los datos han sido actualizados exitosamente')
+    }
   }
 
   const createPaciente = async (datos, key) => {

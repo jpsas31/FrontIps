@@ -22,7 +22,7 @@ export default function InfoAdmin (props) {
   const {
     selectedAccessControlLevelAdmin,
     // apiEndpoint,
-    apiResponseAdmin,
+    // apiResponseAdmin,
     getPacientes,
     getMedicos,
     getAdmins,
@@ -32,7 +32,7 @@ export default function InfoAdmin (props) {
   const {
     selectedAccessControlLevelPaciente,
     // apiEndpoint,
-    apiResponsePaciente,
+    // apiResponsePaciente,
 
     updatePaciente
   } = useExternalApiPaciente()
@@ -40,7 +40,7 @@ export default function InfoAdmin (props) {
   const {
     selectedAccessControlLevelMedico,
     // apiEndpoint,
-    apiResponseMedico,
+    // apiResponseMedico,
 
     updateMedico
   } = useExternalApiMedico()
@@ -52,6 +52,7 @@ export default function InfoAdmin (props) {
   const [selPaciente, setSelPaciente] = useState(false)
   const [selMedico, setSelMedico] = useState(false)
   const [selAdmin, setSelAdmin] = useState(false)
+  const [message, setMessage] = useState('')
 
   const getInfoPacientes = () => {
     setIsUpdated(true)
@@ -93,7 +94,13 @@ export default function InfoAdmin (props) {
   }, [isUpdated, selPaciente, selMedico, selAdmin])
 
   const handleClickOpen = () => { setVisible(true) }
-  const handleClose = () => { setVisible(false) }
+  const handleClose = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible(false)
+    setMessage('')
+  }
 
   const actualizarPaciente = (data) => {
     const transformJson = JSON.parse(JSON.stringify(
@@ -117,7 +124,7 @@ export default function InfoAdmin (props) {
     setIsLoading(true)
     setIsUpdated(false)
     setSelPaciente(false)
-    updatePaciente(transformJson, key)
+    updatePaciente(transformJson, key, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsUpdated(true)
@@ -148,7 +155,7 @@ export default function InfoAdmin (props) {
     setIsLoading(true)
     setIsUpdated(false)
     setSelMedico(false)
-    updateMedico(transformJson, key)
+    updateMedico(transformJson, key, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsUpdated(true)
@@ -177,7 +184,7 @@ export default function InfoAdmin (props) {
     setIsLoading(true)
     setIsUpdated(false)
     setSelAdmin(false)
-    updateAdmin(transformJson, key)
+    updateAdmin(transformJson, key, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsUpdated(true)
@@ -239,34 +246,18 @@ export default function InfoAdmin (props) {
           />
           }
 
-          <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
+          <Dialog disableEscapeKeyDown = {true} onClose={handleClose} open={visible} fullWidth maxWidth="xs">
             <DialogTitle>Alerta</DialogTitle>
             <DialogContent>
               <DialogContentText>
               {isLoading && <CircularProgress />}
-              {(!isLoading && selPaciente) && apiResponsePaciente}
-              {(!isLoading && selMedico) && apiResponseMedico}
-              {(!isLoading && selAdmin) && apiResponseAdmin}
-              {
-                useEffect(() => {
-                  console.log(apiResponseAdmin)
-                }, [apiResponseAdmin])
-              }
-              {
-                useEffect(() => {
-                  console.log(apiResponsePaciente)
-                }, [apiResponsePaciente])
-              }
-              {
-                useEffect(() => {
-                  console.log(apiResponseMedico)
-                }, [apiResponseMedico])
-              }
-
+              {(!isLoading && selPaciente) && message}
+              {(!isLoading && selMedico) && message}
+              {(!isLoading && selAdmin) && message}
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button variant="outlined" onClick={handleClose}>
+              <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
                 Cerrar
               </Button>
             </DialogActions>
