@@ -12,44 +12,95 @@ import FeaturedPost from './FeaturedPost'
 import Main from './Main'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
+import Carousel from 'react-material-ui-carousel'
+import { Paper } from '@mui/material'
 
 const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' }
+  { title: 'Nosotros', url: '#' },
+  { title: 'Afiliaciones', url: '#' },
+  { title: 'Afiliados', url: '#' },
+  { title: 'Red de atención', url: '#' },
+  { title: 'Centros Médicos', url: '#' },
+  { title: 'Oficinas', url: '#' },
+  { title: 'Droguería Cruz Verde', url: '#' }
 ]
 
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imageText: 'main image description',
-  linkText: 'Continue reading…'
-}
+const mainFeaturedPost = [
+  {
+    title: '¡Bienvenido!',
+    description:
+      'Nos encontramos en construcción, siguenos para más información.',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    imageText: 'main image description'
+  },
+  {
+    title: 'Integrantes ',
+    description:
+      'Del desarrollo de este moridero',
+    image: 'https://www.xtrafondos.com/wallpapers/personajes-de-brawl-stars-3503.jpg',
+    imageText: 'main image description'
+  },
+  {
+    title: 'Juan Pablo Salgado ',
+    description:
+      <p> ◼ Desordenado <br/>  ◼ Inesperdo <br/> ◼ Indie <br/> ◼ Raro  </p>,
+    image: 'https://i.imgur.com/GQBUjtO.png',
+    imageText: 'main image description'
+  },
+  {
+    title: 'Kevin David Rodriguez ',
+    description:
+    <p> ◼ Directo <br/>  ◼ Duro <br/> ◼ Solidario <br/> ◼ JojiLover  </p>,
+    image: 'https://i.imgur.com/Jbv5XRp.png',
+    imageText: 'main image description'
+  },
+  {
+    title: 'Julián Andrés Salamanca ',
+    description:
+      <p> ◼ Gentil <br/>  ◼ Tímido <br/> ◼ Obsesivo <br/> ◼ Familiar  </p>,
+    image: 'https://i.imgur.com/jYm0VGJ.png',
+    imageText: 'main image description'
+  },
+  {
+    title: 'Andrés Felipe Giron ',
+    description:
+      <p> ◼ Cómico <br/>  ◼ Despreocupado <br/> ◼ Sociable <br/> ◼ Comprometido  </p>,
+    image: 'https://i.imgur.com/zIuyw5G.png',
+    imageText: 'main image description'
+  }
+]
 
 const featuredPosts = [
   {
-    title: 'Featured post',
-    date: 'Nov 12',
+    title: 'Todo el mundo miente',
+    date: 'Abr 20',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
+      'No es mi intención verte la cara de idiota, pero no puedo andar todo el tiempo con los ojos cerrados.',
+    image: 'http://3.bp.blogspot.com/-sPXCB2uBq_4/U6XkEQQst3I/AAAAAAAAfMo/TnRVzeHL0xM/s1600/Screen+Shot+2014-06-21+at+3.58.15+PM.png',
     imageLabel: 'Image Text'
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: 'Maternidad',
+    date: 'Abr 20',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
+      'El 30% de los padres no saben que están criando al hijo del otro.',
+    image: 'https://i.pinimg.com/564x/8e/20/8c/8e208caa89c914865802d6a1750ed8bc.jpg',
+    imageLabel: 'Image Text'
+  },
+  {
+    title: 'Negocios riesgosos',
+    date: 'Abr 20',
+    description:
+      'Todos mienten por una razón: funciona. Es lo que permite que la sociedad funcione, separa al hombre de la bestia.',
+    image: 'https://i.pinimg.com/564x/62/65/b0/6265b0db8c34cac420f14d8c3d21fc0a.jpg',
+    imageLabel: 'Image Text'
+  },
+  {
+    title: 'Veinte vicodin',
+    date: 'Abr 20',
+    description:
+      'La meta en la vida no es eliminar la infelicidad, sino mantenerla al mínimo.',
+    image: 'https://i.pinimg.com/564x/ee/02/09/ee0209e60c6a5660b997e6604615d4e5.jpg',
     imageLabel: 'Image Text'
   }
 ]
@@ -84,10 +135,22 @@ export default function Blog () {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="Blog" sections={sections} />
+      <Container maxWidth="fullwidth" sx={{ mt: 0.5 }}>
+        <Header sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
+          <Carousel autoPlay = {false}>
+            {
+              mainFeaturedPost.map((item, i) => {
+                return (
+                <Paper key = {i}>
+                  <MainFeaturedPost post={item} />
+                </Paper>
+                )
+              }
+              )
+            }
+          </Carousel>
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />

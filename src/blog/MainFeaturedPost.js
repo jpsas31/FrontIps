@@ -19,7 +19,8 @@ function MainFeaturedPost (props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(${post.image})`
+        backgroundImage: `url(${post.image})`,
+        height: '350px'
       }}
     >
       {/* Increase the priority of the hero background image */}
