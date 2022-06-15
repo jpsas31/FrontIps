@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 
 export default function MainListItemsMedico () {
   const { logout } = useAuth0()
@@ -24,6 +25,12 @@ export default function MainListItemsMedico () {
           <LayersIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información del Medico" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'RegistroHM'}>
+      <ListItemIcon>
+        <LibraryBooksIcon/>
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="HM Paciente"/>
     </ListItemButton>
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>

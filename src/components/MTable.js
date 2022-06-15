@@ -1,6 +1,5 @@
 import * as React from 'react'
 // import { faker } from '@faker-js/faker'
-import { makeStyles } from '@mui/styles'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Grid, Typography, TablePagination, TableFooter, CircularProgress } from '@mui/material'
 import Button from '@mui/material/Button'
 import { useExternalApi } from '../hooks/InfoPacienteResponse'
@@ -9,51 +8,33 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 650
-  },
-  tableContainer: {
-    borderRadius: 15,
-    margin: '10px 10px',
-    maxWidth: 950
-  },
-  tableHeaderCell: {
-    fontWeight: 'bold',
-    backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.getContrastText(theme.palette.primary.dark)
-  },
-  avatar: {
-    backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.getContrastText(theme.palette.primary.light)
-  },
-  name: {
-    fontWeight: 'bold',
-    color: theme.palette.secondary.dark
-  },
-  status: {
-    fontWeight: 'bold',
-    fontSize: '0.75rem',
-    color: 'white',
-    backgroundColor: 'grey',
-    borderRadius: 8,
-    padding: '3px 10px',
-    display: 'inline-block'
-  },
-  fondo: {
-    maxWidth: false,
-    pb: false
-  },
-  titulo: {
-    fontWeight: 'bold',
-    color: theme.palette.secondary.dark,
-    fontSize: '2rem',
-    padding: '3px 10px'
+function stringToColor (string) {
+  let hash = 0
+  /* eslint-disable no-bitwise */
+  for (let i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash)
   }
-}))
+
+  let color = '#'
+
+  for (let i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff
+    color += `00${value.toString(16)}`.slice(-2)
+  }
+  /* eslint-enable no-bitwise */
+  return color
+}
+
+function stringAvatar (name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name)
+    },
+    children: name[0]
+  }
+}
 
 export default function MTable () {
-  const classes = useStyles()
   const {
     consultaPacientes,
     consultaTrabajadores,
@@ -135,7 +116,7 @@ export default function MTable () {
         <LinearProgress />
         <Grid container alignItems = 'center' sx = {{ display: 'flex' }}>
           <Grid item>{loading && <CircularProgress/>}</Grid>
-          <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+          <Grid item><Typography sx = {{ fontWeight: 'bold', color: '#851fa2', fontSize: '2 rem', padding: '3px 10px' }}> {titulo} </Typography></Grid>
         </Grid>
       </Box>
     )
@@ -143,19 +124,18 @@ export default function MTable () {
     return (
       <div>
         <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', mb: 2 }} >
-        <Box className= {classes.fondo} >
+        <Box sx = {{ maxWidth: 'false', pb: 'false' }} >
           <Grid container alignItems = 'center'>
-            <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+            <Grid item><Typography variant = 'h4' sx = {{ fontWeight: 'bold', color: '#851fa2', fontSize: '10 rem', padding: '3px 10px', mt: '2rem' }}> {titulo} </Typography></Grid>
           </Grid>
-
-          <TableContainer component={Paper} className = {classes.tableContainer}>
-            <Table className={classes.table} aria-label="simple table">
+          <TableContainer component={Paper} sx = {{ borderRadius: 7, margin: '10px 10px', maxWidth: 950 }}>
+            <Table sx = {{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell className={classes.tableHeaderCell}>Info de usuario</TableCell>
-                  <TableCell className={classes.tableHeaderCell}>Rol</TableCell>
-                  <TableCell className={classes.tableHeaderCell}>Direccion</TableCell>
-                  <TableCell className={classes.tableHeaderCell}>Estado</TableCell>
+                  <TableCell sx = {{ fontWeight: 'bold', backgroundColor: '#1565c0', color: '#ffffff' }}>Info de usuario</TableCell>
+                  <TableCell sx = {{ fontWeight: 'bold', backgroundColor: '#1565c0', color: '#ffffff' }}>Rol</TableCell>
+                  <TableCell sx = {{ fontWeight: 'bold', backgroundColor: '#1565c0', color: '#ffffff' }}>Direccion</TableCell>
+                  <TableCell align = 'center' sx = {{ fontWeight: 'bold', backgroundColor: '#1565c0', color: '#ffffff' }}>Estado</TableCell>
                 </TableRow>
               </TableHead>
             <TableBody>
@@ -164,10 +144,10 @@ export default function MTable () {
                   <TableCell>
                   <Grid container>
                     <Grid item lg = {2}>
-                      <Avatar alt = {row.nombre + ' ' + row.apellido} src= '.' className= {classes.avatar} />
+                      <Avatar {...stringAvatar(row.nombre)} />
                     </Grid>
                     <Grid item lg = {10}>
-                      <Typography className={classes.name}>{row.nombre + ' ' + row.apellido}</Typography>
+                      <Typography sx = {{ fontWeight: 'bold', color: '#8831a3' }}>{row.nombre + ' ' + row.apellido}</Typography>
                       <Typography color= 'textSecondary' variant= 'body2'>{row.correo}</Typography>
                       <Typography color= 'textSecondary' variant= 'body2'>{row.tipo_id + ' ' + row.identificacion}</Typography>
                     </Grid>
@@ -177,8 +157,8 @@ export default function MTable () {
                     <Typography color= 'primary' variant= 'subtitle1'>{row.rol}</Typography>
                     <Typography color= 'textSecondary' variant= 'body2'>IPS</Typography>
                   </TableCell>
-                  <TableCell >{row.direccion}</TableCell>
-                  <TableCell ><Button variant = 'contained' className={classes.status}
+                  <TableCell>{row.direccion}</TableCell>
+                  <TableCell align= 'center'><Button variant = 'contained'
                   color = {((row.estado === true && 'success') || (row.estado === false && 'error'))}
                   onClick = {() => { handleClick(row) }}>{verificarEstado(row.estado)}</Button>
               </TableCell>
