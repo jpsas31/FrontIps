@@ -125,13 +125,76 @@ export const useExternalApi = () => {
     setApiResponseMedico('Los datos han sido actualizados exitosamente')
   }
 
+  const getMedicosByEspecialidad = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infomedico-byespecialidad')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infomedico-byespecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_especialidad: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    return data
+  }
+
+  const getCitasByEspecialidad = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infocita-byespecialidad')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infocita-byespecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_especialidad: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    return data
+  }
+
+  const getTurnosByMedico = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infoturno-bymedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infoturno-bymedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    return data
+  }
+
   return {
     selectedAccessControlLevelMedico,
     apiEndpointMedico,
     apiResponseMedico,
     createMedico,
     getInfoMedico,
-    updateMedico
+    updateMedico,
+    getMedicosByEspecialidad,
+    getCitasByEspecialidad,
+    getTurnosByMedico
     // getRbacResource,
     // checkCorsAllowedMethod
   }
