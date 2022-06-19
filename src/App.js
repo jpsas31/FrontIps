@@ -15,8 +15,8 @@ import AuthRedirect from './auth0/authRedirect'
 import UserContext from './context/user.context'
 import Personal from './personal/Personal'
 import ActivaUser from './personal/activaUser'
+import Calendario from './calendario/CalendarioMedicos'
 
-// import  DemoApp from './calendario/DemoApp'
 import {
 
   Routes,
@@ -39,6 +39,7 @@ export default function App () {
         <Route path="inicio" element={<Inicio />} />
         <Route path="data" element={<Dashboard />} />
         <Route path="info-paciente" element={<InfoPaciente />} />
+        <Route path="turnos" element= {<Calendario/>} />
         <Route path="info-admin" element={<InfoAdmin />} />
         <Route path="info-medico" element={<InfoMedico />} />
         <Route path="info-usuarios" element={<InfoUsuarios />} />
