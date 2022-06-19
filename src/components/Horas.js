@@ -1,5 +1,5 @@
 
-export default function (dias) {
-  console.log(dias)
+export default function (dias, diaSeleccionado) {
+  console.log(dias, diaSeleccionado)
   return dias
 }

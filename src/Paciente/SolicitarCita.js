@@ -39,14 +39,14 @@ export default function SolicitarCita ({ authId }) {
   const { user } = useAuth0()
 
   useEffect(() => {
-    console.log('Buenas Tardes')
-    setHoras(Horas(dias))
+    console.log('Entrando')
   }, [diaSeleccionado])
 
   useEffect(() => {
     getTurnosByMedico(medicoSelecccionado)
       .then(res => {
         setDias(Dias(res))
+        console.log(res)
       })
   }, [medicoSelecccionado])
 
@@ -170,12 +170,12 @@ export default function SolicitarCita ({ authId }) {
                 select
                 fullWidth
                 label="Dia"
-                value = {diaSeleccionado.dia}
-                onChange = {(e) => { setDiaSeleccionado(e.target.value.dia) }}
+                defaultValue = {diaSeleccionado}
+                onChange = {(e) => { setDiaSeleccionado(e.target.value) }}
                 {...registro('fecha', { required: true })}
               >
                 {dias.map((option) => (
-                  <MenuItem key={option.id_trabajador} value={option.dia}>
+                  <MenuItem key={option.id_turno} value={option.dia}>
                     {option.dia}
                   </MenuItem>))}
           </TextField>
