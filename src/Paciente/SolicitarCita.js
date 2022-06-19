@@ -29,7 +29,7 @@ export default function SolicitarCita ({ authId }) {
   } = ApiMedicos()
 
   const [paciente, setPaciente] = useState({})
-  const [medicos, setMedicos] = useState([{ id_trabajador: 'generico', trabajador: { nombre: 'patata' } }])
+  const [medicos, setMedicos] = useState({})
   const [medicoSelecccionado, setMedicoSeleccionado] = useState({})
   const [tipoEspecialidad, setTipoEspecialidad] = useState(1)
   const [dias, setDias] = useState([{ id_trabajador: 'generico1', inicioturno: 'a buena hora' }])
@@ -39,38 +39,41 @@ export default function SolicitarCita ({ authId }) {
   const { user } = useAuth0()
 
   useEffect(() => {
-    console.log('Entrando')
+    if (JSON.stringify(diaSeleccionado) !== '{}') {
+      console.log('Entrando')
+    }
   }, [diaSeleccionado])
 
+  /*
   useEffect(() => {
-    getTurnosByMedico(medicoSelecccionado)
-      .then(res => {
-        setDias(Dias(res))
-        console.log(res)
-      })
+    if (JSON.stringify(medicoSelecccionado) !== '{}') {
+      getTurnosByMedico(medicoSelecccionado)
+        .then(res => {
+          setDias(Dias(res))
+          console.log(res)
+        })
+    }
   }, [medicoSelecccionado])
+  */
 
   useEffect(() => {
-    if (tipoEspecialidad === false) {
-      console.log('No llego ni mierda')
-    } else {
-      console.log(tipoEspecialidad, 'Soy un mujeriego')
-      getMedicosByEspecialidad(tipoEspecialidad)
-        .then(res => {
-          setMedicos(res)
-        },
-        console.log(medicos)
-        )
-      getCitasByEspecialidad(tipoEspecialidad)
-        .then(res => {
-          setPrecio(res)
-        },
-        console.log(precio))
+    if (JSON.stringify(medicos) !== '{}') {
+      if (medicos.length !== 0) {
+        setMedicoSeleccionado(medicos[0].id_trabajador)
+      } else {
+        setMedicoSeleccionado([{}])
+      }
     }
+  }, [medicos])
+
+  useEffect(() => {
+    getMedicosByEspecialidad(tipoEspecialidad, setMedicos)
+    getCitasByEspecialidad(tipoEspecialidad, setPrecio)
   }, [tipoEspecialidad])
 
   useEffect(() => {
     getInfoPaciente(user.sub, setPaciente)
+    getMedicosByEspecialidad(tipoEspecialidad, setMedicos)
   }, [])
 
   const tipoCita = [
@@ -96,7 +99,7 @@ export default function SolicitarCita ({ authId }) {
     // nav('/Dashboard')
   }
 
-  if (JSON.stringify(paciente) === '{}') {
+  if (JSON.stringify(paciente) === '{}' || JSON.stringify(medicoSelecccionado) === '{}' || JSON.stringify(medicos) === '{}') {
     return (
       <Box sx={{ width: '100%' }}>
         <LinearProgress />
@@ -182,18 +185,20 @@ export default function SolicitarCita ({ authId }) {
         </Grid>
 
         <Grid item xs = {5}>
-        <TextField
-                select
-                fullWidth
-                label="Hora"
-                value = {horas}
-                {...registro('inicioturno', { required: true })}
-              >
-                {horasInicio.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>))}
-          </TextField>
+        {/*
+          <TextField
+          select
+          fullWidth
+          label="Hora"
+          value = {horas}
+          {...registro('inicioturno', { required: true })}
+        >
+          {horasInicio.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>))}
+        </TextField> */
+        }
         </Grid>
 
         <Grid item xs = {5}>

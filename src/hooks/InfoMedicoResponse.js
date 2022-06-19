@@ -125,7 +125,7 @@ export const useExternalApi = () => {
     setApiResponseMedico('Los datos han sido actualizados exitosamente')
   }
 
-  const getMedicosByEspecialidad = async (datos) => {
+  const getMedicosByEspecialidad = async (datos, setMedicos) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
     setApiEndpointMedico('POST /api/info-medico/infomedico-byespecialidad')
@@ -141,11 +141,11 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseMedico(data)
+    setMedicos(data)
     return data
   }
 
-  const getCitasByEspecialidad = async (datos) => {
+  const getCitasByEspecialidad = async (datos, setPrecio) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
     setApiEndpointMedico('POST /api/info-medico/infocita-byespecialidad')
@@ -161,7 +161,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseMedico(data)
+    setPrecio(data)
     return data
   }
 
