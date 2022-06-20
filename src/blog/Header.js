@@ -41,8 +41,17 @@ function Header (props) {
 
         <>
           <LogoutButton /> &nbsp;&nbsp;&nbsp;
-          <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}>
-              To Dashboard
+          <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}
+          sx={{
+            ml: 1,
+            '&.MuiButtonBase-root:hover': {
+              bgcolor: 'white'
+            },
+            bgcolor: 'white',
+            fontWeight: 'bold',
+            borderRadius: 2
+          }}>
+              Gestión
           </Button>
         </>
       )}

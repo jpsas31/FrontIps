@@ -2,15 +2,10 @@ import * as React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import TwitterIcon from '@mui/icons-material/Twitter'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Header from './Header'
 import MainFeaturedPost from './MainFeaturedPost'
 import FeaturedPost from './FeaturedPost'
-import Main from './Main'
-import Sidebar from './Sidebar'
 import Footer from './Footer'
 import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@mui/material'
@@ -36,10 +31,10 @@ const mainFeaturedPost = [
   {
     title: 'Integrantes ',
     description:
-      'Del desarrollo de este moridero',
+      'Del grupo de amiguis',
     image: 'https://www.xtrafondos.com/wallpapers/personajes-de-brawl-stars-3503.jpg',
     imageText: 'main image description'
-  },
+  }/*
   {
     title: 'Juan Pablo Salgado ',
     description:
@@ -68,6 +63,7 @@ const mainFeaturedPost = [
     image: 'https://i.imgur.com/zIuyw5G.png',
     imageText: 'main image description'
   }
+  */
 ]
 
 const featuredPosts = [
@@ -105,6 +101,7 @@ const featuredPosts = [
   }
 ]
 
+/*
 const sidebar = {
   title: 'About',
   description:
@@ -128,6 +125,7 @@ const sidebar = {
     { name: 'Facebook', icon: FacebookIcon }
   ]
 }
+*/
 
 const theme = createTheme()
 
@@ -139,7 +137,7 @@ export default function Blog () {
         <Header sections={sections} />
         <main>
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
-          <Carousel autoPlay = {false}>
+          <Carousel autoPlay = {false} >
             {
               mainFeaturedPost.map((item, i) => {
                 return (
@@ -151,25 +149,15 @@ export default function Blog () {
               )
             }
           </Carousel>
-          <Grid container spacing={4}>
+          <Grid container spacing={4} sx={{ mt: 0.5 }}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid>
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" />
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </Grid>
         </main>
       </Container>
       <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
+        description="Aplicación creada por grupo Amiguis"
       />
     </ThemeProvider>
   )
