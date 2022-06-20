@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEnv } from '../context/env.context'
+import Dia from '../components/Dia'
 
 export const AccessControlLevel = {
   PUBLIC: 'public',
@@ -165,9 +166,9 @@ export const useExternalApi = () => {
     return data
   }
 
-  const getTurnosByMedico = async (datos) => {
+  const getTurnosByMedico = async (datos, setDias) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
-
+    console.log(datos)
     setApiEndpointMedico('POST /api/info-medico/infoturno-bymedico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/infoturno-bymedico`,
@@ -181,7 +182,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    setApiResponseMedico(data)
+    setDias(Dia(data))
     return data
   }
 

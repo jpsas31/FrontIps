@@ -11,7 +11,6 @@ import { useExternalApi as ApiPacientes } from '../hooks/InfoPacienteResponse'
 import { useExternalApi as ApiMedicos } from '../hooks/InfoMedicoResponse'
 import LinearProgress from '@mui/material/LinearProgress'
 import Box from '@mui/material/Box'
-import Dias from '../components/Dia'
 import Horas from '../components/Horas'
 // import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
@@ -32,39 +31,41 @@ export default function SolicitarCita ({ authId }) {
   const [medicos, setMedicos] = useState({})
   const [medicoSelecccionado, setMedicoSeleccionado] = useState({})
   const [tipoEspecialidad, setTipoEspecialidad] = useState(1)
-  const [dias, setDias] = useState([{ id_trabajador: 'generico1', inicioturno: 'a buena hora' }])
+  const [dias, setDias] = useState({})
   const [diaSeleccionado, setDiaSeleccionado] = useState({})
   const [horas, setHoras] = useState([{ id_trabajador: 'generico3', horas: 'las horas del corazon' }])
   const [precio, setPrecio] = useState({ id_tipocita: '1', precio: 30000, tipo: 'General' })
   const { user } = useAuth0()
 
   useEffect(() => {
-    if (JSON.stringify(diaSeleccionado) !== '{}') {
-      console.log('Entrando')
+    console.log('entrando a dia selecionado')
+    if (JSON.stringify(diaSeleccionado) !== '{}' && JSON.stringify(dias) !== '{}' && dias.length !== 0) {
+      setHoras(Horas(dias, diaSeleccionado))
     }
   }, [diaSeleccionado])
 
-  /*
   useEffect(() => {
-    if (JSON.stringify(medicoSelecccionado) !== '{}') {
-      getTurnosByMedico(medicoSelecccionado)
-        .then(res => {
-          setDias(Dias(res))
-          console.log(res)
-        })
+    console.log('entrando a dias')
+    if (JSON.stringify(dias) !== '{}' && dias.length !== 0) {
+      setDiaSeleccionado(dias[0].dia)
+    } else {
+      setDiaSeleccionado([{}])
     }
-  }, [medicoSelecccionado])
-  */
+  }, [dias])
 
   useEffect(() => {
     if (JSON.stringify(medicos) !== '{}') {
       if (medicos.length !== 0) {
         setMedicoSeleccionado(medicos[0].id_trabajador)
       } else {
-        setMedicoSeleccionado([{}])
+        setMedicoSeleccionado('0')
       }
     }
   }, [medicos])
+
+  useEffect(() => {
+    getTurnosByMedico(medicoSelecccionado, setDias)
+  }, [medicoSelecccionado])
 
   useEffect(() => {
     getMedicosByEspecialidad(tipoEspecialidad, setMedicos)
@@ -99,7 +100,11 @@ export default function SolicitarCita ({ authId }) {
     // nav('/Dashboard')
   }
 
-  if (JSON.stringify(paciente) === '{}' || JSON.stringify(medicoSelecccionado) === '{}' || JSON.stringify(medicos) === '{}') {
+  if (JSON.stringify(paciente) === '{}' ||
+  JSON.stringify(medicoSelecccionado) === '{}' ||
+  JSON.stringify(medicos) === '{}' ||
+  JSON.stringify(dias) === '{}'
+  ) {
     return (
       <Box sx={{ width: '100%' }}>
         <LinearProgress />
@@ -173,9 +178,9 @@ export default function SolicitarCita ({ authId }) {
                 select
                 fullWidth
                 label="Dia"
-                defaultValue = {diaSeleccionado}
-                onChange = {(e) => { setDiaSeleccionado(e.target.value) }}
+                value = {diaSeleccionado}
                 {...registro('fecha', { required: true })}
+                onChange = {(e) => { setDiaSeleccionado(e.target.value) }}
               >
                 {dias.map((option) => (
                   <MenuItem key={option.id_turno} value={option.dia}>
