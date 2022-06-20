@@ -228,6 +228,25 @@ export const useExternalApi = () => {
     return data
   }
 
+  const getInfoHM = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/getInfoHM')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/getInfoHM`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_entrada: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
   return {
     selectedAccessControlLevelPaciente,
     apiEndpointPaciente,
@@ -239,7 +258,8 @@ export const useExternalApi = () => {
     consultaTrabajadores,
     cambEstado,
     getPacienteInfo,
-    getHM
+    getHM,
+    getInfoHM
     // getRbacResource,
     // checkCorsAllowedMethod
   }

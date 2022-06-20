@@ -6,20 +6,6 @@ import './style.css'
 import CustomImage from './Image'
 
 const Editor = ({ titulo, texto, setTexto }) => {
-  const toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],
-    [{ align: [] }],
-
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    [{ indent: '-1' }, { indent: '+1' }],
-
-    [{ size: ['small', false, 'large', 'huge'] }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ['link', 'image'],
-    [{ color: [] }, { background: [] }],
-
-    ['clean']
-  ]
   const format = [
     'bold',
     'italic',
@@ -43,8 +29,9 @@ const Editor = ({ titulo, texto, setTexto }) => {
   const { quill, quillRef, Quill } = useQuill({
     modules: {
       blotFormatter: {},
-      toolbar: toolbarOptions
+      toolbar: false
     },
+    readOnly: true,
     formats: format
   })
 
@@ -61,12 +48,6 @@ const Editor = ({ titulo, texto, setTexto }) => {
         // o se se hace con html seria
         // quill.root.innerHTML = texto
       }
-
-      quill.on('text-change', (delta, oldContents) => {
-        // const currrentContents = quill.getContents()
-        const currrentContents = quill.getContents()
-        setTexto(currrentContents) // o si se hace con el delta seria setTexto(currentContents)
-      })
     }
   }, [quill, Quill])
 
