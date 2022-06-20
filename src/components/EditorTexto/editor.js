@@ -18,9 +18,6 @@ export default function TextEditor ({ paciente, doctor, aparezco, functionCrear,
       setErrorTexto(false)
     }
   }, [texto])
-  useEffect(() => {
-    console.log(texto1)
-  }, [texto1])
 
   const handleSubmit = () => {
     if (errorFecha || errorTexto) {

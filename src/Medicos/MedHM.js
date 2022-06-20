@@ -188,10 +188,10 @@ export default function MedHM () {
                 <Typography variant = 'h4'> HISTORIA CLINICA </Typography>
               </Box>
               <Box sx = {{ maxWidth: 'false', pb: 'false', mr: '1rem', ml: '1rem', mt: '1rem', border: 1, borderRadius: 5, borderColor: '#bdbdbd' }}>
-                <Grid container spacing = {2} direction = 'row' justify = 'flex-start' alignItems= 'flex-start' sx = {{ mt: '1rem', ml: '2rem', mr: '2rem', mb: '2rem' }}>
+                <Grid container spacing = {2} direction = 'row' justify = 'flex-start' alignItems= 'flex-start' sx = {{ mt: '1rem', ml: '2rem', mr: '2rem', mb: '2rem', pr: '2rem', maxHeight: 600, overflow: 'auto' }}>
                   {historias.map(elem => (
-                    <Grid item xs = {12} sm = {6} md = {3} key = {historias.indexOf(elem)}>
-                      <Card elevation = {7} sx={{ maxWidth: 345, mb: '2rem' }} >
+                    <Grid item xs = {4} key = {historias.indexOf(elem)}>
+                      <Card elevation = {7} sx={{ maxWidth: 300, mb: '1rem' }} >
                         <CardActionArea onClick = {() => { viewCard(elem) }}>
                           <CardHeader avatar = {<Avatar {...stringAvatar(elem.trabajador.nombre)}/>} title = 'Entrada HM.' subheader = {elem.id_entrada}/>
                             <CardMedia component="img" height="130" image='https://i.imgur.com/dJsL7kH.jpg' alt="Historia clinica"/>
