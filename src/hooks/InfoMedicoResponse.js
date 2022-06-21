@@ -185,6 +185,47 @@ export const useExternalApi = () => {
     setDias(Dia(data))
     return data
   }
+  
+  const getMedicoID = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/getmedico')
+    const config = {
+      url: ${apiServerUrl}/api/info-medico/getmedico,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    return data
+  }
+
+  const createHM = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+    setApiEndpointMedico('PUT /api/info-medico/registrar-hm')
+    const config = {
+      url: ${apiServerUrl}/api/info-medico/registrar-hm,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos.id_trabajador,
+        id_paciente: datos.id_paciente,
+        descripcion_form: datos.descripcion_form,
+        descripcion: datos.descripcion,
+        fecha: datos.fecha
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+    setApiResponseMedico('Los datos se han enviado correctamente')
+  }
 
   return {
     selectedAccessControlLevelMedico,
@@ -195,7 +236,9 @@ export const useExternalApi = () => {
     updateMedico,
     getMedicosByEspecialidad,
     getCitasByEspecialidad,
-    getTurnosByMedico
+    getTurnosByMedico,
+    getMedicoID,
+    createHM
     // getRbacResource,
     // checkCorsAllowedMethod
   }

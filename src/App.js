@@ -16,7 +16,7 @@ import UserContext from './context/user.context'
 import Personal from './personal/Personal'
 import ActivaUser from './personal/activaUser'
 import SolicitarCita from './Paciente/SolicitarCita'
-
+import MedicosHM from './Medicos/MedHM'
 // import  DemoApp from './calendario/DemoApp'
 import {
 
@@ -49,7 +49,7 @@ export default function App () {
         <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
         <Route path="personal" element={<Personal/>} />
         <Route path="activa" element = {<ActivaUser/>} />
-
+        <Route path="RegistroHM" element = {<MedicosHM/>}/>
       </Route>
     </Routes>
   </UserContext.Provider>
