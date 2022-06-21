@@ -201,11 +201,14 @@ export default function Calendario () {
 
         />
          <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
-          <DialogTitle>Alerta</DialogTitle>
+          <DialogTitle>
+          {isLoading && <div>Procesando</div>}
+          {!isLoading && <div>Completado</div>}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && <div>Completado</div>}
+            {!isLoading && <div></div>}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
