@@ -10,15 +10,18 @@ import { Link } from 'react-router-dom'
 import { useExternalApi as ApiPacientes } from '../hooks/InfoPacienteResponse'
 import { useExternalApi as ApiMedicos } from '../hooks/InfoMedicoResponse'
 import LinearProgress from '@mui/material/LinearProgress'
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import Box from '@mui/material/Box'
 import Horas from '../components/Horas'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
 export default function SolicitarCita ({ authId }) {
   const { handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
   const {
-    getInfoPaciente
+    getInfoPaciente,
+    createCita,
+    getCitasByMedico
   } = ApiPacientes()
 
   const {
@@ -33,14 +36,26 @@ export default function SolicitarCita ({ authId }) {
   const [tipoEspecialidad, setTipoEspecialidad] = useState(1)
   const [dias, setDias] = useState({})
   const [diaSeleccionado, setDiaSeleccionado] = useState({})
-  const [horas, setHoras] = useState([{ id_trabajador: 'generico3', horas: 'las horas del corazon' }])
+  const [horas, setHoras] = useState({})
+  const [horasSeleccionadas, setHorasSeleccionadas] = useState({})
+  const [error, setError] = useState(false)
   const [precio, setPrecio] = useState({ id_tipocita: '1', precio: 30000, tipo: 'General' })
   const { user } = useAuth0()
+  const handleDiaClose = () => {
+    setError(false)
+  }
 
   useEffect(() => {
     console.log('entrando a dia selecionado')
-    if (JSON.stringify(diaSeleccionado) !== '{}' && JSON.stringify(dias) !== '{}' && dias.length !== 0) {
-      setHoras(Horas(dias, diaSeleccionado))
+    if (JSON.stringify(diaSeleccionado) !== '{}' &&
+    JSON.stringify(dias) !== '{}' &&
+    dias.length !== 0 &&
+    JSON.stringify(medicoSelecccionado) !== '{}') {
+      getCitasByMedico({ id_trabajador: medicoSelecccionado, fecha: diaSeleccionado })
+        .then(async (res) => { setHoras(Horas(dias, diaSeleccionado, res)) })
+    } else {
+      setHoras([{}])
+      console.log(horas, 'maldita sea')
     }
   }, [diaSeleccionado])
 
@@ -85,19 +100,30 @@ export default function SolicitarCita ({ authId }) {
     { value: '5', label: 'Dermatologia' },
     { value: '6', label: 'Oftalmologia' }]
 
-  const horasInicio = [
-    { value: '7:00', label: '7:00' },
-    { value: '7:30', label: '7:30' },
-    { value: '8:00', label: '8:00' }]
-
   const { logout } = useAuth0()
-  // const nav = useNavigate()
+  const nav = useNavigate()
 
   const onSubmit = data => {
-    data.precio = precio.precio
-    data.id_paciente = paciente.id_paciente
-    console.log(data)
-    // nav('/Dashboard')
+    if (JSON.stringify(diaSeleccionado[0]) === '{}' ||
+    medicoSelecccionado[0] === '0' ||
+    JSON.stringify(horasSeleccionadas) === '{}') {
+      console.log('Ta vacio')
+      setError(true)
+    } else {
+      data.precio = precio.precio
+      data.id_paciente = paciente.id_paciente
+      data.id_trabajador = medicoSelecccionado
+      if (JSON.stringify(data.horasSeleccionadas) !== '{}') {
+        data.hora_entrada = horasSeleccionadas.fecha
+        console.log(horasSeleccionadas)
+        console.log(horasSeleccionadas.fecha)
+        const horaAux = horasSeleccionadas.fechaDate.getTime() + 1800000
+        data.hora_salida = new Date(horaAux).toString().split(' ')[4]
+        createCita(data)
+        nav('/Dashboard')
+      }
+      console.log(data)
+    }
   }
 
   if (JSON.stringify(paciente) === '{}' ||
@@ -190,19 +216,20 @@ export default function SolicitarCita ({ authId }) {
         </Grid>
 
         <Grid item xs = {5}>
-        {/*
+        {
           <TextField
           select
           fullWidth
           label="Hora"
-          value = {horas}
-          {...registro('inicioturno', { required: true })}
+          value = {horasSeleccionadas}
+          {...registro('hora_entrada', { required: true })}
+          onChange = {(e) => { setHorasSeleccionadas(e.target.value) }}
         >
-          {horasInicio.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
+          {horas.map((option) => (
+            <MenuItem key={option.fecha} value={option}>
+              {option.fecha}
             </MenuItem>))}
-        </TextField> */
+        </TextField>
         }
         </Grid>
 
@@ -212,6 +239,19 @@ export default function SolicitarCita ({ authId }) {
         </Grid>
 
         <Grid item xs = {5}>
+        <Dialog open = {error} onClose = {handleDiaClose}>
+            <DialogTitle id='alert-dialog-title'>
+              {'Error'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Por favor rellene todos los datos.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleDiaClose}>OK</Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
 
         <Grid item xs = {5}>
