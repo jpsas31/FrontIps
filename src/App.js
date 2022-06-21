@@ -15,6 +15,7 @@ import AuthRedirect from './auth0/authRedirect'
 import UserContext from './context/user.context'
 import Personal from './personal/Personal'
 import ActivaUser from './personal/activaUser'
+import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
 // import  DemoApp from './calendario/DemoApp'
 import {
@@ -39,6 +40,7 @@ export default function App () {
         <Route path="inicio" element={<Inicio />} />
         <Route path="data" element={<Dashboard />} />
         <Route path="info-paciente" element={<InfoPaciente />} />
+        <Route path="solicitar-cita" element={<SolicitarCita />} />
         <Route path="info-admin" element={<InfoAdmin />} />
         <Route path="info-medico" element={<InfoMedico />} />
         <Route path="info-usuarios" element={<InfoUsuarios />} />
