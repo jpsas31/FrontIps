@@ -185,13 +185,13 @@ export const useExternalApi = () => {
     setDias(Dia(data))
     return data
   }
-  
+
   const getMedicoID = async (datos) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
     setApiEndpointMedico('POST /api/info-medico/getmedico')
     const config = {
-      url: ${apiServerUrl}/api/info-medico/getmedico,
+      url: `${apiServerUrl}/api/info-medico/getmedico`,
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -209,7 +209,7 @@ export const useExternalApi = () => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
     setApiEndpointMedico('PUT /api/info-medico/registrar-hm')
     const config = {
-      url: ${apiServerUrl}/api/info-medico/registrar-hm,
+      url: `${apiServerUrl}/api/info-medico/registrar-hm`,
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

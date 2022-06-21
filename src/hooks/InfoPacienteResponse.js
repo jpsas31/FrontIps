@@ -189,7 +189,6 @@ export const useExternalApi = () => {
     setApiResponsePaciente('Los datos han sido actualizados exitosamente')
   }
 
-
   const createCita = async (datos, key) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
@@ -235,13 +234,13 @@ export const useExternalApi = () => {
     setApiResponsePaciente(data)
     return data
   }
-  
+
   const getPacienteInfo = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpointPaciente('POST /api/info-paciente/consultar-paciente-porid')
     const config = {
-      url: ${apiServerUrl}/api/info-paciente/consultar-paciente-porid,
+      url: `${apiServerUrl}/api/info-paciente/consultar-paciente-porid`,
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -261,7 +260,7 @@ export const useExternalApi = () => {
     setApiEndpointPaciente('POST /api/info-paciente/getHM')
 
     const config = {
-      url: ${apiServerUrl}/api/info-paciente/getHM,
+      url: `${apiServerUrl}/api/info-paciente/getHM`,
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -280,7 +279,7 @@ export const useExternalApi = () => {
     setApiEndpointPaciente('POST /api/info-paciente/getInfoHM')
 
     const config = {
-      url: ${apiServerUrl}/api/info-paciente/getInfoHM,
+      url: `${apiServerUrl}/api/info-paciente/getInfoHM`,
       method: 'POST',
       headers: {
         'content-type': 'application/json'
