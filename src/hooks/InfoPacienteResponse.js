@@ -204,6 +204,7 @@ export const useExternalApi = () => {
         id_tipocita: datos.id_tipocita,
         id_paciente: datos.id_paciente,
         id_trabajador: datos.id_trabajador,
+        id_mediocita: datos.id_mediocita,
         hora_entrada: datos.hora_entrada,
         hora_salida: datos.hora_salida,
         fecha: datos.fecha,
@@ -232,6 +233,25 @@ export const useExternalApi = () => {
     }
     const data = await makeRequest({ config, authenticated: true })
     setApiResponsePaciente(data)
+    return data
+  }
+
+  const getCitaMedios = async (datos, setMedios) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-citamedio')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-citamedio`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_mediocita: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    console.log('imprimmiendo medios desde el response', data)
+    setMedios(data)
     return data
   }
 
@@ -307,7 +327,8 @@ export const useExternalApi = () => {
     getCitasByMedico,
     getPacienteInfo,
     getHM,
-    getInfoHM
+    getInfoHM,
+    getCitaMedios
     // getRbacResource,
     // checkCorsAllowedMethod
   }

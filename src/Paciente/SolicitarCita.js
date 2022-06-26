@@ -21,7 +21,8 @@ export default function SolicitarCita ({ authId }) {
   const {
     getInfoPaciente,
     createCita,
-    getCitasByMedico
+    getCitasByMedico,
+    getCitaMedios
   } = ApiPacientes()
 
   const {
@@ -38,6 +39,8 @@ export default function SolicitarCita ({ authId }) {
   const [diaSeleccionado, setDiaSeleccionado] = useState({})
   const [horas, setHoras] = useState({})
   const [horasSeleccionadas, setHorasSeleccionadas] = useState({})
+  const [medios, setMedios] = useState({})
+  const [medioSeleccionado, setMedioSeleccionado] = useState({})
   const [error, setError] = useState(false)
   const [precio, setPrecio] = useState({ id_tipocita: '1', precio: 30000, tipo: 'General' })
   const { user } = useAuth0()
@@ -55,12 +58,20 @@ export default function SolicitarCita ({ authId }) {
         .then(async (res) => { setHoras(Horas(dias, diaSeleccionado, res)) })
     } else {
       setHoras([{}])
-      console.log(horas, 'maldita sea')
+      // console.log(horas, 'maldita sea')
     }
   }, [diaSeleccionado])
 
   useEffect(() => {
-    console.log('entrando a dias')
+    if (JSON.stringify(medioSeleccionado) !== '{}') {
+      setMedioSeleccionado(medios[0])
+    } else {
+      setMedioSeleccionado([{}])
+    }
+  }, [medios])
+
+  useEffect(() => {
+    // console.log('entrando a dias')
     if (JSON.stringify(dias) !== '{}' && dias.length !== 0) {
       setDiaSeleccionado(dias[0].dia)
     } else {
@@ -85,11 +96,14 @@ export default function SolicitarCita ({ authId }) {
   useEffect(() => {
     getMedicosByEspecialidad(tipoEspecialidad, setMedicos)
     getCitasByEspecialidad(tipoEspecialidad, setPrecio)
+    // getCitaMedios(tipoEspecialidad, setMedios)
   }, [tipoEspecialidad])
 
   useEffect(() => {
     getInfoPaciente(user.sub, setPaciente)
     getMedicosByEspecialidad(tipoEspecialidad, setMedicos)
+    getCitaMedios(tipoEspecialidad, setMedios)
+    console.log('medios :', medios[0])
   }, [])
 
   const tipoCita = [
@@ -110,7 +124,8 @@ export default function SolicitarCita ({ authId }) {
       console.log('Ta vacio')
       setError(true)
     } else {
-      data.precio = precio.precio
+      data.precio = precio.precio + medioSeleccionado.precio
+      data.id_mediocita = medioSeleccionado.id_mediocita
       data.id_paciente = paciente.id_paciente
       data.id_trabajador = medicoSelecccionado
       if (JSON.stringify(data.horasSeleccionadas) !== '{}') {
@@ -129,7 +144,8 @@ export default function SolicitarCita ({ authId }) {
   if (JSON.stringify(paciente) === '{}' ||
   JSON.stringify(medicoSelecccionado) === '{}' ||
   JSON.stringify(medicos) === '{}' ||
-  JSON.stringify(dias) === '{}'
+  JSON.stringify(dias) === '{}' ||
+  JSON.stringify(medios) === '{}'
   ) {
     return (
       <Box sx={{ width: '100%' }}>
@@ -188,6 +204,22 @@ export default function SolicitarCita ({ authId }) {
         <TextField
                 select
                 fullWidth
+                label="Via"
+                value={medioSeleccionado}
+                {...registro('id_mediocita', { required: true })}
+                onChange = {(e) => { setMedioSeleccionado(e.target.value) } }
+              >
+                {medios.map((option) => (
+                  <MenuItem key={option.id_mediocita} value={option}>
+                    {option.medio}
+                  </MenuItem>))}
+          </TextField>
+        </Grid>
+
+        <Grid item xs = {5}>
+        <TextField
+                select
+                fullWidth
                 label="Doctor"
                 value={medicoSelecccionado}
                 {...registro('id_trabajador', { required: true })}
@@ -234,8 +266,20 @@ export default function SolicitarCita ({ authId }) {
         </Grid>
 
         <Grid item xs = {5}>
-          <TextField fullWidth id="precio" label="Precio" variant="outlined" value={precio.precio}
+          <TextField fullWidth id="precio" label="Precio" variant="outlined" value={precio.precio + medioSeleccionado.precio}
             {...registro('precio', { required: true })} InputProps={{ readOnly: true }}/>
+        </Grid>
+
+        <Grid item xs = {5}>
+          <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
+            returnTo: window.location.origin
+          })
+        }>
+          Atras</Button>
+        </Grid>
+
+        <Grid item xs = {5}>
+          <Button variant="contained" type = "submit" onClick={getInfoPacienteSubmit(onSubmit)} >Enviar</Button>
         </Grid>
 
         <Grid item xs = {5}>
@@ -252,18 +296,6 @@ export default function SolicitarCita ({ authId }) {
               <Button onClick={handleDiaClose}>OK</Button>
             </DialogActions>
           </Dialog>
-        </Grid>
-
-        <Grid item xs = {5}>
-          <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
-            returnTo: window.location.origin
-          })
-        }>
-          Atras</Button>
-        </Grid>
-
-        <Grid item xs = {5}>
-          <Button variant="contained" type = "submit" onClick={getInfoPacienteSubmit(onSubmit)} >Enviar</Button>
         </Grid>
 
       </Grid></Paper>
