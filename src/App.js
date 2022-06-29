@@ -17,6 +17,8 @@ import Personal from './personal/Personal'
 import ActivaUser from './personal/activaUser'
 import Calendario from './calendario/CalendarioMedicos'
 import CitasTable from './Paciente/ListCitas'
+import SolicitarCita from './Paciente/SolicitarCita'
+import MedicosHM from './Medicos/MedHM'
 
 import {
 
@@ -41,6 +43,7 @@ export default function App () {
         <Route path="data" element={<Dashboard />} />
         <Route path="info-paciente" element={<InfoPaciente />} />
         <Route path="turnos" element= {<Calendario/>} />
+        <Route path="solicitar-cita" element={<SolicitarCita />} />
         <Route path="info-admin" element={<InfoAdmin />} />
         <Route path="info-medico" element={<InfoMedico />} />
         <Route path="listcitas" element={<CitasTable />} />
@@ -50,6 +53,7 @@ export default function App () {
         <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
         <Route path="personal" element={<Personal/>} />
         <Route path="activa" element = {<ActivaUser/>} />
+        <Route path="RegistroHM" element = {<MedicosHM/>}/>
       </Route>
     </Routes>
   </UserContext.Provider>

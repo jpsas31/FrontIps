@@ -23,8 +23,17 @@ export default function DropdownLogin () {
         onClick={handleClick}
         variant="outlined"
         size="small"
+        sx={{
+          ml: 1,
+          '&.MuiButtonBase-root:hover': {
+            bgcolor: 'white'
+          },
+          bgcolor: 'white',
+          fontWeight: 'bold',
+          borderRadius: 2
+        }}
       >
-        Log In
+        Ingresar
       </Button>
       <Menu
         id="login-menu"

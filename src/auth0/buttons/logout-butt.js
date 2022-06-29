@@ -9,8 +9,17 @@ export const LogoutButton = () => {
       logout({
         returnTo: window.location.origin
       })
-    }>
-          Log Out
+    }
+    sx={{
+      ml: 1,
+      '&.MuiButtonBase-root:hover': {
+        bgcolor: 'white'
+      },
+      bgcolor: 'white',
+      fontWeight: 'bold',
+      borderRadius: 2
+    }}>
+          Cerrar Sesión
     </Button>
 
   )

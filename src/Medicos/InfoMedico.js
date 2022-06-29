@@ -25,7 +25,7 @@ export default function InfoMedico (props) {
   const {
     selectedAccessControlLevel,
     // apiEndpoint,
-    apiResponse,
+    // apiResponseMedico,
 
     getInfoMedico,
     updateMedico
@@ -34,6 +34,7 @@ export default function InfoMedico (props) {
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [medico, setMedico] = useState({})
+  const [message, setMessage] = useState('')
   const { user } = useAuth0()
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function InfoMedico (props) {
 
   const onSubmit = data => {
     setIsLoading(true)
-    updateMedico(data, user.sub)
+    updateMedico(data, user.sub, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsLoading(false)
@@ -50,7 +51,13 @@ export default function InfoMedico (props) {
   }
 
   const handleClickOpen = () => { setVisible(true) }
-  const handleClose = () => { setVisible(false) }
+  const handleClose = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible(false)
+    setMessage('')
+  }
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
   const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
@@ -201,11 +208,11 @@ export default function InfoMedico (props) {
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && apiResponse}
+            {!isLoading && message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
               Cerrar
             </Button>
           </DialogActions>

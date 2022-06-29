@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import AdjustIcon from '@mui/icons-material/Adjust'
 import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { Link } from 'react-router-dom'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import LayersIcon from '@mui/icons-material/Layers'
@@ -20,6 +21,7 @@ export default function MainListItemsPaciente () {
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Paciente" />
     </ListItemButton>
+
     <ListItemButton component={Link} to={'info-paciente'} >
         <ListItemIcon>
           <LayersIcon />
@@ -32,6 +34,14 @@ export default function MainListItemsPaciente () {
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Citas" />
     </ListItemButton>
+
+    <ListItemButton component={Link} to={'solicitar-cita'} >
+        <ListItemIcon>
+          <CalendarMonthIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Solicitar Cita" />
+    </ListItemButton>
+
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>
         <HomeIcon />

@@ -25,7 +25,7 @@ export default function InfoAdmin (props) {
   const {
     selectedAccessControlLevel,
     // apiEndpoint,
-    apiResponse,
+    // apiResponseAdmin,
 
     getInfoAdmin,
     updateAdmin
@@ -34,6 +34,7 @@ export default function InfoAdmin (props) {
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [admin, setAdmin] = useState({})
+  const [message, setMessage] = useState('')
   const { user } = useAuth0()
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function InfoAdmin (props) {
 
   const onSubmit = data => {
     setIsLoading(true)
-    updateAdmin(data, user.sub)
+    updateAdmin(data, user.sub, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsLoading(false)
@@ -50,7 +51,13 @@ export default function InfoAdmin (props) {
   }
 
   const handleClickOpen = () => { setVisible(true) }
-  const handleClose = () => { setVisible(false) }
+  const handleClose = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible(false)
+    setMessage('')
+  }
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
   const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
@@ -180,11 +187,11 @@ export default function InfoAdmin (props) {
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && apiResponse}
+            {!isLoading && message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
               Cerrar
             </Button>
           </DialogActions>
