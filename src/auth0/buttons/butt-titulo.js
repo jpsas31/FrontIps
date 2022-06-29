@@ -9,7 +9,7 @@ export const ButtonT = ({ titulo, action, returnTo }) => {
     <MenuItem className="button__sign-up" variant="outlined" size="small" onClick={() => {
       window.localStorage.setItem('tipo', titulo)
       loginWithRedirect({
-        action,
+        screen_hint: action,
         appState: {
           returnTo
         }
