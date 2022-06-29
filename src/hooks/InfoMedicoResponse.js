@@ -96,7 +96,7 @@ export const useExternalApi = () => {
     console.log(data)
   }
 
-  const updateMedico = async (datos, key) => {
+  const updateMedico = async (datos, key, setMessage) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
     setApiEndpointMedico('PUT /api/info-medico/actualizar-medico')
@@ -122,8 +122,13 @@ export const useExternalApi = () => {
       }
     }
 
-    await makeRequest({ config, authenticated: true })
-    setApiResponseMedico('Los datos han sido actualizados exitosamente')
+    const data = await makeRequest({ config, authenticated: true })
+
+    if (typeof data !== 'object') {
+      setMessage('Ha ocurrido un error con la conexión, intentalo nuevamente')
+    } else {
+      setMessage('Los datos han sido actualizados exitosamente')
+    }
   }
 
   const getMedicosByEspecialidad = async (datos, setMedicos) => {

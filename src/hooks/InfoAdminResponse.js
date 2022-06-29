@@ -95,7 +95,7 @@ export const useExternalApi = () => {
     // console.log(data)
   }
 
-  const updateAdmin = async (datos, key) => {
+  const updateAdmin = async (datos, key, setMessage) => {
     setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
     setApiEndpointAdmin('PUT /api/info-admin/actualizar-admin')
@@ -119,9 +119,13 @@ export const useExternalApi = () => {
       }
     }
 
-    await makeRequest({ config, authenticated: true })
+    const data = await makeRequest({ config, authenticated: true })
 
-    setApiResponseAdmin('Los datos han sido actualizados exitosamente')
+    if (typeof data !== 'object') {
+      setMessage('Ha ocurrido un error con la conexión, intentalo nuevamente')
+    } else {
+      setMessage('Los datos han sido actualizados exitosamente')
+    }
   }
 
   const getPacientes = async (setInfo) => {

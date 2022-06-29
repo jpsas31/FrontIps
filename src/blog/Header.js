@@ -2,8 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Toolbar from '@mui/material/Toolbar'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import SearchIcon from '@mui/icons-material/Search'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { Link as LinkRouter } from 'react-router-dom'
@@ -11,29 +9,28 @@ import { useAuth0 } from '@auth0/auth0-react'
 import DropdownLogin from './DropdownLogin'
 import DropdownRegister from './DropdownRegister'
 import { LogoutButton } from '../auth0/buttons/logout-butt'
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation'
+
 function Header (props) {
-  const { sections, title } = props
+  const { sections } = props
   const { isAuthenticated, user } = useAuth0()
   if (isAuthenticated) {
     console.log(user)
   }
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small">Subscribe</Button>
+      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'info.main' }}>
+        <MedicalInformationIcon sx={{ color: 'white' }} fontSize="large" />
         <Typography
           component="h2"
           variant="h5"
-          color="inherit"
-          align="center"
+          color="white"
+          align="left"
           noWrap
           sx={{ flex: 1 }}
         >
-          {title}
+          &nbsp;&nbsp;Ips salud en casa
         </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
         {!isAuthenticated && (
         <>
           <DropdownRegister /> &nbsp;&nbsp;&nbsp;
@@ -44,8 +41,17 @@ function Header (props) {
 
         <>
           <LogoutButton /> &nbsp;&nbsp;&nbsp;
-          <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}>
-              To Dashboard
+          <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}
+          sx={{
+            ml: 1,
+            '&.MuiButtonBase-root:hover': {
+              bgcolor: 'white'
+            },
+            bgcolor: 'white',
+            fontWeight: 'bold',
+            borderRadius: 2
+          }}>
+              Gestión
           </Button>
         </>
       )}
@@ -57,12 +63,18 @@ function Header (props) {
       >
         {sections.map((section) => (
           <Link
-            color="inherit"
+            color='#58595B'
             noWrap
             key={section.title}
-            variant="body2"
+            variant="button"
             href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
+            underline='none'
+            sx={{
+              p: 1,
+              flexShrink: 0,
+              fontWeight: 'bold',
+              textTransform: 'uppercase'
+            }}
           >
             {section.title}
           </Link>

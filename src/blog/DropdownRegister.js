@@ -22,8 +22,17 @@ export default function DropdownRegister () {
         onClick={handleClick}
         variant="outlined"
         size="small"
+        sx={{
+          ml: 1,
+          '&.MuiButtonBase-root:hover': {
+            bgcolor: 'white'
+          },
+          bgcolor: 'white',
+          fontWeight: 'bold',
+          borderRadius: 2
+        }}
       >
-        Sign up
+        Registrarse
       </Button>
       <Menu
         id="sign-menu"

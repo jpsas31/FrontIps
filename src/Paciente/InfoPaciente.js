@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Box from '@mui/material/Box'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import Button from '@mui/material/Button'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -26,7 +26,7 @@ export default function InfoPaciente (props) {
   const {
     selectedAccessControlLevelPaciente,
     // apiEndpoint,
-    apiResponsePaciente,
+    // apiResponsePaciente,
 
     getInfoPaciente,
     updatePaciente
@@ -34,6 +34,7 @@ export default function InfoPaciente (props) {
 
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [message, setMessage] = useState('')
   const [paciente, setPaciente] = useState({})
   const { user } = useAuth0()
 
@@ -49,7 +50,7 @@ export default function InfoPaciente (props) {
 
   const onSubmit = data => {
     setIsLoading(true)
-    updatePaciente(data, user.sub)
+    updatePaciente(data, user.sub, setMessage)
     handleClickOpen()
     setTimeout(() => {
       setIsLoading(false)
@@ -57,7 +58,13 @@ export default function InfoPaciente (props) {
   }
 
   const handleClickOpen = () => { setVisible(true) }
-  const handleClose = () => { setVisible(false) }
+  const handleClose = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible(false)
+    setMessage('')
+  }
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
 
@@ -216,11 +223,11 @@ export default function InfoPaciente (props) {
           <DialogContent>
             <DialogContentText>
             {isLoading && <CircularProgress />}
-            {!isLoading && apiResponsePaciente}
+            {!isLoading && message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
               Cerrar
             </Button>
           </DialogActions>
