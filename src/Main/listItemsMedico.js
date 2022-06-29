@@ -32,6 +32,7 @@ export default function MainListItemsMedico () {
           <CalendarTodayIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Turnos Medicos" />
+    </ListItemButton>
     <ListItemButton component={Link} to={'RegistroHM'}>
       <ListItemIcon>
         <LibraryBooksIcon/>

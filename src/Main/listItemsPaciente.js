@@ -8,7 +8,6 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { Link } from 'react-router-dom'
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import LayersIcon from '@mui/icons-material/Layers'
 
 export default function MainListItemsPaciente () {
