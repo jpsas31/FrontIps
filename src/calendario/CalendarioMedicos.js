@@ -75,7 +75,7 @@ export default function Calendario () {
   const [isLoading, setIsLoading] = useState(true)
   const handleClose = () => { setVisible(false) }
   const {
-    apiResponseTurno,
+    // apiResponseTurno,
     getTurnos,
     createTurno,
     deleteTurno
@@ -120,7 +120,7 @@ export default function Calendario () {
     const dateTwo = moment(selectInfo.start)
     const duration = dateOne.diff(dateTwo, 'hours', true)
     console.log(duration)
-    if (duration === 6 || duration === 12 || duration === 24) {
+    if (duration === 6 || duration === 12 || duration === 2 || duration === 4) {
       const info = {
         id: createEventId(),
         title: 'Turno',

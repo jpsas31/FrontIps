@@ -16,6 +16,7 @@ import UserContext from './context/user.context'
 import Personal from './personal/Personal'
 import ActivaUser from './personal/activaUser'
 import Calendario from './calendario/CalendarioMedicos'
+import CitasTable from './Paciente/ListCitas'
 
 import {
 
@@ -42,6 +43,7 @@ export default function App () {
         <Route path="turnos" element= {<Calendario/>} />
         <Route path="info-admin" element={<InfoAdmin />} />
         <Route path="info-medico" element={<InfoMedico />} />
+        <Route path="listcitas" element={<CitasTable />} />
         <Route path="info-usuarios" element={<InfoUsuarios />} />
         <Route path="RegistroPaciente" element={<AuthRedirect Component={Perfil} tipo='Paciente' />}/>
         <Route path="RegistroMedico" element={<AuthRedirect Component={RegMedicos} tipo= 'Medico' />} />

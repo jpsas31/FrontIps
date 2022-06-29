@@ -10,6 +10,7 @@ export default function AuthRedirect ({ Component, tipo }) {
   useEffect(() => {
     async function fetchData () {
       getUserInfo(user.sub).then((data) => {
+        console.log(data)
         if (data.logins_count !== 1 || tipo.localeCompare(window.localStorage.getItem('tipo')) !== 0) {
           nav('/')
         }
