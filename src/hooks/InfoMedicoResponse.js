@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEnv } from '../context/env.context'
+import Dia from '../components/Dia'
 
 export const AccessControlLevel = {
   PUBLIC: 'public',
@@ -130,13 +131,119 @@ export const useExternalApi = () => {
     }
   }
 
+  const getMedicosByEspecialidad = async (datos, setMedicos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infomedico-byespecialidad')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infomedico-byespecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_especialidad: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setMedicos(data)
+    return data
+  }
+
+  const getCitasByEspecialidad = async (datos, setPrecio) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/infocita-byespecialidad')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infocita-byespecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_especialidad: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setPrecio(data)
+    return data
+  }
+
+  const getTurnosByMedico = async (datos, setDias) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+    console.log(datos)
+    setApiEndpointMedico('POST /api/info-medico/infoturno-bymedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/infoturno-bymedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setDias(Dia(data))
+    return data
+  }
+
+  const getMedicoID = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/getmedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/getmedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseMedico(data)
+    return data
+  }
+
+  const createHM = async (datos) => {
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+    setApiEndpointMedico('PUT /api/info-medico/registrar-hm')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/registrar-hm`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos.id_trabajador,
+        id_paciente: datos.id_paciente,
+        descripcion_form: datos.descripcion_form,
+        descripcion: datos.descripcion,
+        fecha: datos.fecha
+      }
+    }
+
+    await makeRequest({ config, authenticated: true })
+    setApiResponseMedico('Los datos se han enviado correctamente')
+  }
+
   return {
     selectedAccessControlLevelMedico,
     apiEndpointMedico,
     apiResponseMedico,
     createMedico,
     getInfoMedico,
-    updateMedico
+    updateMedico,
+    getMedicosByEspecialidad,
+    getCitasByEspecialidad,
+    getTurnosByMedico,
+    getMedicoID,
+    createHM
     // getRbacResource,
     // checkCorsAllowedMethod
   }

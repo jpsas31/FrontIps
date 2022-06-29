@@ -171,7 +171,7 @@ export const useExternalApi = () => {
     return data
   }
 
-  const cambEstado = async (datos, setResponsePw) => {
+  const cambEstado = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
     setApiEndpointPaciente('PUT /api/info-paciente/cambEst-usuario')
     const config = {
@@ -189,6 +189,130 @@ export const useExternalApi = () => {
     setApiResponsePaciente('Los datos han sido actualizados exitosamente')
   }
 
+  const createCita = async (datos, key) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('PUT /api/info-paciente/crear-cita')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/crear-cita`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+
+        id_tipocita: datos.id_tipocita,
+        id_paciente: datos.id_paciente,
+        id_trabajador: datos.id_trabajador,
+        id_mediocita: datos.id_mediocita,
+        hora_entrada: datos.hora_entrada,
+        hora_salida: datos.hora_salida,
+        fecha: datos.fecha,
+        precio: datos.precio
+
+      }
+    }
+    await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente('La cita se ha registrado con exito')
+  }
+
+  const getCitasByMedico = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-citasByMedico')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-citasByMedico`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+
+        id_trabajador: datos.id_trabajador,
+        fecha: datos.fecha
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
+  const getCitaMedios = async (datos, setMedios) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-citamedio')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-citamedio`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_mediocita: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    console.log('imprimmiendo medios desde el response', data)
+    setMedios(data)
+    return data
+  }
+
+  const getPacienteInfo = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-paciente-porid')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-paciente-porid`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_paciente: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
+  const getHM = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/getHM')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/getHM`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_paciente: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
+  const getInfoHM = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointPaciente('POST /api/info-paciente/getInfoHM')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/getInfoHM`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_entrada: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
   return {
     selectedAccessControlLevelPaciente,
     apiEndpointPaciente,
@@ -198,7 +322,13 @@ export const useExternalApi = () => {
     createPaciente,
     consultaPacientes,
     consultaTrabajadores,
-    cambEstado
+    cambEstado,
+    createCita,
+    getCitasByMedico,
+    getPacienteInfo,
+    getHM,
+    getInfoHM,
+    getCitaMedios
     // getRbacResource,
     // checkCorsAllowedMethod
   }
