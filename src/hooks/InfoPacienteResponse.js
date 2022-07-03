@@ -10,6 +10,26 @@ export const AccessControlLevel = {
   // CORS: 'requires-cors-allowed-method'
 }
 
+export function base64ToArrayBuffer (base64) {
+  const binaryString = window.atob(base64)
+  const binaryLen = binaryString.length
+  const bytes = new Uint8Array(binaryLen)
+  for (let i = 0; i < binaryLen; i++) {
+    const ascii = binaryString.charCodeAt(i)
+    bytes[i] = ascii
+  }
+  return bytes
+}
+
+export function createAndDownloadBlobFile (reportName, byte) {
+  const blob = new Blob([byte], { type: 'application/pdf' })
+  const link = document.createElement('a')
+  link.href = window.URL.createObjectURL(blob)
+  const fileName = reportName
+  link.download = fileName
+  link.click()
+}
+
 export const useExternalApi = () => {
   const [apiEndpointPaciente, setApiEndpointPaciente] = useState('')
   const [apiResponsePaciente, setApiResponsePaciente] = useState(
@@ -313,6 +333,46 @@ export const useExternalApi = () => {
     return data
   }
 
+  const uploadFile = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('POST /api/info-paciente/subir-archivo')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/subir-archivo`,
+      method: 'POST',
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      data: datos
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    console.log(data)
+  }
+
+  const getFile = async (datos) => {
+    console.log(datos)
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('POST /api/info-paciente/consultar-antecedente')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/consultar-antecedente`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_paciente: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    const base64Pdf = data[0].encode
+    const sampleArr = base64ToArrayBuffer(base64Pdf)
+    createAndDownloadBlobFile('Sample Report', sampleArr)
+    // setDownloadedFile(data)
+  }
+
   return {
     selectedAccessControlLevelPaciente,
     apiEndpointPaciente,
@@ -328,7 +388,9 @@ export const useExternalApi = () => {
     getPacienteInfo,
     getHM,
     getInfoHM,
-    getCitaMedios
+    getCitaMedios,
+    uploadFile,
+    getFile
     // getRbacResource,
     // checkCorsAllowedMethod
   }

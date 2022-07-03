@@ -75,7 +75,7 @@ export const useExternalApi = () => {
   }
 
   const getInfoMedico = async (datos, setAdmin) => {
-    console.log(datos)
+    // console.log(datos)
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
 
     setApiEndpointMedico('POST /api/info-medico/infomedico')
@@ -93,7 +93,7 @@ export const useExternalApi = () => {
     const data = await makeRequest({ config, authenticated: true })
     setApiResponseMedico(data)
     setAdmin(data)
-    console.log(data)
+    // console.log(data)
   }
 
   const updateMedico = async (datos, key, setMessage) => {
@@ -173,7 +173,7 @@ export const useExternalApi = () => {
 
   const getTurnosByMedico = async (datos, setDias) => {
     setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
-    console.log(datos)
+    // console.log(datos)
     setApiEndpointMedico('POST /api/info-medico/infoturno-bymedico')
     const config = {
       url: `${apiServerUrl}/api/info-medico/infoturno-bymedico`,

@@ -219,7 +219,8 @@ export default function TableMedicos (props) {
             control={<TextField
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                readOnly: true
               }}
               sx={{ width: '40ch' }}
             />

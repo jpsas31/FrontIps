@@ -107,12 +107,18 @@ export default function InfoMedico (props) {
                 <TextField
                   label="Nombre"
                   defaultValue = {medico.nombre}
+                  inputProps={{
+                    maxLength: 25
+                  }}
                   {...registro('nombre', { required: true })}
                   sx={{ mx: 1, my: 2, width: '20ch' }}
                 />
                 <TextField
                   label="Apellido"
                   defaultValue = {medico.apellido}
+                  inputProps={{
+                    maxLength: 40
+                  }}
                   {...registro('apellido', { required: true })}
                   sx={{ mx: 1, my: 2, width: '30ch' }}
                 />
@@ -138,6 +144,9 @@ export default function InfoMedico (props) {
                     id="textfield-direccion"
                     label="Dirección"
                     defaultValue = {medico.direccion}
+                    inputProps={{
+                      maxLength: 30
+                    }}
                     {...registro('direccion', { required: true })}
                     sx={{ mx: 1, my: 2, width: '30ch' }}
                   />
@@ -145,6 +154,9 @@ export default function InfoMedico (props) {
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
                     type = "number"
+                    inputProps={{
+                      maxLength: 15
+                    }}
                     defaultValue={medico.telefono}
                     {...registro('telefono', { required: true })}
                   />

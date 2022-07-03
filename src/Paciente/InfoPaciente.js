@@ -113,11 +113,17 @@ export default function InfoPaciente (props) {
                   label="Nombre"
                   defaultValue = {paciente.nombre}
                   {...registro('nombre', { required: true })}
+                  inputProps={{
+                    maxLength: 25
+                  }}
                   sx={{ mx: 1, my: 2, width: '20ch' }}
                 />
                 <TextField
                   label="Apellido"
                   defaultValue = {paciente.apellido}
+                  inputProps={{
+                    maxLength: 40
+                  }}
                   {...registro('apellido', { required: true })}
                   sx={{ mx: 1, my: 2, width: '30ch' }}
                 />
@@ -128,6 +134,9 @@ export default function InfoPaciente (props) {
                     id="textfield-direccion"
                     label="Dirección"
                     defaultValue = {paciente.direccion}
+                    inputProps={{
+                      maxLength: 30
+                    }}
                     {...registro('direccion', { required: true })}
                     sx={{ mx: 1, my: 2, width: '30ch' }}
                   />
@@ -143,7 +152,6 @@ export default function InfoPaciente (props) {
                         isOptionEqualToValue={(option, value) => option.value === value.value}
                         renderInput = {(params) => (
                           <TextField
-                            required
                             {...params}
                             label = "Ciudad"
                             sx={{ mx: 1, my: 2, width: '25ch' }}
@@ -166,6 +174,9 @@ export default function InfoPaciente (props) {
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
                     type = "number"
+                    inputProps={{
+                      maxLength: 15
+                    }}
                     defaultValue={paciente.telefono}
                     {...registro('telefono', { required: true })}
                   />

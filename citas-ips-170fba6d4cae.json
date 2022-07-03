@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "citas-ips",
+  "private_key_id": "170fba6d4caed786ce52279b15a19df3ead19790",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC52zvpGJhDalzB\nMDkmlvuGelCfzYjLWcJYNMpB6CSE5ClPOwllIBCFHSLEs35Y/m3vRJPOA1mI2RJt\nKJcufV2odPxEz8t+Xm0Sl8LLoSowS6GbrNmx4OGUIB8dk+M6/B116vZYHDBNfeSz\n5XzFJdFgb3L1HZFQmxYPFChno3IW2UvDcM5q7l45Iwx3538Afp1SyF8uuKZEUyuC\nn6aDWaTtP5s+wFx5QpyLuhbpuDyEXu498Ct0eXPyvHlA6Y9dG9/Sp/O3FavNh/4E\n+4FKblvvy6VFOpPtHnijZBU/QXVYI/wRvDyt/Eu7QRua7R/+S0+S6DTy6nhC3u0V\n/cF/KBOxAgMBAAECggEAHGwOtiec92hPXXrYrpJVzjur0zhdFE36dr9B9ADCfvEe\ncR+j4Otdo2GwhLi3WHg2SyonWVCxU0hw9TEJJ6Kj3URgpMxLQBzEHN0I/Nd9amvS\nf8pX80gi7yJXZ9BLJmTSQ4tmV1SePWeEf09XvJV7Nr5sa9g09gj1f2JTiH/aDWy0\nXn+czRlhqbh3kgIkqITlT5Y4d1G60D5mtQCZVRrUWuIO3JZFOBiULL8zFh89KHgn\nPdo3ngJBgDzNRjZcyadfJydZVLB5TOORs9dya+T951X3Gkz9l7iSZaJkdFZpPHMe\nmPcU5AKM7g/XcGRGFH7QtXIdAr98raHcwQ4mFfRoXQKBgQDazAh+4gGBNwOXkLOH\nmwKLWLjwGwhT8sbYFle3tX7llbBjFhWq5y+174mnmG/QOtsA4Hdgm6gg2I9xbaiz\nW+vekRtfHQ+MOCZdN0XsND0PTrziBsPWsJ731duTfPga8PnlDm/LL1BbSDt69V2y\nJDCEUUYnpLTUlOAMGICoPfOsvQKBgQDZdVXzRH2NYZmT1idjdYL4oc0sbwuXHQT/\n2sXdZ22679FvDCNYaMGsSwqxU1s6d17BqsD1f43OsWpnc7svhIHbRdCW7NO7vSE+\nh0u2RXS+rWlAO5GU1z2hdFxsaWf4m69SZGcbkldklbcnCuJzlf8ZlzHD7GyIlOrm\nj4pj6InEBQKBgFA5i8vqVp7oaxrB5fIM9kvdxkHTx6PwWtSUrKkhlVvdHQXX7S3z\nAt107UZUcHsreW3C4EK+EFGq1j3C9Z5+T+gV0LF5WGATno2DXNIU/WaFemBuFpS7\nwi4hbheQNPC79wTz3C3mNVKjE5wsJ6TP/DIoEs8qZ1ujEtuciGAoBxcJAoGAIcqh\n+JOEDxxDiT2WEVaJa6l5AJag7nKL/FY6uRUBcDMkEGWKeIqOzf87QiL54jP6fY3T\nPlL77kqThk/tnoywwSowJ8PVgy74o4bStRhF8/tuh5S6Iq7v3M8ALbiTd4Z50Ava\nGea7vd2mAGMonV2JrqhYC2IJ24+IkRttHelcvyECgYB5W8DItm5oLFRK4MVfKJwz\nHLEFpw4ZrxC32YgIDgifJbjC8XboiiJe+1t6pHP0fPVTUaxRDOyOJqA7tCEJGbhS\n4XL/f5w4zJBJuHGmlHSjKVfYKxWGNIOArRk+5HU5b1nl6dn2ecOGsuTbq3PVHd/Q\nDS7pJYLDh6FtjYSjtugR6g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "amiguisips@citas-ips.iam.gserviceaccount.com",
+  "client_id": "107578789782732781248",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/amiguisips%40citas-ips.iam.gserviceaccount.com"
+}

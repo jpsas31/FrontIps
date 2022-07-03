@@ -63,7 +63,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 30
               }}
               sx={{ width: '18ch' }}
             />
@@ -85,7 +86,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 25
               }}
               sx={{ width: '20ch' }}
             />
@@ -107,7 +109,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 40
               }}
               sx={{ width: '30ch' }}
             />
@@ -129,7 +132,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 30
               }}
               sx={{ width: '30ch' }}
             />
@@ -180,7 +184,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 15
               }}
               sx={{ width: '15ch' }}
             />
@@ -202,7 +207,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                readOnly: true
               }}
               sx={{ width: '40ch' }}
             />
@@ -225,7 +231,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 3
               }}
               sx={{ width: '7ch' }}
             />
