@@ -367,10 +367,10 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    const base64Pdf = data[0].encode
+    // const base64Pdf = data[0].encode // Esta es para cuando tenemos el bytea
+    const base64Pdf = data.antecedentes
     const sampleArr = base64ToArrayBuffer(base64Pdf)
-    createAndDownloadBlobFile('Sample Report', sampleArr)
-    // setDownloadedFile(data)
+    createAndDownloadBlobFile('Antecedentes ' + data.id, sampleArr)
   }
 
   return {
