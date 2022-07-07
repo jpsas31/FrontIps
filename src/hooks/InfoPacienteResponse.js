@@ -333,25 +333,30 @@ export const useExternalApi = () => {
     return data
   }
 
-  const uploadFile = async (datos) => {
-    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+  const uploadFile = async (datos, setPdfResponse) => {
+    try {
+      setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
-    setApiEndpointPaciente('POST /api/info-paciente/subir-archivo')
-    const config = {
-      url: `${apiServerUrl}/api/info-paciente/subir-archivo`,
-      method: 'POST',
-      headers: {
-        'content-type': 'multipart/form-data'
-      },
-      data: datos
+      setApiEndpointPaciente('POST /api/info-paciente/subir-archivo')
+      const config = {
+        url: `${apiServerUrl}/api/info-paciente/subir-archivo`,
+        method: 'POST',
+        headers: {
+          'content-type': 'multipart/form-data'
+        },
+        data: datos
+      }
+
+      await makeRequest({ config, authenticated: true })
+      // console.log(data)
+      setPdfResponse('Cargado completado')
+    } catch (error) {
+      setPdfResponse('Hubo un error en la carga, intentalo de nuevo')
     }
-
-    const data = await makeRequest({ config, authenticated: true })
-    console.log(data)
   }
 
   const getFile = async (datos) => {
-    console.log(datos)
+    // console.log(datos)
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpointPaciente('POST /api/info-paciente/consultar-antecedente')
@@ -368,9 +373,11 @@ export const useExternalApi = () => {
 
     const data = await makeRequest({ config, authenticated: true })
     // const base64Pdf = data[0].encode // Esta es para cuando tenemos el bytea
-    const base64Pdf = data.antecedentes
-    const sampleArr = base64ToArrayBuffer(base64Pdf)
-    createAndDownloadBlobFile('Antecedentes ' + data.id, sampleArr)
+    if (JSON.stringify(data) !== '{}') {
+      const base64Pdf = data.antecedentes
+      const sampleArr = base64ToArrayBuffer(base64Pdf)
+      createAndDownloadBlobFile('Antecedentes ' + data.id, sampleArr)
+    }
   }
 
   return {

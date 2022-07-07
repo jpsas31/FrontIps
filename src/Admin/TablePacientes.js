@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import BorderColorIcon from '@mui/icons-material/BorderColor'
+import Button from '@mui/material/Button'
 
 export default function TablePacientes (props) {
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -273,14 +274,11 @@ export default function TablePacientes (props) {
           <FormControlLabel
             label=""
             value={value}
-            control={<TextField
-              label=""
-              variant="standard"
-              InputProps={{
-                disableUnderline: true
-              }}
-              sx={{ width: '20ch' }}
-            />
+            control={<Button onClick={() => props.obtenerAnt(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${
+              props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
+              'messages-grid__option--active'}`}>
+              Descargar
+            </Button>
             }
             onChange={event => updateValue(event.target.value)}
           />

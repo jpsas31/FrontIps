@@ -34,7 +34,8 @@ export default function InfoAdmin (props) {
     // apiEndpoint,
     // apiResponsePaciente,
 
-    updatePaciente
+    updatePaciente,
+    getFile
   } = useExternalApiPaciente()
 
   const {
@@ -193,6 +194,10 @@ export default function InfoAdmin (props) {
     }, 2000)
   }
 
+  const obtenerAnt = (data) => {
+    getFile(data[0])
+  }
+
   return (
         <>
           {(info === 'waiting') && <LinearProgress />}
@@ -227,6 +232,7 @@ export default function InfoAdmin (props) {
               selectedAccessControlLevelPaciente={selectedAccessControlLevelPaciente}
               AccessControlLevelPaciente={AccessControlLevelPaciente}
               actualizarPaciente = {actualizarPaciente}
+              obtenerAnt = {obtenerAnt}
             />
           }
           {(info !== 'waiting' && info !== '' && isUpdated && selMedico) &&

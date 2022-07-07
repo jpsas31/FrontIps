@@ -40,13 +40,16 @@ export default function MainListItemsPaciente () {
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Solicitar Cita" />
     </ListItemButton>
-
-    <ListItemButton component={Link} to={'prueba-files'} >
+    {
+      /*
+      <ListItemButton component={Link} to={'prueba-files'} >
         <ListItemIcon>
           <CalendarMonthIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Archivos" />
-    </ListItemButton>
+      </ListItemButton>
+      */
+    }
 
     <ListItemButton component={Link} to={'/'}>
       <ListItemIcon>

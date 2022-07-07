@@ -20,6 +20,10 @@ import Autocomplete from '@mui/material/Autocomplete'
 import Paper from '@mui/material/Paper'
 import LinearProgress from '@mui/material/LinearProgress'
 import { useAuth0 } from '@auth0/auth0-react'
+import { styled } from '@mui/material/styles'
+import Snackbar from '@mui/material/Snackbar'
+import CloseIcon from '@mui/icons-material/Close'
+import IconButton from '@mui/material/IconButton'
 
 export default function InfoPaciente (props) {
   const { control, handleSubmit: getInfoPacienteSubmit, register: registro } = useForm()
@@ -29,14 +33,19 @@ export default function InfoPaciente (props) {
     // apiResponsePaciente,
 
     getInfoPaciente,
-    updatePaciente
+    updatePaciente,
+    uploadFile,
+    getFile
   } = useExternalApi()
 
   const [visible, setVisible] = useState(false)
+  const [visible2, setVisible2] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [pdfResponse, setPdfResponse] = useState('')
   const [message, setMessage] = useState('')
   const [paciente, setPaciente] = useState({})
   const { user } = useAuth0()
+  const [file, setFile] = useState(null)
 
   const ciudades = [
     { value: 'Cali', label: 'Cali' },
@@ -57,7 +66,40 @@ export default function InfoPaciente (props) {
     }, 2000)
   }
 
-  const handleClickOpen = () => { setVisible(true) }
+  const getPdf = () => {
+    getFile(user.sub)
+  }
+
+  const Input = styled('input')({
+    display: 'none'
+  })
+
+  const selectFile = e => {
+    setFile(e.target.files[0])
+  }
+
+  const sendFile = () => {
+    if (!file) {
+      alert('Debes de cargar un archivo')
+      return
+    }
+
+    const formdata = new FormData()
+    formdata.append('archivo', file)
+    formdata.append('usuario', user.sub)
+
+    uploadFile(formdata, setPdfResponse)
+    handleClickOpen2()
+
+    document.getElementById('fileinput').value = null
+
+    setFile(null)
+  }
+
+  const handleClickOpen = () => {
+    setVisible(true)
+  }
+
   const handleClose = (event, reason) => {
     if (reason && reason === 'backdropClick') {
       return
@@ -65,6 +107,31 @@ export default function InfoPaciente (props) {
     setVisible(false)
     setMessage('')
   }
+
+  const handleClickOpen2 = () => { setVisible2(true) }
+  const handleClose2 = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible2(false)
+    setMessage('')
+  }
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose2}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose2}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  )
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
 
@@ -213,12 +280,48 @@ export default function InfoPaciente (props) {
                   {...registro('correo', { required: true })}
                   sx={{ mx: 1, my: 2, width: '40ch' }}
                 />
-                <a href='http://www.africau.edu/images/default/sample.pdf' download='prueba.pdf'>
-                  <Button variant = 'contained' sx={{ mx: 1, my: 2, width: '20ch' }}>
-                    Antecedentes
-                  </Button>
-                </a>
               </div>
+              <div>
+                  <Typography
+                    component="h2"
+                    color="black"
+                    align="left"
+                    noWrap
+                    sx={{ mx: 1 }}
+                  >
+                    Antecedentes
+                  </Typography>
+                    <label htmlFor='fileinput'>
+                    <Input onChange = {selectFile} id='fileinput' multiple type="file" />
+                    <Button variant="contained" component="span" className={`messages-grid__option ${
+                    selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+                    'messages-grid__option--active'
+                    }` } sx={{ mx: 1, my: 2 }}>
+                      Seleccionar archivo
+                    </Button>
+                    </label>
+                    <Button onClick={sendFile} variant="contained" className={`messages-grid__option ${
+                      selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+                      'messages-grid__option--active'
+                    }` } sx={{ mx: 1, my: 2 }}>
+                      Actualizar
+                    </Button>
+                    {paciente.antecedentes !== '' &&
+                      <Button onClick={getPdf} variant="contained" className={`messages-grid__option ${
+                        selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+                        'messages-grid__option--active'
+                      }` } sx={{ mx: 1, my: 2 }}>
+                        Descargar
+                      </Button>
+                    }
+                    <Snackbar
+                      open={visible2}
+                      autoHideDuration={6000}
+                      onClose={handleClose2}
+                      message={pdfResponse}
+                      action={action}
+                    />
+                </div>
             </form>
           </Paper>
         </Container>
