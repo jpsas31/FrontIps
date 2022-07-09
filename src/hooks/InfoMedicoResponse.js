@@ -11,6 +11,26 @@ export const AccessControlLevel = {
   // CORS: 'requires-cors-allowed-method'
 }
 
+export function base64ToArrayBuffer (base64) {
+  const binaryString = window.atob(base64)
+  const binaryLen = binaryString.length
+  const bytes = new Uint8Array(binaryLen)
+  for (let i = 0; i < binaryLen; i++) {
+    const ascii = binaryString.charCodeAt(i)
+    bytes[i] = ascii
+  }
+  return bytes
+}
+
+export function createAndDownloadBlobFile (reportName, byte) {
+  const blob = new Blob([byte], { type: 'application/pdf' })
+  const link = document.createElement('a')
+  link.href = window.URL.createObjectURL(blob)
+  const fileName = reportName
+  link.download = fileName
+  link.click()
+}
+
 export const useExternalApi = () => {
   const [apiEndpointMedico, setApiEndpointMedico] = useState('')
   const [apiResponseMedico, setApiResponseMedico] = useState(
@@ -232,6 +252,52 @@ export const useExternalApi = () => {
     setApiResponseMedico('Los datos se han enviado correctamente')
   }
 
+  const uploadFile = async (datos, setPdfResponse) => {
+    try {
+      setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+      setApiEndpointMedico('POST /api/info-medico/subir-archivo')
+      const config = {
+        url: `${apiServerUrl}/api/info-medico/subir-archivo`,
+        method: 'POST',
+        headers: {
+          'content-type': 'multipart/form-data'
+        },
+        data: datos
+      }
+
+      await makeRequest({ config, authenticated: true })
+      // console.log(data)
+      setPdfResponse('Cargado completado')
+    } catch (error) {
+      setPdfResponse('Hubo un error en la carga, intentalo de nuevo')
+    }
+  }
+
+  const getFile = async (datos) => {
+    // console.log(datos)
+    setSelectedAccessControlLevelMedico(AccessControlLevel.PROTECTED)
+
+    setApiEndpointMedico('POST /api/info-medico/consultar-certificado')
+    const config = {
+      url: `${apiServerUrl}/api/info-medico/consultar-certificado`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_trabajador: datos
+      }
+    }
+
+    const data = await makeRequest({ config, authenticated: true })
+    // const base64Pdf = data[0].encode // Esta es para cuando tenemos el bytea
+    if (JSON.stringify(data) !== '{}') {
+      const base64Pdf = data.certificacion_del_titulo
+      const sampleArr = base64ToArrayBuffer(base64Pdf)
+      createAndDownloadBlobFile('Certificado ' + data.id, sampleArr)
+    }
+  }
+
   return {
     selectedAccessControlLevelMedico,
     apiEndpointMedico,
@@ -243,7 +309,9 @@ export const useExternalApi = () => {
     getCitasByEspecialidad,
     getTurnosByMedico,
     getMedicoID,
-    createHM
+    createHM,
+    uploadFile,
+    getFile
     // getRbacResource,
     // checkCorsAllowedMethod
   }
