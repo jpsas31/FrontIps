@@ -7,12 +7,8 @@ export default function ProtectedRoute ({ component, ...args }) {
   const { getUserInfo } = useAuthApi()
   useEffect(() => {
     async function fetchData () {
-      let tipo = ''
-      if (window.localStorage.getItem('tipo').localeCompare('Paciente') === 0) {
-        tipo = 'paciente'
-      } else {
-        tipo = 'trabajador'
-      }
+      const tipo = window.localStorage.getItem('tipo')
+
       getUserInfo(user.sub).then((data) => {
         if ((tipo.localeCompare(data.tipo_usuario) !== 0 || !data.estado) && data.logins_count !== 1) {
           logout({
