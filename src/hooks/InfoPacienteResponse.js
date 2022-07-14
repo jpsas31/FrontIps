@@ -313,6 +313,44 @@ export const useExternalApi = () => {
     return data
   }
 
+  const getPacienteAUTH = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('POST /api/info-paciente/getpacienteporAUTH')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/getpacienteporAUTH`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_paciente: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
+  const getDeltaToHTML = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+
+    setApiEndpointPaciente('POST /api/info-paciente/getHTML')
+    const config = {
+      url: `${apiServerUrl}/api/info-paciente/getHTML`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        datos_toConvert: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponsePaciente(data)
+    return data
+  }
+
   return {
     selectedAccessControlLevelPaciente,
     apiEndpointPaciente,
@@ -328,7 +366,9 @@ export const useExternalApi = () => {
     getPacienteInfo,
     getHM,
     getInfoHM,
-    getCitaMedios
+    getCitaMedios,
+    getPacienteAUTH,
+    getDeltaToHTML
     // getRbacResource,
     // checkCorsAllowedMethod
   }

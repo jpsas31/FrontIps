@@ -24,6 +24,7 @@ export default function MostrarHM ({ aparezco, functionDescargar, historia, func
 
   useEffect(() => {
     if (typeof paciente === 'undefined' || typeof doctor === 'undefined' || typeof formula === 'undefined' || typeof descripcion === 'undefined' || typeof descripcionForm === 'undefined') {
+      console.log('no funciona')
       setLoading(false)
     } else {
       setLoading(true)
@@ -31,6 +32,7 @@ export default function MostrarHM ({ aparezco, functionDescargar, historia, func
   }, [paciente, doctor, formula, descripcion, descripcionForm])
 
   if (loading) {
+    console.log('hola aqui', typeof descripcion)
     return (
         <div>
           <Container maxWidth = 'lg' sx = {{ display: 'flex', flexDirection: 'column', mb: 2 }}>
