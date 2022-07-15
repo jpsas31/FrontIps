@@ -20,6 +20,8 @@ import CitasTable from './Paciente/ListCitas'
 import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
 import RegistroHM from './Paciente/RegistroHM'
+import Archivos from './Paciente/Archivos'
+
 
 import {
 
@@ -42,6 +44,7 @@ export default function App () {
         />
         <Route path="inicio" element={<Inicio />} />
         <Route path="data" element={<Dashboard />} />
+        <Route path="prueba-files" element={<Archivos />} />
         <Route path="info-paciente" element={<InfoPaciente />} />
         <Route path="turnos" element= {<Calendario/>} />
         <Route path="solicitar-cita" element={<SolicitarCita />} />

@@ -34,7 +34,8 @@ export default function InfoAdmin (props) {
     // apiEndpoint,
     // apiResponsePaciente,
 
-    updatePaciente
+    updatePaciente,
+    getFile: getFilePaciente
   } = useExternalApiPaciente()
 
   const {
@@ -42,7 +43,8 @@ export default function InfoAdmin (props) {
     // apiEndpoint,
     // apiResponseMedico,
 
-    updateMedico
+    updateMedico,
+    getFile: getFileMedico
   } = useExternalApiMedico()
 
   const [info, setInfo] = useState('')
@@ -193,6 +195,14 @@ export default function InfoAdmin (props) {
     }, 2000)
   }
 
+  const obtenerAnt = (data) => {
+    getFilePaciente(data[0])
+  }
+
+  const obtenerCert = (data) => {
+    getFileMedico(data[0])
+  }
+
   return (
         <>
           {(info === 'waiting') && <LinearProgress />}
@@ -227,6 +237,7 @@ export default function InfoAdmin (props) {
               selectedAccessControlLevelPaciente={selectedAccessControlLevelPaciente}
               AccessControlLevelPaciente={AccessControlLevelPaciente}
               actualizarPaciente = {actualizarPaciente}
+              obtenerAnt = {obtenerAnt}
             />
           }
           {(info !== 'waiting' && info !== '' && isUpdated && selMedico) &&
@@ -235,6 +246,7 @@ export default function InfoAdmin (props) {
             selectedAccessControlLevelMedico={selectedAccessControlLevelMedico}
             AccessControlLevelMedico={AccessControlLevelMedico}
             actualizarMedico = {actualizarMedico}
+            obtenerCert = {obtenerCert}
           />
           }
           {(info !== 'waiting' && info !== '' && isUpdated && selAdmin) &&

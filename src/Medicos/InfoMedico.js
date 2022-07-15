@@ -19,6 +19,10 @@ import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import LinearProgress from '@mui/material/LinearProgress'
 import { useAuth0 } from '@auth0/auth0-react'
+import { styled } from '@mui/material/styles'
+import Snackbar from '@mui/material/Snackbar'
+import CloseIcon from '@mui/icons-material/Close'
+import IconButton from '@mui/material/IconButton'
 
 export default function InfoMedico (props) {
   const { handleSubmit: getInfoMedicoSubmit, register: registro } = useForm()
@@ -28,7 +32,9 @@ export default function InfoMedico (props) {
     // apiResponseMedico,
 
     getInfoMedico,
-    updateMedico
+    updateMedico,
+    uploadFile,
+    getFile
   } = useExternalApi()
 
   const [visible, setVisible] = useState(false)
@@ -36,6 +42,9 @@ export default function InfoMedico (props) {
   const [medico, setMedico] = useState({})
   const [message, setMessage] = useState('')
   const { user } = useAuth0()
+  const [file, setFile] = useState(null)
+  const [pdfResponse, setPdfResponse] = useState('')
+  const [visible2, setVisible2] = useState(false)
 
   useEffect(() => {
     getInfoMedico(user.sub, setMedico)
@@ -62,6 +71,61 @@ export default function InfoMedico (props) {
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
   const cargos = [{ value: 1, label: 'Admin' }, { value: 2, label: 'Médico' }]
   const especialidades = [{ value: 1, label: 'General' }, { value: 2, label: 'Psicologia' }, { value: 3, label: 'Pediatria' }, { value: 4, label: 'Cardiologia' }, { value: 5, label: 'Dermatologia' }, { value: 6, label: 'Oftalmologia' }]
+
+  const handleClickOpen2 = () => { setVisible2(true) }
+  const handleClose2 = (event, reason) => {
+    if (reason && reason === 'backdropClick') {
+      return
+    }
+    setVisible2(false)
+    setMessage('')
+  }
+
+  const getPdf = () => {
+    getFile(user.sub)
+  }
+
+  const Input = styled('input')({
+    display: 'none'
+  })
+
+  const selectFile = e => {
+    setFile(e.target.files[0])
+  }
+
+  const sendFile = () => {
+    if (!file) {
+      alert('Debes de cargar un archivo')
+      return
+    }
+
+    const formdata = new FormData()
+    formdata.append('archivo', file)
+    formdata.append('usuario', user.sub)
+
+    uploadFile(formdata, setPdfResponse)
+    handleClickOpen2()
+
+    document.getElementById('fileinput').value = null
+
+    setFile(null)
+  }
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose2}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose2}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  )
 
   if (JSON.stringify(medico) === '{}') {
     return (
@@ -107,12 +171,18 @@ export default function InfoMedico (props) {
                 <TextField
                   label="Nombre"
                   defaultValue = {medico.nombre}
+                  inputProps={{
+                    maxLength: 25
+                  }}
                   {...registro('nombre', { required: true })}
                   sx={{ mx: 1, my: 2, width: '20ch' }}
                 />
                 <TextField
                   label="Apellido"
                   defaultValue = {medico.apellido}
+                  inputProps={{
+                    maxLength: 40
+                  }}
                   {...registro('apellido', { required: true })}
                   sx={{ mx: 1, my: 2, width: '30ch' }}
                 />
@@ -138,6 +208,9 @@ export default function InfoMedico (props) {
                     id="textfield-direccion"
                     label="Dirección"
                     defaultValue = {medico.direccion}
+                    inputProps={{
+                      maxLength: 30
+                    }}
                     {...registro('direccion', { required: true })}
                     sx={{ mx: 1, my: 2, width: '30ch' }}
                   />
@@ -145,6 +218,9 @@ export default function InfoMedico (props) {
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
                     type = "number"
+                    inputProps={{
+                      maxLength: 15
+                    }}
                     defaultValue={medico.telefono}
                     {...registro('telefono', { required: true })}
                   />
@@ -186,12 +262,48 @@ export default function InfoMedico (props) {
                     }}
                     {...registro('salario', { required: true })}
                   />
-                <a href='http://www.africau.edu/images/default/sample.pdf' download='prueba.pdf'>
-                  <Button variant = 'contained' sx={{ mx: 1, my: 2, width: '20ch' }}>
-                    Certificado
-                  </Button>
-                </a>
               </div>
+              <div>
+                  <Typography
+                    component="h2"
+                    color="black"
+                    align="left"
+                    noWrap
+                    sx={{ mx: 1 }}
+                  >
+                    Certificado
+                  </Typography>
+                    <label htmlFor='fileinput'>
+                    <Input onChange = {selectFile} id='fileinput' multiple type="file" />
+                    <Button variant="contained" component="span" className={`messages-grid__option ${
+                    selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                    'messages-grid__option--active'
+                    }` } sx={{ mx: 1, my: 2 }}>
+                      Seleccionar archivo
+                    </Button>
+                    </label>
+                    <Button onClick={sendFile} variant="contained" className={`messages-grid__option ${
+                      selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                      'messages-grid__option--active'
+                    }` } sx={{ mx: 1, my: 2 }}>
+                      Actualizar
+                    </Button>
+                    {medico.medicos.certificacion_del_titulo !== '' &&
+                      <Button onClick={getPdf} variant="contained" className={`messages-grid__option ${
+                        selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                        'messages-grid__option--active'
+                      }` } sx={{ mx: 1, my: 2 }}>
+                        Descargar
+                      </Button>
+                    }
+                    <Snackbar
+                      open={visible2}
+                      autoHideDuration={6000}
+                      onClose={handleClose2}
+                      message={pdfResponse}
+                      action={action}
+                    />
+                </div>
             </form>
           </Paper>
         </Container>

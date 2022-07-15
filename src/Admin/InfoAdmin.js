@@ -106,12 +106,18 @@ export default function InfoAdmin (props) {
                 <TextField
                   label="Nombre"
                   defaultValue = {admin.nombre}
+                  inputProps={{
+                    maxLength: 25
+                  }}
                   {...registro('nombre', { required: true })}
                   sx={{ mx: 1, my: 2, width: '20ch' }}
                 />
                 <TextField
                   label="Apellido"
                   defaultValue = {admin.apellido}
+                  inputProps={{
+                    maxLength: 40
+                  }}
                   {...registro('apellido', { required: true })}
                   sx={{ mx: 1, my: 2, width: '30ch' }}
                 />
@@ -137,6 +143,9 @@ export default function InfoAdmin (props) {
                     id="textfield-direccion"
                     label="Dirección"
                     defaultValue = {admin.direccion}
+                    inputProps={{
+                      maxLength: 30
+                    }}
                     {...registro('direccion', { required: true })}
                     sx={{ mx: 1, my: 2, width: '30ch' }}
                   />
@@ -144,6 +153,9 @@ export default function InfoAdmin (props) {
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
                     type = "number"
+                    inputProps={{
+                      maxLength: 15
+                    }}
                     defaultValue={admin.telefono}
                     {...registro('telefono', { required: true })}
                   />

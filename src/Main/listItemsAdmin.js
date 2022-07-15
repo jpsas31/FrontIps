@@ -10,7 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
-import AddReactionIcon from '@mui/icons-material/AddReaction'
+// import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import PeopleIcon from '@mui/icons-material/People'
 
@@ -48,26 +48,27 @@ export default function MainListItemsAdmin () {
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información usuarios" />
     </ListItemButton>
-    <ListItemButton component={Link} to={'/'}>
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
-    </ListItemButton>
-    <ListItemButton component = {Link} to = {'personal'}>
-      <ListItemIcon>
-        <AddReactionIcon/>
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="GPersonal" />
-    </ListItemButton>
-
-    { /* Se agregaOpcion de activaUsuarios de panel administrativo */ }
-
+    {
+      /*
+      <ListItemButton component = {Link} to = {'personal'}>
+        <ListItemIcon>
+          <AddReactionIcon/>
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="GPersonal" />
+      </ListItemButton>
+      */
+    }
     <ListItemButton component = {Link} to = {'activa'}>
       <ListItemIcon>
         <EmojiPeopleIcon/>
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Personal" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'/'}>
+      <ListItemIcon>
+        <HomeIcon />
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
     </ListItemButton>
     <ListItemButton component={Link} to={'/'} onClick={() =>
       logout({

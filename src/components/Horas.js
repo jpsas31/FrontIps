@@ -44,7 +44,7 @@ export default function (dias, diaSeleccionado, citasSacadas) {
     for (let i = 0; i < horas.length; i = i + 1) {
       if (horasOcupadas[j].toString() === horas[i].fechaDate.toString()) {
         horas.splice(i, 1)
-        console.log('son iguales', horasOcupadas[j].toString(), horas[i].fechaDate.toString())
+        // console.log('son iguales', horasOcupadas[j].toString(), horas[i].fechaDate.toString())
       }
     }
   }

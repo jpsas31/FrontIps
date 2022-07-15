@@ -47,7 +47,8 @@ export default function MedHM () {
   const {
     getPacienteInfo,
     getHM,
-    getInfoHM
+    getInfoHM,
+    getFile
   } = useExternalApi()
 
   const {
@@ -92,6 +93,11 @@ export default function MedHM () {
           setPaciente(res)
         }
       })
+  }
+
+  const obtenerAnt = () => {
+    const id = paciente[0].id_paciente
+    getFile(id)
   }
 
   useEffect(() => {
@@ -213,7 +219,12 @@ export default function MedHM () {
               </Box>
               <Box sx = {{ maxWidth: 'lg' }}>
                 <Grid container spacing = {3}>
-                  <Grid item xs = {12} align = 'center' sx = {{ mt: '2rem', mb: '2rem' }}><Button align = 'center' variant= 'contained' onClick={handleOpen}>Agregar Historia</Button></Grid>
+                  <Grid item xs = {12} align = 'center' sx = {{ mt: '2rem', mb: '2rem', mx: 1 }}>
+                    <Button align = 'center' variant= 'contained' onClick={handleOpen}>Agregar Historia</Button>
+                    <Button onClick={obtenerAnt} variant="contained" sx={{ mx: 1 }}>
+                        Descargar antecedentes
+                    </Button>
+                  </Grid>
                 </Grid>
               </Box>
               <Dialog open = {openDia} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
