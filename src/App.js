@@ -19,7 +19,9 @@ import Calendario from './calendario/CalendarioMedicos'
 import CitasTable from './Paciente/ListCitas'
 import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
+import RegistroHM from './Paciente/RegistroHM'
 import Archivos from './Paciente/Archivos'
+
 
 import {
 
@@ -56,6 +58,7 @@ export default function App () {
         <Route path="personal" element={<Personal/>} />
         <Route path="activa" element = {<ActivaUser/>} />
         <Route path="RegistroHM" element = {<MedicosHM/>}/>
+        <Route path="entradas-hm" element = {<RegistroHM/>}/>
       </Route>
     </Routes>
   </UserContext.Provider>

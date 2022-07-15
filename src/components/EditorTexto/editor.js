@@ -30,6 +30,7 @@ export default function TextEditor ({ paciente, doctor, aparezco, functionCrear,
       const objCons = new Object()
       objCons.id_trabajador = doctor.id_trabajador
       objCons.id_paciente = paciente.id_paciente
+      console.log(texto1, 'que pasa estoy cansado :c ayuda')
       objCons.descripcion_form = JSON.stringify(texto1)
       objCons.descripcion = JSON.stringify(texto)
       objCons.fecha = fechaFix.toISOString()

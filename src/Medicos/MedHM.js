@@ -4,6 +4,7 @@ import SendIcon from '@mui/icons-material/Send'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import { useExternalApi as ApiMedico } from '../hooks/InfoMedicoResponse'
+import { useExternalApi as ApiHTML } from '../hooks/InfoEntradasResponse'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import TextEditor from '../components/EditorTexto/editor'
@@ -54,6 +55,10 @@ export default function MedHM () {
     getMedicoID,
     createHM
   } = ApiMedico()
+
+  const {
+    getDeltaToHTML
+  } = ApiHTML()
 
   const [paciente, setPaciente] = useState([])
   const [doctor, setDoctor] = useState([])
@@ -205,7 +210,7 @@ export default function MedHM () {
                       </Card>
                       <Dialog open = {cardOpen} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
                       <div>
-                        <MostrarHM aparezco = {handleCloseCard} historia = {cardSelected} functionBuscar = {getInfoHM}/>
+                        <MostrarHM aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM} />
                       </div>
                       </Dialog>
                     </Grid>
