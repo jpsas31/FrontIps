@@ -332,14 +332,14 @@ export const useExternalApi = () => {
     setApiResponsePaciente(data)
     return data
   }
-  
+
   const uploadFile = async (datos, setPdfResponse) => {
     try {
       setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
       setApiEndpointPaciente('POST /api/info-paciente/subir-archivo')
       const config = {
-        url: ${apiServerUrl}/api/info-paciente/subir-archivo,
+        url: `${apiServerUrl}/api/info-paciente/subir-archivo`,
         method: 'POST',
         headers: {
           'content-type': 'multipart/form-data'
@@ -361,7 +361,7 @@ export const useExternalApi = () => {
 
     setApiEndpointPaciente('POST /api/info-paciente/consultar-antecedente')
     const config = {
-      url: ${apiServerUrl}/api/info-paciente/consultar-antecedente,
+      url: `${apiServerUrl}/api/info-paciente/consultar-antecedente`,
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -379,7 +379,7 @@ export const useExternalApi = () => {
       createAndDownloadBlobFile('Antecedentes ' + data.id, sampleArr)
     }
   }
-  
+
   const getPacienteAUTH = async (datos) => {
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
@@ -417,10 +417,6 @@ export const useExternalApi = () => {
     setApiResponsePaciente(data)
     return data
   }
-  
-  
-
-  
 
   return {
     selectedAccessControlLevelPaciente,
