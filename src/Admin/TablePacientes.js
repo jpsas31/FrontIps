@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 import BorderColorIcon from '@mui/icons-material/BorderColor'
+import Button from '@mui/material/Button'
 
 export default function TablePacientes (props) {
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
@@ -63,7 +64,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 30
               }}
               sx={{ width: '18ch' }}
             />
@@ -85,7 +87,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 25
               }}
               sx={{ width: '20ch' }}
             />
@@ -107,7 +110,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 40
               }}
               sx={{ width: '30ch' }}
             />
@@ -129,7 +133,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 30
               }}
               sx={{ width: '30ch' }}
             />
@@ -180,7 +185,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 15
               }}
               sx={{ width: '15ch' }}
             />
@@ -202,7 +208,8 @@ export default function TablePacientes (props) {
               label=""
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                readOnly: true
               }}
               sx={{ width: '40ch' }}
             />
@@ -225,7 +232,8 @@ export default function TablePacientes (props) {
               type = "number"
               variant="standard"
               InputProps={{
-                disableUnderline: true
+                disableUnderline: true,
+                maxLength: 3
               }}
               sx={{ width: '7ch' }}
             />
@@ -266,14 +274,11 @@ export default function TablePacientes (props) {
           <FormControlLabel
             label=""
             value={value}
-            control={<TextField
-              label=""
-              variant="standard"
-              InputProps={{
-                disableUnderline: true
-              }}
-              sx={{ width: '20ch' }}
-            />
+            control={<Button onClick={() => props.obtenerAnt(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${
+              props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
+              'messages-grid__option--active'}`}>
+              Descargar
+            </Button>
             }
             onChange={event => updateValue(event.target.value)}
           />
