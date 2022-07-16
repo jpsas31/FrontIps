@@ -234,6 +234,62 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
+  const getPacientesxCitaChart = async (data, setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/pacientesxcitachart')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/pacientesxcitachart`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id: data.id,
+        fecha: data.fecha
+      }
+    }
+
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+
+    setInfo(result)
+  }
+
+  const getCumple = async (data, setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    console.log(data)
+    setApiEndpointAdmin('POST /api/info-admin/cumple')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/cumple`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        fecha: data.fecha
+      }
+    }
+
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+
+    const arr = result.map((item) => {
+      return [
+        item.id_paciente,
+        item.identificacion,
+        item.nombre + ' ' + item.apellido,
+        item.telefono,
+        item.correo,
+        item.nacimiento.split('T')[0]
+      ]
+    })
+
+    // console.log(arr)
+    setInfo(arr)
+  }
+
   return {
     selectedAccessControlLevelAdmin,
     apiEndpointAdmin,
@@ -243,7 +299,9 @@ export const useExternalApi = () => {
     updateAdmin,
     getPacientes,
     getAdmins,
-    getMedicos
+    getMedicos,
+    getPacientesxCitaChart,
+    getCumple
     // getRbacResource,
     // checkCorsAllowedMethod
   }
