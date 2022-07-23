@@ -179,8 +179,19 @@ export default function Cumpleanos () {
             <TextField
                   sx={{ mx: 1, my: 1, width: '20ch' }}
                   type = "date"
-                  {...registro('fecha', { required: true })}
+                  label = "Fecha Inicial"
+                  required
+                  InputLabelProps={{ shrink: true }}
+                  {...registro('fechaInicial', { required: true })}
                 />
+              <TextField
+                sx={{ mx: 1, my: 1, width: '20ch' }}
+                type = "date"
+                label = "Fecha Final"
+                required
+                InputLabelProps={{ shrink: true }}
+                {...registro('fechaFinal', { required: true })}
+              />
             <Button onClick = { handleSubmit(onSubmit) } variant="contained" sx={{ mx: 1, my: 1 }}
               className={`messages-grid__option ${
                 selectedAccessControlLevelAdmin === AccessControlLevel.PROTECTED &&

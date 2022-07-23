@@ -246,7 +246,8 @@ export const useExternalApi = () => {
       },
       data: {
         id: data.id,
-        fecha: data.fecha
+        fechaInicial: data.fechaInicial,
+        fechaFinal: data.fechaFinal
       }
     }
 
@@ -268,7 +269,8 @@ export const useExternalApi = () => {
         'content-type': 'application/json'
       },
       data: {
-        fecha: data.fecha
+        fechaInicial: data.fechaInicial,
+        fechaFinal: data.fechaFinal
       }
     }
 
