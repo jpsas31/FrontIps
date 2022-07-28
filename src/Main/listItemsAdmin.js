@@ -10,6 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
+import AssessmentIcon from '@mui/icons-material/Assessment'
 // import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import PeopleIcon from '@mui/icons-material/People'
@@ -24,11 +25,12 @@ export default function MainListItemsAdmin () {
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Admin" />
     </ListItemButton>
-    <ListItemButton component={Link} to={'data'}>
+
+    <ListItemButton component={Link} to={'citas-especialidad-report'}>
       <ListItemIcon>
-        <DashboardIcon />
+        <AssessmentIcon />
       </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Dashboard" />
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Reporte Citas Especialidad" />
     </ListItemButton>
     {
       /*
@@ -40,6 +42,19 @@ export default function MainListItemsAdmin () {
       </ListItemButton>
       */
     }
+    <ListItemButton component={Link} to={'citas-medio-report'}>
+      <ListItemIcon>
+        <AssessmentIcon />
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Reporte Citas Medio" />
+    </ListItemButton>
+
+    <ListItemButton component={Link} to={'data'}>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Dashboard" />
+    </ListItemButton>
     <ListItemButton component={Link} to={'info-admin'} >
         <ListItemIcon>
           <LayersIcon />

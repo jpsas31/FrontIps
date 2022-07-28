@@ -234,6 +234,50 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
+  const getCitaPorMedio = async (data) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/citasMedios')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/citasMedios`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        FInicio: data.Finicio,
+        FFinal: data.Ffinal
+
+      }
+    }
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+    return result
+  }
+
+  const getCitaPorEspecialidad = async (data) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/citasEspecialidad')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/citasEspecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        FInicio: data.Finicio,
+        FFinal: data.Ffinal
+
+      }
+    }
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+    return result
+  }
+
   const getPacientesxCitaChart = async (data, setInfo) => {
     setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
@@ -292,7 +336,10 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
+  
   return {
+    getCitaPorMedio,
+    getCitaPorEspecialidad,
     selectedAccessControlLevelAdmin,
     apiEndpointAdmin,
     apiResponseAdmin,
