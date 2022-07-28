@@ -336,7 +336,90 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
+<<<<<<< HEAD
+  // FUNCIONES JULIAN
+
+  const getCitasIntervalo = async (datos) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+    setApiEndpointAdmin('POST /api/info-admin/citasIntervalos')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/citasIntervalos`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        fechas_reg: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    return data
+  }
+
+  const getTipoCita = async () => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+    setApiEndpointAdmin('POST /api/info-admin/tipoCitas')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/tipoCitas`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    return data
+  }
+
+  const getFreDoc = async () => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+    setApiEndpointAdmin('POST /api/info-admin/getFreDoc')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/getFreDoc`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    return data
+  }
+
+  const getNomDoc = async () => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+    setApiEndpointAdmin('POST /api/info-admin/nombDoc')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/nombDoc`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    return data
+  }
+
+  const getHorasCit = async () => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+    setApiEndpointAdmin('POST /api/info-admin/horasCit')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/horasCit`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseAdmin(data)
+    return data
+  }
+
+=======
   
+>>>>>>> master
   return {
     getCitaPorMedio,
     getCitaPorEspecialidad,
@@ -349,8 +432,16 @@ export const useExternalApi = () => {
     getPacientes,
     getAdmins,
     getMedicos,
+<<<<<<< HEAD
+    getCitasIntervalo,
+    getTipoCita,
+    getFreDoc,
+    getNomDoc,
+    getHorasCit
+=======
     getPacientesxCitaChart,
     getCumple
+>>>>>>> master
     // getRbacResource,
     // checkCorsAllowedMethod
   }

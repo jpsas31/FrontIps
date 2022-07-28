@@ -86,11 +86,35 @@ export const useExternalApi = () => {
     setApiResponseEntrada(data)
   }
 
+  const getCertificado = async (datos) => {
+    setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
+    setApiEndpointEntrada('POST /api/info-entradas/getCertificado')
+    const config = {
+      url: `${apiServerUrl}/api/info-entradas/getCertificado`,
+      method: 'POST',
+      responseType: 'arraybuffer',
+      headers: {
+        Accept: 'application/pdf'
+      },
+      data: {
+        datos_toConvert: datos
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    console.log(data, 'que esta mandando')
+    // window.open(data, '_blank')
+
+    const blob = new Blob([data], { type: 'application/pdf' }) // --- 1.
+    blobToSaveAs('CertificadoNo' + datos[3], blob) // --- 2.
+    setApiResponseEntrada(data)
+  }
+
   return {
     selectedAccessControlLevelPaciente,
     apiEndpointEntrada,
     apiResponseEntrada,
-    getDeltaToHTML
+    getDeltaToHTML,
+    getCertificado
     // getRbacResource,
     // checkCorsAllowedMethod
   }
