@@ -336,7 +336,6 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
-<<<<<<< HEAD
   // FUNCIONES JULIAN
 
   const getCitasIntervalo = async (datos) => {
@@ -417,9 +416,6 @@ export const useExternalApi = () => {
     return data
   }
 
-=======
-  
->>>>>>> master
   return {
     getCitaPorMedio,
     getCitaPorEspecialidad,
@@ -432,16 +428,13 @@ export const useExternalApi = () => {
     getPacientes,
     getAdmins,
     getMedicos,
-<<<<<<< HEAD
     getCitasIntervalo,
     getTipoCita,
     getFreDoc,
     getNomDoc,
-    getHorasCit
-=======
+    getHorasCit,
     getPacientesxCitaChart,
     getCumple
->>>>>>> master
     // getRbacResource,
     // checkCorsAllowedMethod
   }

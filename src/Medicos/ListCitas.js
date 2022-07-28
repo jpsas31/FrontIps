@@ -26,28 +26,6 @@ export default function CitasTableMedico () {
   const [visible, setVisible] = useState(false)
   const handleClose = () => { setVisible(false) }
 
-  const renderDetailsButton = (params) => {
-    const disable = aprobadas.includes(params.row.id) || params.row.cancelada || canceladas.includes(params.row.id)
-    if (params.row.aprobacion) {
-      return <Typography align='center' variant='h7' style={{ color: 'green', align: 'center' }}>
-      APROBADA </Typography>
-    }
-    return (
-        <strong>
-            <Button
-                variant="contained"
-                color="primary"
-                disabled={disable}
-                size="small"
-                onClick={() => {
-                  setAprobadas([...aprobadas, params.row.id])
-                }}
-            >
-                APROBAR CITA
-            </Button>
-        </strong>
-    )
-  }
   const renderDetailsButtonCancel = (params) => {
     const disable = canceladas.includes(params.row.id) || aprobadas.includes(params.row.id)
     if (params.row.cancelada) {
@@ -82,12 +60,6 @@ export default function CitasTableMedico () {
     { field: 'idPaciente', headerName: 'ID PACIENTE', width: 150 },
     { field: 'nombrePaciente', headerName: 'NOMBRE DEL PACIENTE', width: 200 },
     {
-      field: 'APROBAR',
-      width: 150,
-      renderCell: renderDetailsButton,
-      disableClickEventBubbling: true
-    },
-    {
       field: 'CANCELAR',
       width: 150,
       renderCell: renderDetailsButtonCancel,
@@ -118,7 +90,7 @@ export default function CitasTableMedico () {
                   setLoading(true)
                   await aprobarCita(aprobadas)
                   await cancelarCita(canceladas)
-                  await getAllCitas(setCitas, true)
+                  await getAllCitas(setCitas, false)
                   setAprobadas([])
                   setCanceladas([])
                   setLoading(false)

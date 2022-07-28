@@ -209,17 +209,10 @@ export default function MedHM () {
                           <CardMedia component="img" height="130" image='https://i.imgur.com/dJsL7kH.jpg' alt="Historia clinica" />
                         </CardActionArea>
                       </Card>
-<<<<<<< HEAD
                       <Dialog open = {cardOpen} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
                       <div>
                         <MostrarHM aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM} functionDescargar2 = {getCertificado} />
                       </div>
-=======
-                      <Dialog open={cardOpen} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
-                        <div>
-                          <MostrarHM aparezco={handleCloseCard} functionDescargar={getDeltaToHTML} historia={cardSelected} functionBuscar={getInfoHM} />
-                        </div>
->>>>>>> master
                       </Dialog>
                     </Grid>
                   ))}
