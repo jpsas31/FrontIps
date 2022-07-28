@@ -15,7 +15,7 @@ export default function Perfil ({ authId, authEmail }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
-  const ciudades = [{ value: 'Santiago de Cali', label: 'Santiago de Cali' }, { value: 'Bogota', label: 'Bogota' }, { value: 'Medellin', label: 'Medellin' }]
+  const ciudades = [{ value: 'Cali', label: 'Cali' }, { value: 'Bogota', label: 'Bogota' }, { value: 'Medellin', label: 'Medellin' }]
 
   const { logout } = useAuth0()
   const nav = useNavigate()

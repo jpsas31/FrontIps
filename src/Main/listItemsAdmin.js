@@ -5,6 +5,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import AdjustIcon from '@mui/icons-material/Adjust'
+// import BarChartIcon from '@mui/icons-material/BarChart'
 import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
@@ -31,6 +32,16 @@ export default function MainListItemsAdmin () {
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Reporte Citas Especialidad" />
     </ListItemButton>
+    {
+      /*
+      <ListItemButton component={Link} to={'/'}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Reports" />
+      </ListItemButton>
+      */
+    }
     <ListItemButton component={Link} to={'citas-medio-report'}>
       <ListItemIcon>
         <AssessmentIcon />
@@ -55,6 +66,18 @@ export default function MainListItemsAdmin () {
           <PeopleIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información usuarios" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'citas-paciente-report'}>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="CitasPorPaciente" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={'cumple-report'}>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Cumpleaños" />
     </ListItemButton>
     {
       /*

@@ -20,6 +20,8 @@ import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
 import RegistroHM from './Paciente/RegistroHM'
 import Archivos from './Paciente/Archivos'
+import CitasPorPaciente from './Admin/CitasPorPaciente'
+import Cumpleanos from './Admin/Cumpleanos'
 
 import CitasPorEspecialidad from './Admin/CitasPorEspecialidad'
 import CitasPorMedio from './Admin/CitasPorMedio'
@@ -59,7 +61,8 @@ export default function App () {
         <Route path="activa" element = {<ActivaUser/>} />
         <Route path="RegistroHM" element = {<MedicosHM/>}/>
         <Route path="entradas-hm" element = {<RegistroHM/>}/>
-
+        <Route path="citas-paciente-report" element = {<CitasPorPaciente/>} />
+        <Route path="cumple-report" element = { <Cumpleanos/>} />
         <Route path="citas-medio-report" element = {<CitasPorMedio/>}/>
         <Route path="citas-especialidad-report" element = {<CitasPorEspecialidad/>}/>
 
