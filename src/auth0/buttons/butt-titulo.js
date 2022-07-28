@@ -15,8 +15,8 @@ export const ButtonT = ({ titulo, action, returnTo }) => {
         }
       })
     }}>
-    {titulo}
-</MenuItem>
+      {titulo}
+    </MenuItem>
 
   )
 }

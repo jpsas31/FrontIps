@@ -57,7 +57,7 @@ export default function TableMedicos (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -79,18 +79,18 @@ export default function TableMedicos (props) {
             label=""
             value={value}
             control={<TextField
-                  select
-                  variant="standard"
-                  InputProps={{
-                    disableUnderline: true
-                  }}
-                  sx={{ width: '15ch' }}
-                >
-                  {cargos.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>))}
-              </TextField>
+              select
+              variant="standard"
+              InputProps={{
+                disableUnderline: true
+              }}
+              sx={{ width: '15ch' }}
+            >
+              {cargos.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>))}
+            </TextField>
             }
             onChange={event => updateValue(event.target.value)}
           />
@@ -117,7 +117,7 @@ export default function TableMedicos (props) {
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>))}
-          </TextField>
+            </TextField>
             }
             onChange={event => updateValue(event.target.value)}
           />
@@ -196,7 +196,7 @@ export default function TableMedicos (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -240,7 +240,7 @@ export default function TableMedicos (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -261,8 +261,7 @@ export default function TableMedicos (props) {
           <FormControlLabel
             label=""
             value={value}
-            control={<Button onClick={() => props.obtenerCert(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${
-              props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
+            control={<Button onClick={() => props.obtenerCert(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
               'messages-grid__option--active'}`}>
               Descargar
             </Button>
@@ -277,10 +276,9 @@ export default function TableMedicos (props) {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
-          <IconButton onClick={() => props.actualizarMedico(tableMeta.rowData)} className={`messages-grid__option ${
-            props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
+          <IconButton onClick={() => props.actualizarMedico(tableMeta.rowData)} className={`messages-grid__option ${props.selectedAccessControlLevelMedico === props.AccessControlLevelMedico.PROTECTED &&
             'messages-grid__option--active'
-          }` }>
+            }`}>
             <BorderColorIcon />
           </IconButton>
         )
@@ -297,13 +295,13 @@ export default function TableMedicos (props) {
     print: false
   }
   return (
-      <Box sx = {{ mt: 8, ml: 1, mr: 1 }}>
-          <MUIDataTable
-            title={'Medicos'}
-            data={props.info}
-            columns={columns}
-            options={options}
-          />
-      </Box>
+    <Box sx={{ mt: 8, ml: 1, mr: 1 }}>
+      <MUIDataTable
+        title={'Medicos'}
+        data={props.info}
+        columns={columns}
+        options={options}
+      />
+    </Box>
   )
 }

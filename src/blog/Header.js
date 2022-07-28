@@ -13,10 +13,7 @@ import MedicalInformationIcon from '@mui/icons-material/MedicalInformation'
 
 function Header (props) {
   const { sections } = props
-  const { isAuthenticated, user } = useAuth0()
-  if (isAuthenticated) {
-    console.log(user)
-  }
+  const { isAuthenticated } = useAuth0()
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'info.main' }}>
@@ -32,29 +29,29 @@ function Header (props) {
           &nbsp;&nbsp;Ips salud en casa
         </Typography>
         {!isAuthenticated && (
-        <>
-          <DropdownRegister /> &nbsp;&nbsp;&nbsp;
-          <DropdownLogin/>
-        </>
+          <>
+            <DropdownRegister /> &nbsp;&nbsp;&nbsp;
+            <DropdownLogin />
+          </>
         )}
-      {isAuthenticated && (
+        {isAuthenticated && (
 
-        <>
-          <LogoutButton /> &nbsp;&nbsp;&nbsp;
-          <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}
-          sx={{
-            ml: 1,
-            '&.MuiButtonBase-root:hover': {
-              bgcolor: 'white'
-            },
-            bgcolor: 'white',
-            fontWeight: 'bold',
-            borderRadius: 2
-          }}>
+          <>
+            <LogoutButton /> &nbsp;&nbsp;&nbsp;
+            <Button component={LinkRouter} variant="outlined" size="small" to={'Dashboard'}
+              sx={{
+                ml: 1,
+                '&.MuiButtonBase-root:hover': {
+                  bgcolor: 'white'
+                },
+                bgcolor: 'white',
+                fontWeight: 'bold',
+                borderRadius: 2
+              }}>
               Gestión
-          </Button>
-        </>
-      )}
+            </Button>
+          </>
+        )}
       </Toolbar>
       <Toolbar
         component="nav"

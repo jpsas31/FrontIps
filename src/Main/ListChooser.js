@@ -6,12 +6,12 @@ import MainListItemsMedico from './listItemsMedico'
 export default function ListChooser () {
   const userType = window.localStorage.getItem('tipo')
   if (userType === 'Paciente') {
-    return <MainListItemsPaciente/>
+    return <MainListItemsPaciente />
   }
   if (userType === 'Medico') {
-    return <MainListItemsMedico/>
+    return <MainListItemsMedico />
   }
   if (userType === 'Admin') {
-    return <MainListItemsAdmin/>
+    return <MainListItemsAdmin />
   }
 }

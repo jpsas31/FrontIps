@@ -15,8 +15,8 @@ export const SignupButton = () => {
         screen_hint: 'signup'
       })
     }
-  >
-          Sign up
+    >
+      Sign up
     </Button>
 
   )

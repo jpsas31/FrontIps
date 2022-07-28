@@ -1,0 +1,2982 @@
+{
+  "id": "5d2b044c-3df4-4902-99b1-60c93337eb66",
+  "version": "2.0",
+  "name": "amiguis",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "6f69fc70-3a76-464c-8766-812a1e563ea4",
+    "name": "CASO DE DIRECCION ACEPTADO",
+    "commands": [{
+      "id": "55392a3c-4a43-4cef-aa3f-aa9f4c60cf45",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed21170b-7b69-4bd2-9f17-65dd24e17a3d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9b7ac178-8966-422e-931f-e2c9fab377d0",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb744838-2c51-4d94-861d-45c50e88d9d7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb691f5e-3006-4fcf-a2bd-aa727885cfba",
+      "comment": "",
+      "command": "//type",
+      "target": "id=username",
+      "targets": [],
+      "value": "amiguisips@gmail.com"
+    }, {
+      "id": "16f9a9fb-be24-4ae9-89f7-643a8f80988c",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "16b553c1-f313-4674-9708-579aeb5dcd9b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c31edc8-5927-4968-9153-9d00b4ec61a1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a539f4f2-96bc-410d-863e-9e6609e2b65e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "76f10b55-e040-49ca-81a0-a65141c31a6f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "38d44075-28c5-4baa-ac8b-25b5295b68f3",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5637b331-7202-4be2-b829-9b4d4fe61ae4",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "11e72988-35d8-4798-a04a-fe30058042a7",
+      "comment": "",
+      "command": "click",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c720045-5934-4da1-9934-55cbb39f9e7d",
+      "comment": "",
+      "command": "type",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": "calle 61 # 3n-50"
+    }, {
+      "id": "7e1b15f6-a1fd-4088-ba7b-d05c7b3ad4fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee581fbe-c83c-48f8-b654-a11640a1e29d",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Los datos han sido actualizados exitosamente"
+    }]
+  }, {
+    "id": "821ea956-5ae6-4c49-a97a-9e261e93228e",
+    "name": "CASO DE DIRECCION CADENA VACIA",
+    "commands": [{
+      "id": "afd56cde-11f1-48e8-830d-e51980e1a079",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac9c5714-568e-44d8-9293-ad0e37529ba3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b834aa78-0743-4f91-8ea1-c9f709f98bb2",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9042d715-5ae1-479b-8b57-9fdd1aaacd0c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c430511a-be3a-4f6e-841b-202d57b22b27",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "amiguisips@gmail.com"
+    }, {
+      "id": "8a9da3dc-606b-4a97-b4d9-b65e79b4141a",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9587a833-715c-4727-9aac-06f2ed704ecd",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b913b96d-abdb-473f-83c0-1c2b2b6aa0d0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75b5f138-c340-4bef-b6a0-f8c5cb743a02",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bafedf7-6803-47ba-9d3e-da464d06c385",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d759634-c8b3-41fc-b6aa-c4e5b98d9091",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd573196-caf3-438d-88c1-171914296b66",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d06a330-d52d-4e43-b0b6-fa6ad9c2ba2f",
+      "comment": "",
+      "command": "click",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3c7cb89-db64-4880-a02b-6b281cc95b22",
+      "comment": "",
+      "command": "type",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "86503c3e-dfe2-4609-8c4f-c744df5e96a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "43d6c3c7-1cdb-4797-b399-18f9e8dd5435",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite una dirección válida"
+    }]
+  }, {
+    "id": "e73ea743-7ba2-4cc5-8a5a-e940121e86f8",
+    "name": "CASO DE DIRECCION CADENA DE NUMEROS",
+    "commands": [{
+      "id": "0cf62f8f-4b90-4361-806c-1284f07c844c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5a6f65e-f766-40ca-99ff-6ff29295362e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0bb6f5ac-6fef-45ae-9077-85fecc8e0706",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b38c6530-7f2a-4167-9e50-387677d97cda",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9911073-7ec8-4492-bf38-716b3d48f549",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "amiguisips@gmail.com"
+    }, {
+      "id": "2f7d998f-ae4a-494e-b1d1-143015b243ba",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2cff9a78-3cef-4b6a-9d82-60fce68d4d92",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dab5f089-4662-4a58-a7d2-c2cf227bc621",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "59d4ea62-4616-4dc8-93bd-9b3c3905ac18",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0df044c0-1245-42b2-bf6a-60c300f66962",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a8d2c82-febe-4baf-a046-a625167f73a1",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdd7f997-bb72-4ba8-83f7-b9865aacdde6",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Solicitar Cita",
+      "targets": [
+        ["linkText=Solicitar Cita", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[4]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/solicitar-cita')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Solicitar Cita')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da304f2f-f3af-42b7-bd1b-b973461f10eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76811bd0-c1e0-4cf3-938f-c07c01daeb23",
+      "comment": "",
+      "command": "type",
+      "target": "id=textfield-direccion",
+      "targets": [
+        ["id=textfield-direccion", "id"],
+        ["name=direccion", "name"],
+        ["css=#textfield-direccion", "css:finder"],
+        ["xpath=//input[@id='textfield-direccion']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
+      ],
+      "value": "1342134"
+    }, {
+      "id": "08ec3e33-7507-4d1f-82c1-25bf4f0d9648",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "43d238ae-69cc-4711-a43e-f6611b087925",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite una dirección válida"
+    }]
+  }, {
+    "id": "9b0c2081-1fab-4386-a621-7ed7e794138a",
+    "name": "CASO NOMBRE ACEPTADO",
+    "commands": [{
+      "id": "95e83c03-76d8-420d-889a-d2f0b2a96508",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "add5b431-0fa8-4dab-8e5c-32cfcdcf39fd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f588fca7-4a2f-46f8-9f3b-73f7e350ac1a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efa3690a-4890-45dd-b1b3-dc5181a464ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de78e239-8067-4a0b-baa2-01ef1c93cc85",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80c32450-0494-4a96-8887-caaeb032db3a",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0378a03-c3ab-40b7-beaa-23cfc863df9f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70a36321-13b3-46c6-b517-5e205f519961",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "30086f4d-e9ef-4b7b-8e06-7850407cabd2",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7affb159-cfb5-4e99-a066-37789c5b034e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "38a252da-d15e-4b8c-b58e-b5dcb0509d57",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "45e6d300-7a00-4b24-8fde-c97bd82fe1b9",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "299aa9c1-eea5-490a-89ad-46cc967add60",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0b478d7-8e4b-4f26-b7c9-48ddd48317f0",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cca08c53-5dd5-43a0-805e-166927d02fd1",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "Pepe"
+    }, {
+      "id": "8d8a8896-7792-4883-9a66-93b0ca4de4d7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "608f970d-a2f9-433f-9743-07a976654113",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75839340-fbcb-49ab-866b-651a178a396b",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Los datos han sido actualizados exitosamente"
+    }]
+  }, {
+    "id": "f797e615-eab9-46bd-9256-2098bddcc4be",
+    "name": "CASO NOMBRE VACIO",
+    "commands": [{
+      "id": "21cfd38b-6025-4bf5-892c-7044543f7246",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4637ea49-d650-40ba-8fa5-df676317a76d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac891b9d-b5cb-421b-931b-358e6f88d081",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e4e71e30-a4ec-43f7-802f-374e940841e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "24cae027-4a5e-4f15-9790-9f57a66cb0ff",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c2f5a9f-e706-4dce-92a1-02ccc0d90bd4",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d6efd50-035e-4dc1-8413-2d526455c0a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0549a79-8fd9-4942-ac5c-f7585c74fe42",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2745dde0-5521-4c87-b92a-faff44d827a3",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "24cd7dec-325f-4f48-98dd-12a260e524c3",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e763545b-316f-45da-a319-6db10dac3e99",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "e5773e97-d7ee-4b48-8121-0d5286f338c9",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "834da4d3-01ca-42a6-b372-53b154fa26f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "13a9abaf-e2e6-4706-baec-7f8461f15097",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75e13b7b-d849-466e-8941-641240377177",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2c13c12-f5ee-4ce4-b0e1-58383e385d84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a8b443f-8366-4a86-a4c2-1d0e91181bbf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5ca8a66-abc4-4c9f-9945-564e15ccf0aa",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un nombre válido"
+    }]
+  }, {
+    "id": "431280ed-c860-4967-9f10-47d203de2878",
+    "name": "CASO NOMBRE CON NUMEROS",
+    "commands": [{
+      "id": "af7ce858-d2b4-47b2-a1f1-47bc831837c7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce58da2e-7ade-4933-8604-484365f1ddb4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0037ee0-02f5-4909-988e-cb60530d5d86",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ab76e6a-012b-4b19-89ba-519824d340c1",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e96aa2ca-ba5d-4a7c-aff5-a6921e2355e1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "438faaec-8cd8-4eb8-911f-fcd93bd61330",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c263572a-0fb0-4996-a83f-de9711e6d18f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd6b61bd-ae4b-4d76-be08-d6eaa8a68123",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2eb96ff-5c5c-4595-b61c-2da7ec7b1ed1",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d77918e-5db1-4f7d-9177-67d4f698221c",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0499fca4-681d-4497-8015-86da716f39e8",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "ec43f414-a29c-4994-b2b0-d1b2859ec591",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "1123a8f4-66e4-48e7-8fc6-1d7528905fcc",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11900315-536a-44ef-bb5b-9b2fa36fe167",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eb0b3a3-d9fc-4785-8ca5-041af02789d2",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r2:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "Pepe123"
+    }, {
+      "id": "40808702-654e-4274-b902-6c4b97ebc0cb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bcb85b3-6612-4c66-b5c5-28a2d67e31c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "919728ef-3e50-4d9b-9fa8-944c59cb96eb",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un nombre válido"
+    }]
+  }, {
+    "id": "d99079c3-dc32-4c18-86b1-1ebfbe45a492",
+    "name": "CASO APELLIDO ACEPTADO",
+    "commands": [{
+      "id": "b2878818-4d14-45b3-a7ec-c62e063148ea",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a8b826ca-8494-4fa6-af84-e076e2920068",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee4ec1d5-cf16-40f6-a47f-d88974c62dfc",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db1a0085-8a66-42dd-8b57-4218a7c04558",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86569ae6-48d2-4fe0-9e30-7a99918c46f8",
+      "comment": "",
+      "command": "click",
+      "target": "name=action",
+      "targets": [
+        ["name=action", "name"],
+        ["css=.c03eb9739", "css:finder"],
+        ["xpath=//button[@name='action']", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Continue')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0885c413-f36b-4a7f-aa27-96cce16b3de4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d79b8bac-7916-4829-9498-fcd19b859757",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfc4d45f-0cfd-4429-85c0-f439bd11e13d",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b88a102b-1985-4bb0-84a5-cdc4df0994c6",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "644b6989-ea17-4509-9ab8-bc098936758a",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "6ba8888c-e1ef-49b4-b593-12c3c9b5b409",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "e700e9fc-ccfb-4f17-91f7-a64d9d79edbf",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r3:", "id"],
+        ["name=apellido", "name"],
+        ["css=#\\3Ar3\\3A", "css:finder"],
+        ["xpath=//input[@id=':r3:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4ae17d4-a681-46e5-9577-817dbd954ded",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bc4a77c-1cab-4668-9007-bae2c470a6c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "Ramirez"
+    }, {
+      "id": "a7d7928e-9709-4615-8349-aecce86f0591",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4391b199-be85-4110-a9fd-2951de5cc2a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a78552cd-c94d-401f-8410-8a3121cff244",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Los datos han sido actualizados exitosamente"
+    }]
+  }, {
+    "id": "9832375b-f361-4d0f-97c9-1f00f7bd5043",
+    "name": "CASO APELLIDO CON NUMEROS ",
+    "commands": [{
+      "id": "698a48f9-06dc-47b0-aa87-566137e032b2",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "67495fd8-02a1-4a60-8f89-48fe44ab4d70",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ec913e4-dabc-4d00-982d-4b2b08708089",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40d6d68e-2552-4a0a-aa50-1e5acf6c75f9",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "29afb8a5-b039-4cd7-b27d-95fa56ecb86a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "df9f7db1-a5d6-41fb-a310-a22d2360d4a3",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f3fb9ca-9045-4dc0-8081-63a0daad2e21",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "96ab4c8a-3c38-4cbf-9d55-0d776f1e4027",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eca3f8b2-de9c-4b82-9337-c07579d8af3a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "050e2e83-51b3-4915-9c02-71f12d2462c2",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0a7fe5c-594e-493b-b4d1-691331bec497",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "07b37f1e-3550-4c0d-8114-2381a8cae894",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "a777a80a-9935-4c2f-8343-aa878e297f78",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b87258eb-2b4d-4ff3-bf5c-09cb111b4a9b",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22a5b894-6c0d-4458-be75-ad1877f3e16a",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "Ramirez123"
+    }, {
+      "id": "9a0d99a0-816e-42be-9484-dbafe22a0067",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3d01611-f4fd-4d04-a5ca-c24465dd44bb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d78f430-77c5-41ef-89df-d99ace71db9d",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un apellido válido"
+    }]
+  }, {
+    "id": "64d5d891-9d7d-4597-8e9d-f2d098a10578",
+    "name": "CASO APELLIDO VACIO",
+    "commands": [{
+      "id": "fd00ded1-cf50-4f86-9405-0418cd225254",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "164435d5-2e0a-4f78-ada1-6dfd36c22516",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a0b5a32-a639-41ac-8753-98e2abb23430",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-1l7c0cy:nth-child(2) > div",
+      "targets": [
+        ["css=.css-1l7c0cy:nth-child(2) > div", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89e3808e-3274-4b82-8403-32bd7f6a0fab",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91e4de70-b035-48dc-977c-c0e5bacb4506",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bad0710-9832-46d5-a18f-0d2dced11663",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b9b95ee-d446-4681-8218-11496baa51b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aee96df5-ea6a-40e8-9103-bb329cc9dd7c",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8dd9c2ff-c0f2-4434-9551-406961326db0",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0037d7ba-e5a5-4049-97ef-f934988a1bd4",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f90bf214-dd5f-407c-802b-a230b0757ae3",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "f80f4e53-aff0-4bec-bbf3-d04531218736",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-192.5,46.9666748046875"
+    }, {
+      "id": "3d192973-05a7-4939-ab70-dc2127f41d6c",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2520a385-c971-4181-aa9a-ba87117a5a90",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "021df85d-1160-4c01-98ac-54abfeea3001",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r3:",
+      "targets": [
+        ["id=:r2:", "id"],
+        ["name=nombre", "name"],
+        ["css=#\\3Ar2\\3A", "css:finder"],
+        ["xpath=//input[@id=':r2:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c963be5e-df1c-4642-bb73-e2e6d20d7ed2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiTypography-alignLeft",
+      "targets": [
+        ["css=.MuiTypography-alignLeft", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[4]/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Antecedentes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "093c911e-3fa8-4261-b5fe-46caebc206d5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0125f4c-9f4d-4eab-b902-3956041a7450",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un apellido válido"
+    }]
+  }, {
+    "id": "99855c9c-35d1-4f66-8d84-0ec330ad6201",
+    "name": "CASO CIUDAD ACEPTADO",
+    "commands": [{
+      "id": "5fd39018-95d1-4090-9768-f88552051c52",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "327aa015-ba9f-4f4e-81fb-65ff4d1697d9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9b7edc4-1148-4582-bd7d-b60ffadbe00d",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ed4e70b-b7dc-4fe2-82f3-44ce11c0980f",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94839f2d-9bfb-47e1-b26d-dcc7eb04f8b0",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd302fa5-da4e-4614-bad9-349506e2eb07",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a1b9cae-88de-4408-84c2-2cfd35ee0a74",
+      "comment": "",
+      "command": "//click",
+      "target": "name=action",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "45735a5d-9993-4473-8d66-c99a9c5437a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0773955-db8a-460f-8bd7-5f2f4102d448",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e307c2f-1edd-44fa-87d4-38f3a9e8c218",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c372505-94db-47bf-9fd4-7c7083644bb1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiAutocomplete-popupIndicator > .MuiSvgIcon-root",
+      "targets": [
+        ["css=.MuiAutocomplete-popupIndicator > .MuiSvgIcon-root", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "04fbecea-b1aa-47bc-af65-795216267afc",
+      "comment": "",
+      "command": "click",
+      "target": "id=ciudad-option-2",
+      "targets": [
+        ["id=ciudad-option-2", "id"],
+        ["css=#ciudad-option-2", "css:finder"],
+        ["xpath=//li[@id='ciudad-option-2']", "xpath:attributes"],
+        ["xpath=//ul[@id='ciudad-listbox']/li[3]", "xpath:idRelative"],
+        ["xpath=//li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'Medellin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b719bcd6-5acf-4152-b368-a6471bbd311b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8aec7e8b-bf06-428c-88d2-9179d0ec62d9",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Los datos han sido actualizados exitosamente"
+    }]
+  }, {
+    "id": "82357b88-f6fb-4482-9b26-2681e8cf9fe7",
+    "name": "CASO CIUDAD VACIO",
+    "commands": [{
+      "id": "090fbc9d-3eb8-4d30-a1da-2399ce5691b4",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6eb74d38-394e-4395-b8ed-3dbc5b987dc2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a02bb41d-6050-4287-99bc-7542dd881bab",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a712ce2-20eb-4f91-ae1f-0b498ba7ce4e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "774558f2-42b6-4659-bfa4-442acebca433",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4f43a56-f8d4-452b-a086-3e8d732d558b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68720958-391a-4e5b-877f-d5ba610a823d",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15b44e8a-ccbb-483a-b30a-a2b6932b33cf",
+      "comment": "",
+      "command": "click",
+      "target": "id=ciudad",
+      "targets": [
+        ["id=ciudad", "id"],
+        ["css=#ciudad", "css:finder"],
+        ["xpath=//input[@id='ciudad']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "322fa6da-4418-48f8-a098-da2fa72b222b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiSvgIcon-fontSizeSmall",
+      "targets": [
+        ["css=.MuiSvgIcon-fontSizeSmall", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d15df3bf-646a-4d5f-9bdd-46c0bf0bffd3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiSvgIcon-fontSizeSmall",
+      "targets": [
+        ["css=.MuiSvgIcon-fontSizeSmall", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d1405ac-1d52-417f-82f3-4e26810dd106",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > div:nth-child(3)",
+      "targets": [
+        ["css=form > div:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[3]", "xpath:idRelative"],
+        ["xpath=//form/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e32b15d4-b2e4-4b71-baf6-57e169233891",
+      "comment": "",
+      "command": "type",
+      "target": "id=ciudad",
+      "targets": [],
+      "value": " "
+    }, {
+      "id": "a0c9cfbc-26c3-4d50-83e9-886ea5f00a7d",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor escoja una ciudad valida"
+    }]
+  }, {
+    "id": "64694a1c-4e69-438a-ac75-ba12c00188b2",
+    "name": "CASO CIUDAD VALOR ALFANUMERICO NO EN LA LISTA",
+    "commands": [{
+      "id": "21e4c035-896b-4894-bf15-6322f89849d8",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d2322729-13fe-4beb-a3cd-0ce263c77404",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "47139236-9d8d-4c14-9ed8-1ed492b41e19",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7093b64b-5d18-4d81-860a-095d8bfcc051",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0bb5a50-2be0-47f1-a739-07850c676071",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e70f8fb8-0864-4c0b-88cd-a6dcd46ec257",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1fd6da8-5acb-479c-8c13-d2dbb33ce76f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d79d5b21-7d30-47d0-94bc-b9ef0ed9cc9b",
+      "comment": "",
+      "command": "click",
+      "target": "id=ciudad",
+      "targets": [
+        ["id=ciudad", "id"],
+        ["css=#ciudad", "css:finder"],
+        ["xpath=//input[@id='ciudad']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d395c16-226b-4d66-b3fa-a329d4facf94",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiSvgIcon-fontSizeSmall",
+      "targets": [
+        ["css=.MuiSvgIcon-fontSizeSmall", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fe7e9f5-e751-4c41-b3f7-0572e5e41db9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiSvgIcon-fontSizeSmall",
+      "targets": [
+        ["css=.MuiSvgIcon-fontSizeSmall", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e28c9de-39b6-4d55-b178-5f78ad5e547e",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > div:nth-child(3)",
+      "targets": [
+        ["css=form > div:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[3]", "xpath:idRelative"],
+        ["xpath=//form/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "debc6877-a4aa-4394-8a98-139844ebcc2a",
+      "comment": "",
+      "command": "type",
+      "target": "id=ciudad",
+      "targets": [],
+      "value": "hola123 "
+    }, {
+      "id": "a4ae68f1-3a63-46bb-a07c-12b79ac62d4f",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor escoja una ciudad valida"
+    }]
+  }, {
+    "id": "a7afb29a-17f4-4d00-a807-78463a25bc97",
+    "name": "CASO TELEFONO ACEPTADO",
+    "commands": [{
+      "id": "4a9362eb-c8b8-4d38-9399-13d24176c086",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fe9b79cb-7add-4fee-bb33-ab8bd3bbc27c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36dad830-1138-41f3-bc66-2727085d6634",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c141e8e-438a-48af-afeb-984989b235a7",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7a70382f-f5f3-4c4d-a7b7-f5033e3d2c66",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "538adae6-f983-4a41-9a65-e0614b60e3db",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6962f1d2-0868-4429-8a89-a3b2ad18ec3c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c55ad059-3275-4be2-8d3b-9ce2967032a8",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a5d0c05-7a33-4fc6-b15b-118356b0cc56",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b72e00db-74b2-4bf4-9924-61a33cea1c31",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b0ce230-ab91-4bde-985f-1856391909d7",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "779efa6a-33b8-4188-b0bd-dd26784f483a",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "4b88becb-dbfe-4f15-ba27-1762e256a770",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "14e4d81e-a95b-4f9b-91bd-f05c0409410a",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8784afb0-a7de-4288-99b3-916267fbc30a",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "397d8740-1ef4-4bf2-9b3e-7a34e99840c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "3127093255"
+    }, {
+      "id": "42dc768f-41d6-41a0-b7dc-48ca8475cb5b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25581a18-a078-47c9-8eeb-e20290c7e73b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c6d6cd5-7e96-416b-8804-5fd924e7e152",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiButton-outlined",
+      "targets": [
+        ["css=.MuiButton-outlined", "css:finder"],
+        ["xpath=(//button[@type='button'])[8]", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7cab5265-651c-4a8b-b67c-659720c828a6",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Los datos han sido actualizados exitosamente"
+    }]
+  }, {
+    "id": "61981860-24d8-4229-abf8-52056170256e",
+    "name": "CASO TELEFONO VACIO",
+    "commands": [{
+      "id": "4016f953-ba02-4402-ad61-be048658a88b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fc023b7-aaea-49d4-badb-a194cd426cb9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "742d5570-6f2d-4ef5-853b-73dd18b75d03",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5df1e468-6527-440f-9ddb-1a2405ede9af",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6de36429-3fe2-4954-a812-2eee2fd6a5c4",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "299e2772-6439-4591-aa66-c023c435fbf4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba4b0063-c29b-4a29-abde-071b1bd703ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "48656bf2-f333-4fdb-9599-ab16e3350c36",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3847f9f6-5db8-42eb-9aff-16b796d92415",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bc09b06-b17b-45fa-879f-a07f958b9279",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7730df3-84b7-4860-9281-e1cb0637695f",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "f285de12-3805-4bca-9cb3-8edfe4485450",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "9f12e3e5-d51c-438f-9007-0d0332fe7f38",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "cf1daf8c-6131-47cb-be07-238cefb815d2",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8bf9e57-d020-407d-bdd8-173e33e90d58",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cfa2e60-e72a-4db1-86d7-1e21eb825faf",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d992f498-303a-4426-b888-fe7f0751362e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea7c7e9f-2329-4e00-8139-bb02a54cf4bf",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "26ed5f2c-20cf-4e19-91fc-8f7626ee8443",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un numero valido"
+    }]
+  }, {
+    "id": "7ca81284-fea3-4965-950d-ad073293678a",
+    "name": "CASO TELEFONO ALFANUMERICO",
+    "commands": [{
+      "id": "5f56e4cd-02c7-45ab-9fbe-06a8d8ec328f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52f99ccc-cf37-426c-a531-984484dd8ea0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f644eed-4538-4a72-93c3-590dc184f8cf",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e8e94fe0-be41-4d10-938b-d06bc470507b",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "612e25e4-9c0e-4ab2-96b6-87d96b4a0459",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=login-button",
+      "targets": [
+        ["id=login-button", "id"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//button[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdfbc994-4e79-4684-a6bd-e38b7d5f72d1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiMenuItem-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiMenuItem-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='login-menu']/div[3]/ul/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "58ebdd91-ce6d-43e6-9ea0-62c7163e3576",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebfe9007-6d92-4b05-a259-af64400b0538",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c9a9fd9-41f7-42e6-aa0d-cc55d37883bf",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root",
+      "targets": [
+        ["css=.MuiListItemButton-root:nth-child(2) .MuiTypography-root", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]/div[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "83b980e4-836f-4283-b32e-5c4263f1fc5b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Información del Paciente",
+      "targets": [
+        ["linkText=Información del Paciente", "linkText"],
+        ["css=.MuiListItemButton-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/nav/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/dashboard/info-paciente')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Información del Paciente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aff361cb-cedb-43d7-bb08-4e15fd1e05e2",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "dc978036-f831-4c32-9065-69ab85736af2",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "348d217a-1a7f-42db-8585-53d2415a67e4",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "-57.5,6.9666748046875"
+    }, {
+      "id": "6c695140-a330-4286-863f-d143294e9805",
+      "comment": "",
+      "command": "click",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b92e9fd6-a3a5-4b36-b249-08106ad05144",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d18c0af-f857-441a-a0fe-53d3c09b6776",
+      "comment": "",
+      "command": "type",
+      "target": "id=:r7:",
+      "targets": [
+        ["id=:r7:", "id"],
+        ["name=telefono", "name"],
+        ["css=#\\3Ar7\\3A", "css:finder"],
+        ["xpath=//input[@id=':r7:']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[2]/div/form/div[2]/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "HOLA1234"
+    }, {
+      "id": "13242abe-b8a4-48c3-9cc1-153f3385222c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf9f6ef3-f604-4276-aad9-75ff81d43cd3",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.css-sghohy-MuiButtonBase-root-MuiButton-root",
+      "targets": [
+        ["css=.css-sghohy-MuiButtonBase-root-MuiButton-root", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98872e68-d7f4-4bb3-a6b2-ebd2bfe9444e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiButton-outlined",
+      "targets": [
+        ["css=.MuiButton-outlined", "css:finder"],
+        ["xpath=(//button[@type='button'])[8]", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e697732-4d07-4568-8840-b81456f0a579",
+      "comment": "",
+      "command": "waitForText",
+      "target": "css=.MuiDialogContentText-root",
+      "targets": [],
+      "value": "Por favor digite un numero valido"
+    }]
+  }],
+  "suites": [{
+    "id": "58d604bc-71a1-4ca1-a58b-39b065f16106",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

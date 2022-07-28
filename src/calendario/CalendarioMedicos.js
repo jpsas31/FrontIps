@@ -86,19 +86,21 @@ export default function Calendario () {
   }, [])
 
   const onSave = async (data) => {
-    setVisible(true)
-    if (currentDeleted.length > 0) {
-      await deleteTurno(currentDeleted)
-      setDeleted([])
-    }
-    if (currentEvents.length > 0) {
-      await createTurno([...currentEvents])
-    }
-    if (currentEvents.length > 0 && currentDeleted.length > 0) {
-      await getTurnos(setCurrentEvents)
-    }
+    if (currentDeleted.length !== 0 || currentEvents.length !== 0) {
+      setVisible(true)
+      if (currentDeleted.length > 0) {
+        await deleteTurno(currentDeleted)
+        setDeleted([])
+      }
+      if (currentEvents.length > 0) {
+        await createTurno([...currentEvents])
+      }
+      if (currentEvents.length > 0 && currentDeleted.length > 0) {
+        await getTurnos(setCurrentEvents)
+      }
 
-    setIsLoading(false)
+      setIsLoading(false)
+    }
   }
 
   function handleUpdate (addInfo) {
@@ -119,7 +121,7 @@ export default function Calendario () {
     const dateOne = moment(selectInfo.end)
     const dateTwo = moment(selectInfo.start)
     const duration = dateOne.diff(dateTwo, 'hours', true)
-    console.log(duration)
+
     if (duration === 6 || duration === 12 || duration === 2 || duration === 4) {
       const info = {
         id: createEventId(),
@@ -151,8 +153,8 @@ export default function Calendario () {
 
   if (typeof currentEvents === 'undefined') {
     return <Box sx={{ width: '100%' }}>
-    <LinearProgress />
-  </Box>
+      <LinearProgress />
+    </Box>
   }
 
   return (
@@ -173,7 +175,7 @@ export default function Calendario () {
             right: 'timeGridWeek,timeGridDay'
           }}
           slotDuration={'01:00:00'}
-          expandRows = {true}
+          expandRows={true}
           slotLabelFormat={{
             hour: 'numeric',
             minute: '2-digit',
@@ -193,22 +195,22 @@ export default function Calendario () {
           selectable={true}
           selectMirror={true}
           dayMaxEvents={true}
-          events= {currentEvents}
+          events={currentEvents}
           select={handleDateSelect}
           eventContent={renderEventContent}
           eventClick={handleEventClick}
           eventChange={handleUpdate}
 
         />
-         <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
+        <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
           <DialogTitle>
-          {isLoading && <div>Procesando</div>}
-          {!isLoading && <div>Completado</div>}
+            {isLoading && <div>Procesando</div>}
+            {!isLoading && <div>Completado</div>}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-            {isLoading && <CircularProgress />}
-            {!isLoading && <div></div>}
+              {isLoading && <CircularProgress />}
+              {!isLoading && <div></div>}
             </DialogContentText>
           </DialogContent>
           <DialogActions>

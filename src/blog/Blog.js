@@ -137,13 +137,13 @@ export default function Blog () {
         <Header sections={sections} />
         <main>
           {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
-          <Carousel autoPlay = {false} >
+          <Carousel autoPlay={false} >
             {
               mainFeaturedPost.map((item, i) => {
                 return (
-                <Paper key = {i}>
-                  <MainFeaturedPost post={item} />
-                </Paper>
+                  <Paper key={i}>
+                    <MainFeaturedPost post={item} />
+                  </Paper>
                 )
               }
               )

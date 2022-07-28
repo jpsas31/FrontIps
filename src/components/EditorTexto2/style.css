@@ -7,9 +7,11 @@ body {
 .ql-editor {
   max-height: 400px;
 }
+
 .quill-blur {
   display: none;
 }
+
 @media screen and (min-width: 0) and (max-width: 991px) {
   .edit-focus .quill {
     position: absolute;
@@ -21,6 +23,7 @@ body {
     background-color: #fff;
     z-index: 1;
   }
+
   .edit-focus .quill-blur {
     display: block;
     position: absolute;
@@ -31,16 +34,20 @@ body {
     background-color: #fff;
     z-index: 1;
   }
+
   .edit-focus .ql-editor {
     height: 160px;
     border-bottom: 1px solid #ccc;
   }
+
   .edit-focus .navbar {
     display: none;
   }
+
   .edit-focus .main-panel {
     padding: 0 !important;
   }
+
   .edit-focus .main-panel .main-content {
     min-height: unset !important;
     padding: 0 !important;

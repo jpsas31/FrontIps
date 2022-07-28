@@ -83,7 +83,7 @@ export const useExternalApi = () => {
     const data = await makeRequest({ config, authenticated: true })
     // setApiResponsePaciente(data)
     setPaciente(data)
-    // console.log(data)
+    //
   }
 
   const updatePaciente = async (datos, key, setMessage) => {
@@ -168,7 +168,7 @@ export const useExternalApi = () => {
     }
     const data = await makeRequest({ config, authenticated: true })
     setApiResponsePaciente(data)
-    // console.log('holi', data)
+    //
     return data
   }
 
@@ -187,7 +187,7 @@ export const useExternalApi = () => {
     }
     const data = await makeRequest({ config, authenticated: true })
     setApiResponsePaciente(data)
-    // console.log('HOLA',data)
+    //
     return data
   }
 
@@ -270,7 +270,7 @@ export const useExternalApi = () => {
       }
     }
     const data = await makeRequest({ config, authenticated: true })
-    console.log('imprimmiendo medios desde el response', data)
+
     setMedios(data)
     return data
   }
@@ -348,7 +348,7 @@ export const useExternalApi = () => {
       }
 
       await makeRequest({ config, authenticated: true })
-      // console.log(data)
+      //
       setPdfResponse('Cargado completado')
     } catch (error) {
       setPdfResponse('Hubo un error en la carga, intentalo de nuevo')
@@ -356,7 +356,7 @@ export const useExternalApi = () => {
   }
 
   const getFile = async (datos) => {
-    // console.log(datos)
+    //
     setSelectedAccessControlLevel(AccessControlLevel.PROTECTED)
 
     setApiEndpointPaciente('POST /api/info-paciente/consultar-antecedente')

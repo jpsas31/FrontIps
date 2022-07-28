@@ -32,7 +32,34 @@ export const useExternalApi = () => {
       return error.message
     }
   }
-
+  const aprobarCita = async (idCita) => {
+    const config = {
+      url: `${apiServerUrl}/api/info-cita/aprobar-cita`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_cita: idCita
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseCita(data)
+  }
+  const cancelarCita = async (idCita) => {
+    const config = {
+      url: `${apiServerUrl}/api/info-cita/cancelar-Cita`,
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id_cita: idCita
+      }
+    }
+    const data = await makeRequest({ config, authenticated: true })
+    setApiResponseCita(data)
+  }
   const getCita = async (setCita) => {
     const config = {
       url: `${apiServerUrl}/api/info-cita/get-cita`,
@@ -45,8 +72,22 @@ export const useExternalApi = () => {
       }
     }
     const data = await makeRequest({ config, authenticated: true })
-    console.log(data)
-    console.log(setCita)
+
+    setCita(data)
+  }
+  const getAllCitas = async (setCita, isAdmin) => {
+    let datos = {}
+    if (!isAdmin)datos = { user: user.sub }
+    const config = {
+      url: `${apiServerUrl}/api/info-cita/get-allcita`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: datos
+
+    }
+    const data = await makeRequest({ config, authenticated: true })
     setCita(data)
   }
 
@@ -81,8 +122,11 @@ export const useExternalApi = () => {
 
   return {
     apiResponseCita,
+    cancelarCita,
     getCita,
+    aprobarCita,
     createCita,
-    deleteCita
+    deleteCita,
+    getAllCitas
   }
 }

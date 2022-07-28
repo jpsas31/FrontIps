@@ -86,12 +86,12 @@ export default function MostrarHM ({ aparezco, functionDescargar, historia, func
   } else {
     return (
       <div>
-        <Container maxWidth = 'lg' sx = {{ display: 'flex', flexDirection: 'column', mb: 2 }}>
-            <Box sx = {{ maxWidth: 'false', pb: 'false' }}>
-              <LinearProgress color="secondary" />
-              <Grid container spacing = {3}><Grid item xs = {12}><Typography variant = 'h4' textAlign = 'center' sx = {{ fontWeight: 'bold', color: '#851fa2', fontSize: '10 rem', padding: '3px 10px', mt: '2rem' }}> Cargando... </Typography></Grid></Grid>
-            </Box>
-          </Container>
+        <Container maxWidth='lg' sx={{ display: 'flex', flexDirection: 'column', mb: 2 }}>
+          <Box sx={{ maxWidth: 'false', pb: 'false' }}>
+            <LinearProgress color="secondary" />
+            <Grid container spacing={3}><Grid item xs={12}><Typography variant='h4' textAlign='center' sx={{ fontWeight: 'bold', color: '#851fa2', fontSize: '10 rem', padding: '3px 10px', mt: '2rem' }}> Cargando... </Typography></Grid></Grid>
+          </Box>
+        </Container>
       </div>
     )
   }
