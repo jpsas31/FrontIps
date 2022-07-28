@@ -72,20 +72,20 @@ export default function InfoAdmin (props) {
     return (
       /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
       <>
-        <AccountCircleIcon sx = {{ mt: 10, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 100 }}/>
+        <AccountCircleIcon sx={{ mt: 10, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 100 }} />
 
         <Typography component="h1" variant="h5" sx={{ textAlign: 'center', pt: 2, fontSize: '3em', pb: 5 }}>
           Mi información personal
         </Typography>
 
-        <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', borderColor: 'lightgray', mb: 2 }} >
-          <Paper elevation = {8} sx = {{ padding: 6 }}>
-            <form onSubmit = {getInfoAdminSubmit(onSubmit)}>
+        <Container maxWidth='lg' sx={{ display: 'flex', flexDirection: 'column', borderColor: 'lightgray', mb: 2 }} >
+          <Paper elevation={8} sx={{ padding: 6 }}>
+            <form onSubmit={getInfoAdminSubmit(onSubmit)}>
               <div>
                 <TextField
                   select
                   label="Identificación"
-                  defaultValue = {admin.tipo_id}
+                  defaultValue={admin.tipo_id}
                   {...registro('tipo_id', { required: true })}
                   sx={{ mx: 1, my: 2, width: '15ch' }}
                 >
@@ -96,7 +96,7 @@ export default function InfoAdmin (props) {
                 </TextField>
                 <TextField
                   label="Número"
-                  defaultValue = {admin.identificacion}
+                  defaultValue={admin.identificacion}
                   {...registro('identificacion', { required: true })}
                   InputProps={{
                     readOnly: true
@@ -105,7 +105,7 @@ export default function InfoAdmin (props) {
                 />
                 <TextField
                   label="Nombre"
-                  defaultValue = {admin.nombre}
+                  defaultValue={admin.nombre}
                   inputProps={{
                     maxLength: 25
                   }}
@@ -114,7 +114,7 @@ export default function InfoAdmin (props) {
                 />
                 <TextField
                   label="Apellido"
-                  defaultValue = {admin.apellido}
+                  defaultValue={admin.apellido}
                   inputProps={{
                     maxLength: 40
                   }}
@@ -123,26 +123,26 @@ export default function InfoAdmin (props) {
                 />
               </div>
               <div>
-              <Grid container >
+                <Grid container >
                   <TextField
-                      select
-                      label="Cargo"
-                      defaultValue = {admin.tipo_id_cargo}
-                      InputProps={{
-                        readOnly: true
-                      }}
-                      {...registro('tipo_id_cargo', { required: true })}
-                      sx={{ mx: 1, my: 2, width: '15ch' }}
-                    >
-                      {cargos.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>))}
-                    </TextField>
+                    select
+                    label="Cargo"
+                    defaultValue={admin.tipo_id_cargo}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                    {...registro('tipo_id_cargo', { required: true })}
+                    sx={{ mx: 1, my: 2, width: '15ch' }}
+                  >
+                    {cargos.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>))}
+                  </TextField>
                   <TextField
                     id="textfield-direccion"
                     label="Dirección"
-                    defaultValue = {admin.direccion}
+                    defaultValue={admin.direccion}
                     inputProps={{
                       maxLength: 30
                     }}
@@ -152,7 +152,7 @@ export default function InfoAdmin (props) {
                   <TextField
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
-                    type = "number"
+                    type="number"
                     inputProps={{
                       maxLength: 15
                     }}
@@ -164,7 +164,7 @@ export default function InfoAdmin (props) {
               <div>
                 <TextField
                   label="Correo Electrónico"
-                  type = "email"
+                  type="email"
                   InputProps={{
                     readOnly: true
                   }}
@@ -173,37 +173,36 @@ export default function InfoAdmin (props) {
                   sx={{ mx: 1, my: 2, width: '40ch' }}
                 />
                 <TextField
-                    sx={{ mx: 1, my: 2, width: '25ch' }}
-                    label="Salario"
-                    type = "number"
-                    defaultValue={admin.salario}
-                    InputProps={{
-                      readOnly: true
-                    }}
-                    {...registro('salario', { required: true })}
-                  />
+                  sx={{ mx: 1, my: 2, width: '25ch' }}
+                  label="Salario"
+                  type="number"
+                  defaultValue={admin.salario}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  {...registro('salario', { required: true })}
+                />
               </div>
             </form>
           </Paper>
         </Container>
 
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <Button variant = 'contained' onClick={ getInfoAdminSubmit(onSubmit) } className={`messages-grid__option ${
-                  selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
-                  'messages-grid__option--active'
-                }` } >Actualizar Información</Button>
+          <Button variant='contained' onClick={getInfoAdminSubmit(onSubmit)} className={`messages-grid__option ${selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+            'messages-grid__option--active'
+            }`} >Actualizar Información</Button>
         </Box>
 
         <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
           <DialogTitle>Alerta</DialogTitle>
           <DialogContent>
             <DialogContentText>
-            {isLoading && <CircularProgress />}
-            {!isLoading && message}
+              {isLoading && <CircularProgress />}
+              {!isLoading && message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
+            <Button disabled={message === ''} variant="outlined" onClick={handleClose}>
               Cerrar
             </Button>
           </DialogActions>

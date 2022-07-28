@@ -5,9 +5,7 @@ import MuiAppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-import Badge from '@mui/material/Badge'
 import MenuIcon from '@mui/icons-material/Menu'
-import NotificationsIcon from '@mui/icons-material/Notifications'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import MuiDrawer from '@mui/material/Drawer'
@@ -101,15 +99,10 @@ export default function MainWindow () {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
-          <Toolbar
+          {window.localStorage.getItem('isRegistrated') === 'true' && <div><Toolbar
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -121,13 +114,13 @@ export default function MainWindow () {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-          <Divider />
-          <List component="nav">
+            <Divider />
+            <List component="nav">
 
-            <ListChooser/>
-            <Divider sx={{ my: 1 }} />
+              <ListChooser />
+              <Divider sx={{ my: 1 }} />
 
-          </List>
+            </List></div>}
         </Drawer>
         <Box
           component="main"

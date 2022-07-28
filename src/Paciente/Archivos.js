@@ -41,24 +41,17 @@ export default function Archivos () {
   const getPdf = () => {
     getFile(user.sub)
   }
-  /*
-  useEffect(() => {
-    console.log(downloadedFile)
-  }, [downloadedFile])
-  */
 
   return (
     <div>
-        <input id="fileinput" onChange={selectedHandler} className="form-control" type="file"/>
-        <Button onClick={sendHandler} className={`messages-grid__option ${
-                  selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
-                  'messages-grid__option--active'
-                }` }>Upload</Button>
+      <input id="fileinput" onChange={selectedHandler} className="form-control" type="file" />
+      <Button onClick={sendHandler} className={`messages-grid__option ${selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+        'messages-grid__option--active'
+        }`}>Upload</Button>
 
-        <Button onClick={getPdf} className={`messages-grid__option ${
-                  selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
-                  'messages-grid__option--active'
-                }` }>Download</Button>
+      <Button onClick={getPdf} className={`messages-grid__option ${selectedAccessControlLevelPaciente === AccessControlLevel.PROTECTED &&
+        'messages-grid__option--active'
+        }`}>Download</Button>
     </div>
   )
 }

@@ -10,8 +10,7 @@ export default function AuthRedirect ({ Component, tipo }) {
   useEffect(() => {
     async function fetchData () {
       getUserInfo(user.sub).then((data) => {
-        console.log(data)
-        if (data.logins_count !== 1 || tipo.localeCompare(window.localStorage.getItem('tipo')) !== 0) {
+        if (data.tipo_usuario.localeCompare('noregistro') !== 0 || tipo.localeCompare(window.localStorage.getItem('tipo')) !== 0) {
           nav('/')
         }
       })
@@ -19,5 +18,5 @@ export default function AuthRedirect ({ Component, tipo }) {
 
     fetchData()
   }, [])
-  return <Component authId={user.sub} authEmail={user.email}/>
+  return <Component authId={user.sub} authEmail={user.email} />
 }

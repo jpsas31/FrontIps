@@ -14,67 +14,67 @@ import LayersIcon from '@mui/icons-material/Layers'
 export default function MainListItemsPaciente () {
   const { logout } = useAuth0()
   return (
-  <React.Fragment>
-    <ListItemButton component={Link} to={'inicio'}>
-      <ListItemIcon>
-        <AdjustIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Paciente" />
-    </ListItemButton>
+    <React.Fragment>
+      <ListItemButton component={Link} to={'inicio'}>
+        <ListItemIcon>
+          <AdjustIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Paciente" />
+      </ListItemButton>
 
-    <ListItemButton component={Link} to={'info-paciente'} >
+      <ListItemButton component={Link} to={'info-paciente'} >
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información del Paciente" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'listcitas'} >
+      </ListItemButton>
+      <ListItemButton component={Link} to={'listcitas'} >
         <ListItemIcon>
           <CalendarMonthIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Citas" />
-    </ListItemButton>
+      </ListItemButton>
 
-    <ListItemButton component={Link} to={'solicitar-cita'} >
+      <ListItemButton component={Link} to={'solicitar-cita'} >
         <ListItemIcon>
           <CalendarMonthIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Solicitar Cita" />
-    </ListItemButton>
-    {
-      /*
-      <ListItemButton component={Link} to={'prueba-files'} >
-        <ListItemIcon>
-          <CalendarMonthIcon />
-        </ListItemIcon>
-        <ListItemText style={{ whiteSpace: 'normal' }} primary="Archivos" />
       </ListItemButton>
-      */
-    }
+      {
+        /*
+        <ListItemButton component={Link} to={'prueba-files'} >
+          <ListItemIcon>
+            <CalendarMonthIcon />
+          </ListItemIcon>
+          <ListItemText style={{ whiteSpace: 'normal' }} primary="Archivos" />
+        </ListItemButton>
+        */
+      }
 
-    <ListItemButton component={Link} to={'entradas-hm'} >
+      <ListItemButton component={Link} to={'entradas-hm'} >
         <ListItemIcon>
           <LibraryBooksIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Historial Clinico" />
-    </ListItemButton>
+      </ListItemButton>
 
-    <ListItemButton component={Link} to={'/'}>
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'/'} onClick={() =>
-      logout({
-        returnTo: window.location.origin
-      })
-    }>
-      <ListItemIcon>
-        <LogoutIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Log Out" />
-    </ListItemButton>
-  </React.Fragment>
+      <ListItemButton component={Link} to={'/'}>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'/'} onClick={() =>
+        logout({
+          returnTo: window.location.origin
+        })
+      }>
+        <ListItemIcon>
+          <LogoutIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Log Out" />
+      </ListItemButton>
+    </React.Fragment>
   )
 }

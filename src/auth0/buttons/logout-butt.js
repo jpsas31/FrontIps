@@ -10,16 +10,16 @@ export const LogoutButton = () => {
         returnTo: window.location.origin
       })
     }
-    sx={{
-      ml: 1,
-      '&.MuiButtonBase-root:hover': {
-        bgcolor: 'white'
-      },
-      bgcolor: 'white',
-      fontWeight: 'bold',
-      borderRadius: 2
-    }}>
-          Cerrar Sesión
+      sx={{
+        ml: 1,
+        '&.MuiButtonBase-root:hover': {
+          bgcolor: 'white'
+        },
+        bgcolor: 'white',
+        fontWeight: 'bold',
+        borderRadius: 2
+      }}>
+      Cerrar Sesión
     </Button>
 
   )

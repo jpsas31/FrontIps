@@ -55,7 +55,7 @@ export default function TableAdmins (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -77,18 +77,18 @@ export default function TableAdmins (props) {
             label=""
             value={value}
             control={<TextField
-                  select
-                  variant="standard"
-                  InputProps={{
-                    disableUnderline: true
-                  }}
-                  sx={{ width: '15ch' }}
-                >
-                  {cargos.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>))}
-              </TextField>
+              select
+              variant="standard"
+              InputProps={{
+                disableUnderline: true
+              }}
+              sx={{ width: '15ch' }}
+            >
+              {cargos.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>))}
+            </TextField>
             }
             onChange={event => updateValue(event.target.value)}
           />
@@ -167,7 +167,7 @@ export default function TableAdmins (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -211,7 +211,7 @@ export default function TableAdmins (props) {
             label=""
             value={value}
             control={<TextField
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true
@@ -229,10 +229,9 @@ export default function TableAdmins (props) {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
-          <IconButton onClick={() => props.actualizarAdmin(tableMeta.rowData)} className={`messages-grid__option ${
-            props.selectedAccessControlLevelAdmin === props.AccessControlLevelAdmin.PROTECTED &&
+          <IconButton onClick={() => props.actualizarAdmin(tableMeta.rowData)} className={`messages-grid__option ${props.selectedAccessControlLevelAdmin === props.AccessControlLevelAdmin.PROTECTED &&
             'messages-grid__option--active'
-          }` }>
+            }`}>
             <BorderColorIcon />
           </IconButton>
         )
@@ -249,13 +248,13 @@ export default function TableAdmins (props) {
     print: false
   }
   return (
-      <Box sx = {{ mt: 8, ml: 1, mr: 1 }}>
-          <MUIDataTable
-            title={'Medicos'}
-            data={props.info}
-            columns={columns}
-            options={options}
-          />
-      </Box>
+    <Box sx={{ mt: 8, ml: 1, mr: 1 }}>
+      <MUIDataTable
+        title={'Medicos'}
+        data={props.info}
+        columns={columns}
+        options={options}
+      />
+    </Box>
   )
 }

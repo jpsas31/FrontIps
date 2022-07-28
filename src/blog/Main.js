@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import Markdown from './Markdown'
-function Main ({ title }) {
+function Main({ title }) {
   const [posts, setPosts] = useState([])
   useEffect(() => {
     fetch('https://gist.githubusercontent.com/rt2zz/e0a1d6ab2682d2c47746950b84c0b6ee/raw/83b8b4814c3417111b9b9bef86a552608506603e/markdown-sample.md')

@@ -8,6 +8,7 @@ import AdjustIcon from '@mui/icons-material/Adjust'
 // import BarChartIcon from '@mui/icons-material/BarChart'
 import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { Link } from 'react-router-dom'
 import LayersIcon from '@mui/icons-material/Layers'
 import AssessmentIcon from '@mui/icons-material/Assessment'
@@ -18,14 +19,13 @@ import PeopleIcon from '@mui/icons-material/People'
 export default function MainListItemsAdmin () {
   const { logout } = useAuth0()
   return (
-  <React.Fragment>
-    <ListItemButton component={Link} to={'inicio'}>
-      <ListItemIcon>
-        <AdjustIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Admin" />
-    </ListItemButton>
-
+    <React.Fragment>
+      <ListItemButton component={Link} to={'inicio'}>
+        <ListItemIcon>
+          <AdjustIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Inicio Admin" />
+      </ListItemButton>
     <ListItemButton component={Link} to={'citas-especialidad-report'}>
       <ListItemIcon>
         <AssessmentIcon />
@@ -34,6 +34,7 @@ export default function MainListItemsAdmin () {
     </ListItemButton>
     {
       /*
+>>>>>>> master
       <ListItemButton component={Link} to={'/'}>
         <ListItemIcon>
           <BarChartIcon />
@@ -60,8 +61,14 @@ export default function MainListItemsAdmin () {
           <LayersIcon />
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="Información Admin" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'info-usuarios'} >
+      </ListItemButton>
+      <ListItemButton component={Link} to={'Admincitas'} >
+        <ListItemIcon>
+          <CalendarMonthIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Citas" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'info-usuarios'} >
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
@@ -87,30 +94,38 @@ export default function MainListItemsAdmin () {
         </ListItemIcon>
         <ListItemText style={{ whiteSpace: 'normal' }} primary="GPersonal" />
       </ListItemButton>
-      */
-    }
-    <ListItemButton component = {Link} to = {'activa'}>
-      <ListItemIcon>
-        <EmojiPeopleIcon/>
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Personal" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'/'}>
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
-    </ListItemButton>
-    <ListItemButton component={Link} to={'/'} onClick={() =>
-      logout({
-        returnTo: window.location.origin
-      })
-    }>
-      <ListItemIcon>
-        <LogoutIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Log Out" />
-    </ListItemButton>
-  </React.Fragment>
+      {
+        /*
+        <ListItemButton component = {Link} to = {'personal'}>
+          <ListItemIcon>
+            <AddReactionIcon/>
+          </ListItemIcon>
+          <ListItemText style={{ whiteSpace: 'normal' }} primary="GPersonal" />
+        </ListItemButton>
+        */
+      }
+      <ListItemButton component={Link} to={'activa'}>
+        <ListItemIcon>
+          <EmojiPeopleIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Personal" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'/'}>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Ir a la pagina principal" />
+      </ListItemButton>
+      <ListItemButton component={Link} to={'/'} onClick={() =>
+        logout({
+          returnTo: window.location.origin
+        })
+      }>
+        <ListItemIcon>
+          <LogoutIcon />
+        </ListItemIcon>
+        <ListItemText style={{ whiteSpace: 'normal' }} primary="Log Out" />
+      </ListItemButton>
+    </React.Fragment>
   )
 }

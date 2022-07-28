@@ -11,7 +11,7 @@ export const Auth0ProviderWithHistory = ({ children }) => {
 
   const onRedirectCallback = (appState) => {
     // navigate(appState?.returnTo || window.location.pathname)
-    navigate('/dashboard')
+    navigate(appState?.returnTo || '/dashboard')
   }
 
   if (!(domain && clientId && audience)) {

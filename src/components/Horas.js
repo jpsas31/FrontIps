@@ -1,5 +1,5 @@
 export default function (dias, diaSeleccionado, citasSacadas) {
-  // console.log('Buenaaaaaaas', dias[0].dia, diaSeleccionado, horasOcupadas)
+  //
   const horasOcupadas = []
   for (let j = 0; j < citasSacadas.length; j = j + 1) {
     const horasAux1 = citasSacadas[j].hora_entrada.split('T')[1]
@@ -44,11 +44,10 @@ export default function (dias, diaSeleccionado, citasSacadas) {
     for (let i = 0; i < horas.length; i = i + 1) {
       if (horasOcupadas[j].toString() === horas[i].fechaDate.toString()) {
         horas.splice(i, 1)
-        // console.log('son iguales', horasOcupadas[j].toString(), horas[i].fechaDate.toString())
+        //
       }
     }
   }
-  console.log(horas)
 
   return horas
 }
