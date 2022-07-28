@@ -204,77 +204,74 @@ export default function InfoAdmin (props) {
   }
 
   return (
-        <>
-          {(info === 'waiting') && <LinearProgress />}
-          <AccountCircleIcon sx = {{ mt: 5, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 80 }}/>
-          <Typography component="h1" variant="h6" sx={{ textAlign: 'center', pt: 2, fontSize: '2em', pb: 2 }}>
-            Información de los usuarios
-          </Typography>
+    <>
+      {(info === 'waiting') && <LinearProgress />}
+      <AccountCircleIcon sx={{ mt: 5, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 80 }} />
+      <Typography component="h1" variant="h6" sx={{ textAlign: 'center', pt: 2, fontSize: '2em', pb: 2 }}>
+        Información de los usuarios
+      </Typography>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}>
-            <Button disabled = {selPaciente} variant = 'contained' onClick={getInfoPacientes} className={`messages-grid__option ${
-                  selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
-                  'messages-grid__option--active'
-                }` }>
-                Pacientes
-            </Button>
-            <Button disabled = {selMedico} variant = 'contained' onClick={getInfoMedicos} className={`messages-grid__option ${
-                  selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
-                  'messages-grid__option--active'
-                }` }>
-                Médicos
-            </Button>
-            <Button disabled = {selAdmin} variant = 'contained' onClick={getInfoAdmins} className={`messages-grid__option ${
-                  selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
-                  'messages-grid__option--active'
-                }` }>
-                Administradores
-            </Button>
-          </Box>
-          {(info !== 'waiting' && info !== '' && isUpdated && selPaciente) &&
-            <TablePacientes
-              info={info}
-              selectedAccessControlLevelPaciente={selectedAccessControlLevelPaciente}
-              AccessControlLevelPaciente={AccessControlLevelPaciente}
-              actualizarPaciente = {actualizarPaciente}
-              obtenerAnt = {obtenerAnt}
-            />
-          }
-          {(info !== 'waiting' && info !== '' && isUpdated && selMedico) &&
-            <TableMedicos
-            info={info}
-            selectedAccessControlLevelMedico={selectedAccessControlLevelMedico}
-            AccessControlLevelMedico={AccessControlLevelMedico}
-            actualizarMedico = {actualizarMedico}
-            obtenerCert = {obtenerCert}
-          />
-          }
-          {(info !== 'waiting' && info !== '' && isUpdated && selAdmin) &&
-            <TableAdmins
-            info={info}
-            selectedAccessControlLevelAdmin = {selectedAccessControlLevelAdmin}
-            AccessControlLevelAdmin = {AccessControlLevelAdmin}
-            actualizarAdmin = {actualizarAdmin}
-          />
-          }
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}>
+        <Button disabled={selPaciente} variant='contained' onClick={getInfoPacientes} className={`messages-grid__option ${selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
+          'messages-grid__option--active'
+          }`}>
+          Pacientes
+        </Button>
+        <Button disabled={selMedico} variant='contained' onClick={getInfoMedicos} className={`messages-grid__option ${selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
+          'messages-grid__option--active'
+          }`}>
+          Médicos
+        </Button>
+        <Button disabled={selAdmin} variant='contained' onClick={getInfoAdmins} className={`messages-grid__option ${selectedAccessControlLevelAdmin === AccessControlLevelAdmin.PROTECTED &&
+          'messages-grid__option--active'
+          }`}>
+          Administradores
+        </Button>
+      </Box>
+      {(info !== 'waiting' && info !== '' && isUpdated && selPaciente) &&
+        <TablePacientes
+          info={info}
+          selectedAccessControlLevelPaciente={selectedAccessControlLevelPaciente}
+          AccessControlLevelPaciente={AccessControlLevelPaciente}
+          actualizarPaciente={actualizarPaciente}
+          obtenerAnt={obtenerAnt}
+        />
+      }
+      {(info !== 'waiting' && info !== '' && isUpdated && selMedico) &&
+        <TableMedicos
+          info={info}
+          selectedAccessControlLevelMedico={selectedAccessControlLevelMedico}
+          AccessControlLevelMedico={AccessControlLevelMedico}
+          actualizarMedico={actualizarMedico}
+          obtenerCert={obtenerCert}
+        />
+      }
+      {(info !== 'waiting' && info !== '' && isUpdated && selAdmin) &&
+        <TableAdmins
+          info={info}
+          selectedAccessControlLevelAdmin={selectedAccessControlLevelAdmin}
+          AccessControlLevelAdmin={AccessControlLevelAdmin}
+          actualizarAdmin={actualizarAdmin}
+        />
+      }
 
-          <Dialog disableEscapeKeyDown = {true} onClose={handleClose} open={visible} fullWidth maxWidth="xs">
-            <DialogTitle>Alerta</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-              {isLoading && <CircularProgress />}
-              {(!isLoading && selPaciente) && message}
-              {(!isLoading && selMedico) && message}
-              {(!isLoading && selAdmin) && message}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
-                Cerrar
-              </Button>
-            </DialogActions>
-          </Dialog>
+      <Dialog disableEscapeKeyDown={true} onClose={handleClose} open={visible} fullWidth maxWidth="xs">
+        <DialogTitle>Alerta</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {isLoading && <CircularProgress />}
+            {(!isLoading && selPaciente) && message}
+            {(!isLoading && selMedico) && message}
+            {(!isLoading && selAdmin) && message}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button disabled={message === ''} variant="outlined" onClick={handleClose}>
+            Cerrar
+          </Button>
+        </DialogActions>
+      </Dialog>
 
-        </>
+    </>
   )
 }

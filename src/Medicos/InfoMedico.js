@@ -137,20 +137,20 @@ export default function InfoMedico (props) {
     return (
       /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
       <>
-        <AccountCircleIcon sx = {{ mt: 10, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 100 }}/>
+        <AccountCircleIcon sx={{ mt: 10, display: 'block', marginLeft: 'auto', marginRight: 'auto', fontSize: 100 }} />
 
         <Typography component="h1" variant="h5" sx={{ textAlign: 'center', pt: 2, fontSize: '3em', pb: 5 }}>
           Mi información personal
         </Typography>
 
-        <Container maxWidth = 'lg' sx={{ display: 'flex', flexDirection: 'column', borderColor: 'lightgray', mb: 2 }} >
-          <Paper elevation = {8} sx = {{ padding: 6 }}>
-            <form onSubmit = {getInfoMedicoSubmit(onSubmit)}>
+        <Container maxWidth='lg' sx={{ display: 'flex', flexDirection: 'column', borderColor: 'lightgray', mb: 2 }} >
+          <Paper elevation={8} sx={{ padding: 6 }}>
+            <form onSubmit={getInfoMedicoSubmit(onSubmit)}>
               <div>
                 <TextField
                   select
                   label="Identificación"
-                  defaultValue = {medico.tipo_id}
+                  defaultValue={medico.tipo_id}
                   {...registro('tipo_id', { required: true })}
                   sx={{ mx: 1, my: 2, width: '15ch' }}
                 >
@@ -161,7 +161,7 @@ export default function InfoMedico (props) {
                 </TextField>
                 <TextField
                   label="Número"
-                  defaultValue = {medico.identificacion}
+                  defaultValue={medico.identificacion}
                   {...registro('identificacion', { required: true })}
                   InputProps={{
                     readOnly: true
@@ -170,7 +170,7 @@ export default function InfoMedico (props) {
                 />
                 <TextField
                   label="Nombre"
-                  defaultValue = {medico.nombre}
+                  defaultValue={medico.nombre}
                   inputProps={{
                     maxLength: 25
                   }}
@@ -179,7 +179,7 @@ export default function InfoMedico (props) {
                 />
                 <TextField
                   label="Apellido"
-                  defaultValue = {medico.apellido}
+                  defaultValue={medico.apellido}
                   inputProps={{
                     maxLength: 40
                   }}
@@ -188,26 +188,26 @@ export default function InfoMedico (props) {
                 />
               </div>
               <div>
-              <Grid container >
+                <Grid container >
                   <TextField
-                      select
-                      label="Cargo"
-                      defaultValue = {medico.tipo_id_cargo}
-                      InputProps={{
-                        readOnly: true
-                      }}
-                      {...registro('tipo_id_cargo', { required: true })}
-                      sx={{ mx: 1, my: 2, width: '15ch' }}
-                    >
-                      {cargos.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>))}
+                    select
+                    label="Cargo"
+                    defaultValue={medico.tipo_id_cargo}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                    {...registro('tipo_id_cargo', { required: true })}
+                    sx={{ mx: 1, my: 2, width: '15ch' }}
+                  >
+                    {cargos.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>))}
                   </TextField>
                   <TextField
                     id="textfield-direccion"
                     label="Dirección"
-                    defaultValue = {medico.direccion}
+                    defaultValue={medico.direccion}
                     inputProps={{
                       maxLength: 30
                     }}
@@ -217,7 +217,7 @@ export default function InfoMedico (props) {
                   <TextField
                     sx={{ mx: 1, my: 2, width: '25ch' }}
                     label="Teléfono"
-                    type = "number"
+                    type="number"
                     inputProps={{
                       maxLength: 15
                     }}
@@ -225,106 +225,102 @@ export default function InfoMedico (props) {
                     {...registro('telefono', { required: true })}
                   />
                   <TextField
-                  label="Correo Electrónico"
-                  type = "email"
-                  InputProps={{
-                    readOnly: true
-                  }}
-                  defaultValue={medico.correo}
-                  {...registro('correo', { required: true })}
-                  sx={{ mx: 1, my: 2, width: '40ch' }}
-                />
+                    label="Correo Electrónico"
+                    type="email"
+                    InputProps={{
+                      readOnly: true
+                    }}
+                    defaultValue={medico.correo}
+                    {...registro('correo', { required: true })}
+                    sx={{ mx: 1, my: 2, width: '40ch' }}
+                  />
                 </Grid>
               </div>
               <div>
                 <TextField
-                      select
-                      label="Especialidad"
-                      defaultValue = {medico.medicos.id_especialidad}
-                      InputProps={{
-                        readOnly: true
-                      }}
-                      {...registro('id_especialidad', { required: true })}
-                      sx={{ mx: 1, my: 2, width: '20ch' }}
-                    >
-                      {especialidades.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>))}
-                  </TextField>
+                  select
+                  label="Especialidad"
+                  defaultValue={medico.medicos.id_especialidad}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  {...registro('id_especialidad', { required: true })}
+                  sx={{ mx: 1, my: 2, width: '20ch' }}
+                >
+                  {especialidades.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>))}
+                </TextField>
                 <TextField
-                    sx={{ mx: 1, my: 2, width: '25ch' }}
-                    label="Salario"
-                    type = "number"
-                    defaultValue={medico.salario}
-                    InputProps={{
-                      readOnly: true
-                    }}
-                    {...registro('salario', { required: true })}
-                  />
+                  sx={{ mx: 1, my: 2, width: '25ch' }}
+                  label="Salario"
+                  type="number"
+                  defaultValue={medico.salario}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  {...registro('salario', { required: true })}
+                />
               </div>
               <div>
-                  <Typography
-                    component="h2"
-                    color="black"
-                    align="left"
-                    noWrap
-                    sx={{ mx: 1 }}
-                  >
-                    Certificado
-                  </Typography>
-                    <label htmlFor='fileinput'>
-                    <Input onChange = {selectFile} id='fileinput' multiple type="file" />
-                    <Button variant="contained" component="span" className={`messages-grid__option ${
-                    selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                <Typography
+                  component="h2"
+                  color="black"
+                  align="left"
+                  noWrap
+                  sx={{ mx: 1 }}
+                >
+                  Certificado
+                </Typography>
+                <label htmlFor='fileinput'>
+                  <Input onChange={selectFile} id='fileinput' multiple type="file" />
+                  <Button variant="contained" component="span" className={`messages-grid__option ${selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
                     'messages-grid__option--active'
-                    }` } sx={{ mx: 1, my: 2 }}>
-                      Seleccionar archivo
-                    </Button>
-                    </label>
-                    <Button onClick={sendFile} variant="contained" className={`messages-grid__option ${
-                      selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
-                      'messages-grid__option--active'
-                    }` } sx={{ mx: 1, my: 2 }}>
-                      Actualizar
-                    </Button>
-                    {medico.medicos.certificacion_del_titulo !== '' &&
-                      <Button onClick={getPdf} variant="contained" className={`messages-grid__option ${
-                        selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
-                        'messages-grid__option--active'
-                      }` } sx={{ mx: 1, my: 2 }}>
-                        Descargar
-                      </Button>
-                    }
-                    <Snackbar
-                      open={visible2}
-                      autoHideDuration={6000}
-                      onClose={handleClose2}
-                      message={pdfResponse}
-                      action={action}
-                    />
-                </div>
+                    }`} sx={{ mx: 1, my: 2 }}>
+                    Seleccionar archivo
+                  </Button>
+                </label>
+                <Button onClick={sendFile} variant="contained" className={`messages-grid__option ${selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                  'messages-grid__option--active'
+                  }`} sx={{ mx: 1, my: 2 }}>
+                  Actualizar
+                </Button>
+                {medico.medicos.certificacion_del_titulo !== '' &&
+                  <Button onClick={getPdf} variant="contained" className={`messages-grid__option ${selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+                    'messages-grid__option--active'
+                    }`} sx={{ mx: 1, my: 2 }}>
+                    Descargar
+                  </Button>
+                }
+                <Snackbar
+                  open={visible2}
+                  autoHideDuration={6000}
+                  onClose={handleClose2}
+                  message={pdfResponse}
+                  action={action}
+                />
+              </div>
             </form>
           </Paper>
         </Container>
 
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-          <Button variant = 'contained' onClick={ getInfoMedicoSubmit(onSubmit) } className={`messages-grid__option ${
-                  selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
-                  'messages-grid__option--active'
-                }` } >Actualizar Información</Button>
+          <Button variant='contained' onClick={getInfoMedicoSubmit(onSubmit)} className={`messages-grid__option ${selectedAccessControlLevel === AccessControlLevel.PROTECTED &&
+            'messages-grid__option--active'
+            }`} >Actualizar Información</Button>
         </Box>
 
         <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
           <DialogTitle>Alerta</DialogTitle>
           <DialogContent>
             <DialogContentText>
-            {isLoading && <CircularProgress />}
-            {!isLoading && message}
+              {isLoading && <CircularProgress />}
+              {!isLoading && message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button disabled = {message === ''} variant="outlined" onClick={handleClose}>
+            <Button disabled={message === ''} variant="outlined" onClick={handleClose}>
               Cerrar
             </Button>
           </DialogActions>

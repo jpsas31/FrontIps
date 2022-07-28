@@ -2,7 +2,7 @@ import MainWindow from './Main/MainWindow'
 import React, { useState } from 'react'
 import Inicio from './inicio/Inicio'
 import ProtectedRoute from './auth0/ProtectedRoute'
-import Perfil from './Paciente/Perfil'
+import Perfil from './Paciente/RegPaciente'
 import RegMedicos from './Medicos/RegMedicos'
 import RegAdmin from './Admin/RegAdmin'
 import Blog from './blog/Blog'
@@ -16,6 +16,8 @@ import UserContext from './context/user.context'
 import ActivaUser from './personal/activaUser'
 import Calendario from './calendario/CalendarioMedicos'
 import CitasTable from './Paciente/ListCitas'
+import CitasTableAdmin from './Admin/ListCitas'
+import CitasTableMedico from './Medicos/ListCitas'
 import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
 import RegistroHM from './Paciente/RegistroHM'
@@ -32,32 +34,34 @@ export default function App () {
   return (
     <UserContext.Provider value={[userType, setUserType]}>
       <Routes>
-      <Route path="/" element={<Blog/>}/>
-      <Route path="/Dashboard"element={<ProtectedRoute component={MainWindow} />}>
-        <Route
-          index
-          element={
-            <Inicio />
-          }
-        />
-        <Route path="inicio" element={<Inicio />} />
-        <Route path="data" element={<Dashboard />} />
-        <Route path="prueba-files" element={<Archivos />} />
-        <Route path="info-paciente" element={<InfoPaciente />} />
-        <Route path="turnos" element= {<Calendario/>} />
-        <Route path="solicitar-cita" element={<SolicitarCita />} />
-        <Route path="info-admin" element={<InfoAdmin />} />
-        <Route path="info-medico" element={<InfoMedico />} />
-        <Route path="listcitas" element={<CitasTable />} />
-        <Route path="info-usuarios" element={<InfoUsuarios />} />
-        <Route path="RegistroPaciente" element={<AuthRedirect Component={Perfil} tipo='Paciente' />}/>
-        <Route path="RegistroMedico" element={<AuthRedirect Component={RegMedicos} tipo= 'Medico' />} />
-        <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
-        <Route path="activa" element = {<ActivaUser/>} />
-        <Route path="RegistroHM" element = {<MedicosHM/>}/>
-        <Route path="entradas-hm" element = {<RegistroHM/>}/>
-      </Route>
-    </Routes>
-  </UserContext.Provider>
+        <Route path="/" element={<Blog />} />
+        <Route path="/Dashboard" element={<ProtectedRoute component={MainWindow} />}>
+          <Route
+            index
+            element={
+              <Inicio />
+            }
+          />
+          <Route path="inicio" element={<Inicio />} />
+          <Route path="data" element={<Dashboard />} />
+          <Route path="prueba-files" element={<Archivos />} />
+          <Route path="info-paciente" element={<InfoPaciente />} />
+          <Route path="turnos" element={<Calendario />} />
+          <Route path="solicitar-cita" element={<SolicitarCita />} />
+          <Route path="info-admin" element={<InfoAdmin />} />
+          <Route path="info-medico" element={<InfoMedico />} />
+          <Route path="listcitas" element={<CitasTable />} />
+          <Route path="Admincitas" element={<CitasTableAdmin />} />
+          <Route path="Medicocitas" element={<CitasTableMedico />} />
+          <Route path="info-usuarios" element={<InfoUsuarios />} />
+          <Route path="RegistroPaciente" element={<AuthRedirect Component={Perfil} tipo='Paciente' />} />
+          <Route path="RegistroMedico" element={<AuthRedirect Component={RegMedicos} tipo='Medico' />} />
+          <Route path="RegistroAdmin" element={<AuthRedirect Component={RegAdmin} tipo='Admin' />} />
+          <Route path="activa" element={<ActivaUser />} />
+          <Route path="RegistroHM" element={<MedicosHM />} />
+          <Route path="entradas-hm" element={<RegistroHM />} />
+        </Route>
+      </Routes>
+    </UserContext.Provider>
   )
 }

@@ -50,9 +50,9 @@ export default function DropdownLogin () {
           horizontal: 'left'
         }}
       >
-        <ButtonT action='login' titulo="Paciente"/>
-        <ButtonT action='login' titulo="Medico"/>
-        <ButtonT action='login' titulo="Admin"/>
+        <ButtonT action='login' titulo="Paciente" />
+        <ButtonT action='login' titulo="Medico" />
+        <ButtonT action='login' titulo="Admin" />
 
       </Menu>
     </div>

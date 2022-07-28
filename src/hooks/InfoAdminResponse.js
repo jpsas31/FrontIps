@@ -74,7 +74,7 @@ export const useExternalApi = () => {
   }
 
   const getInfoAdmin = async (datos, setAdmin) => {
-    // console.log(datos)
+    //
     setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
 
     setApiEndpointAdmin('POST /api/info-admin/infoadmin')
@@ -92,7 +92,7 @@ export const useExternalApi = () => {
     const data = await makeRequest({ config, authenticated: true })
     setApiResponseAdmin(data)
     setAdmin(data)
-    // console.log(data)
+    //
   }
 
   const updateAdmin = async (datos, key, setMessage) => {
@@ -141,7 +141,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    // console.log(data)
+    //
 
     const arr = data.map((item) => {
       return [
@@ -160,7 +160,7 @@ export const useExternalApi = () => {
       ]
     })
 
-    // console.log(arr)
+    //
     setInfo(arr)
   }
 
@@ -177,7 +177,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    // console.log(data)
+    //
 
     const arr = data.map((item) => {
       return [
@@ -196,7 +196,7 @@ export const useExternalApi = () => {
       ]
     })
 
-    // console.log(arr)
+    //
     setInfo(arr)
   }
 
@@ -213,7 +213,7 @@ export const useExternalApi = () => {
     }
 
     const data = await makeRequest({ config, authenticated: true })
-    // console.log(data)
+    //
 
     const arr = data.map((item) => {
       return [
@@ -230,7 +230,7 @@ export const useExternalApi = () => {
       ]
     })
 
-    // console.log(arr)
+    //
     setInfo(arr)
   }
 

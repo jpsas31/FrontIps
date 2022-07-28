@@ -1,42 +1,41 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
-// {useState, useEffect, useRef, useReducer, useMemo}
+import { useAuth0 } from '@auth0/auth0-react'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
 import MenuItem from '@mui/material/MenuItem'
 import Paper from '@mui/material/Paper'
 import { Link } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
-import { useExternalApi } from '../hooks/InfoAdminResponse'
+import { useExternalApi } from '../hooks/InfoPacienteResponse'
 import { useNavigate } from 'react-router'
 // import { width } from '@mui/system'
 
-export default function RegAdmin ({ authId, authEmail }) {
+export default function Perfil ({ authId, authEmail }) {
   const { handleSubmit, register } = useForm()
 
   const tipoids = [{ value: 'C.C', label: 'C.C' }, { value: 'T.I', label: 'T.I' }]
+  const ciudades = [{ value: 'Santiago de Cali', label: 'Santiago de Cali' }, { value: 'Bogota', label: 'Bogota' }, { value: 'Medellin', label: 'Medellin' }]
 
-  const {
-    createAdmin
-  } = useExternalApi()
+  const { logout } = useAuth0()
   const nav = useNavigate()
+  const {
+    createPaciente
+  } = useExternalApi()
+
   const onSubmit = data => {
-    data.id_trabajador = authId
+    data.id_paciente = authId
     data.correo = authEmail
-    createAdmin(data)
+    createPaciente(data)
     nav('/Dashboard')
   }
 
-  const { logout } = useAuth0()
-
   return (
     <div>
-      <h1 align="center">Registro de administrador</h1>
+      <h1 align="center">Registro de paciente</h1>
       <div align="center">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Paper width='50%' elevation={8} sx={{ padding: 4 }} >
+          <Paper width='50%' elevation={8} sx={{ padding: 2 }} >
             <Grid container spacing={4} justifyContent="center" alignItems="center">
               <Grid item xs={2}>
                 <TextField
@@ -63,9 +62,24 @@ export default function RegAdmin ({ authId, authEmail }) {
                   {...register('nombre', { required: true })} />
               </Grid>
 
-              <Grid item xs={5} >
-                <TextField fullWidth id="apellido" label="Apellido" variant="outlined" type="text"
+              <Grid item xs={5}>
+                <TextField fullWidth id="apellido" label="Apellido" variant="outlined"
                   {...register('apellido', { required: true })} />
+              </Grid>
+
+              <Grid item xs={5}>
+                <TextField
+                  select
+                  fullWidth
+                  label="Ciudad"
+                  defaultValue={'Bogota'}
+                  {...register('ciudad', { required: true })}
+                >
+                  {ciudades.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>))}
+                </TextField>
               </Grid>
 
               <Grid item xs={5}>
@@ -76,6 +90,19 @@ export default function RegAdmin ({ authId, authEmail }) {
               <Grid item xs={5}>
                 <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type="number"
                   {...register('telefono', { required: true, minLength: 10 })} />
+              </Grid>
+
+              <Grid item xs={5}>
+                <TextField fullWidth id="nacimiento" label="" helperText="Fecha de nacimiento" variant="outlined" type="date"
+                  {...register('nacimiento', { required: true })} />
+              </Grid>
+
+              <Grid item xs={5}>
+                <TextField fullWidth id="edad" label="Edad" variant="outlined" type="number"
+                  {...register('edad', { required: true, valueAsNumber: true, max: 200 })} />
+              </Grid>
+
+              <Grid item xs={5}>
               </Grid>
 
               <Grid item xs={5}>
@@ -90,7 +117,7 @@ export default function RegAdmin ({ authId, authEmail }) {
                 <Button variant="contained" type="submit" onClick={() => {
                   handleSubmit(onSubmit)
                   window.localStorage.setItem('isRegistrated', true)
-                }}>Enviar</Button>
+                }} >Enviar</Button>
               </Grid>
 
             </Grid></Paper>

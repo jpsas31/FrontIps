@@ -43,7 +43,6 @@ const Editor = ({ titulo, texto, setTexto }) => {
   useEffect(() => {
     if (quill) {
       if (quill.getText().trim().length === 0) {
-        console.log('hola')
         quill.setContents(texto)
         // o se se hace con html seria
         // quill.root.innerHTML = texto

@@ -61,7 +61,7 @@ export default function TablePacientes (props) {
             value={value}
             control={<TextField
               label=""
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true,
@@ -153,7 +153,7 @@ export default function TablePacientes (props) {
             label=""
             value={value}
             control={
-                <TextField
+              <TextField
                 select
                 label=""
                 variant="standard"
@@ -166,7 +166,7 @@ export default function TablePacientes (props) {
                     {option.label}
                   </MenuItem>))}
               </TextField>
-              }
+            }
             onChange={event => updateValue(event.target.value)}
           />
         )
@@ -182,7 +182,7 @@ export default function TablePacientes (props) {
             value={value}
             control={<TextField
               label=""
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true,
@@ -229,7 +229,7 @@ export default function TablePacientes (props) {
             value={value}
             control={<TextField
               label=""
-              type = "number"
+              type="number"
               variant="standard"
               InputProps={{
                 disableUnderline: true,
@@ -257,7 +257,7 @@ export default function TablePacientes (props) {
               InputProps={{
                 disableUnderline: true
               }}
-              type = "date"
+              type="date"
               sx={{ width: '20ch' }}
             />
             }
@@ -274,8 +274,7 @@ export default function TablePacientes (props) {
           <FormControlLabel
             label=""
             value={value}
-            control={<Button onClick={() => props.obtenerAnt(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${
-              props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
+            control={<Button onClick={() => props.obtenerAnt(tableMeta.rowData)} variant="contained" className={`messages-grid__option ${props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
               'messages-grid__option--active'}`}>
               Descargar
             </Button>
@@ -290,10 +289,9 @@ export default function TablePacientes (props) {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => (
-          <IconButton onClick={() => props.actualizarPaciente(tableMeta.rowData)} className={`messages-grid__option ${
-            props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
+          <IconButton onClick={() => props.actualizarPaciente(tableMeta.rowData)} className={`messages-grid__option ${props.selectedAccessControlLevelPaciente === props.AccessControlLevelPaciente.PROTECTED &&
             'messages-grid__option--active'
-          }` }>
+            }`}>
             <BorderColorIcon />
           </IconButton>
         )
@@ -309,13 +307,13 @@ export default function TablePacientes (props) {
     print: false
   }
   return (
-      <Box sx = {{ mt: 8, ml: 1, mr: 1 }}>
-          <MUIDataTable
-            title={'Pacientes'}
-            data={props.info}
-            columns={columns}
-            options={options}
-          />
-      </Box>
+    <Box sx={{ mt: 8, ml: 1, mr: 1 }}>
+      <MUIDataTable
+        title={'Pacientes'}
+        data={props.info}
+        columns={columns}
+        options={options}
+      />
+    </Box>
   )
 }

@@ -30,7 +30,6 @@ export default function RegMedicos ({ authId, authEmail }) {
   } = useExternalApi()
   const nav = useNavigate()
   const onSubmit = data => {
-    console.log(data)
     data.id_trabajador = authId
     data.correo = authEmail
     createMedico(data)
@@ -40,87 +39,90 @@ export default function RegMedicos ({ authId, authEmail }) {
   const { logout } = useAuth0()
 
   return (
-  <div>
-    <h1 align="center">Registro de medicos</h1>
-    <div align = "center">
-    <form onSubmit={handleSubmit(onSubmit)}>
-    <Paper width = '50%' elevation = {8} sx = {{ padding: 4 }} >
-      <Grid container spacing={4} justifyContent="center" alignItems="center">
-        <Grid item xs = {2}>
-          <TextField
-                select
-                fullWidth
-                label="Tipo"
-                defaultValue = {'C.C'}
-                {...register('tipo_id', { required: true })}
-              >
-                {tipoids.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>))}
-          </TextField>
-        </Grid>
+    <div>
+      <h1 align="center">Registro de medicos</h1>
+      <div align="center">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Paper width='50%' elevation={8} sx={{ padding: 4 }} >
+            <Grid container spacing={4} justifyContent="center" alignItems="center">
+              <Grid item xs={2}>
+                <TextField
+                  select
+                  fullWidth
+                  label="Tipo"
+                  defaultValue={'C.C'}
+                  {...register('tipo_id', { required: true })}
+                >
+                  {tipoids.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>))}
+                </TextField>
+              </Grid>
 
-        <Grid item xs = {8}>
-          <TextField fullWidth id="id" label="Identificacion" name = "Identificacion" variant="outlined" type = "number"
-          {...register('identificacion', { required: true })}/>
-        </Grid>
+              <Grid item xs={8}>
+                <TextField fullWidth id="id" label="Identificacion" name="Identificacion" variant="outlined" type="number"
+                  {...register('identificacion', { required: true })} />
+              </Grid>
 
-        <Grid item xs = {5} >
-          <TextField fullWidth id="nombre" label="Nombre" variant="outlined" type = "text"
-          {...register('nombre', { required: true })}/>
-        </Grid>
+              <Grid item xs={5} >
+                <TextField fullWidth id="nombre" label="Nombre" variant="outlined" type="text"
+                  {...register('nombre', { required: true })} />
+              </Grid>
 
-        <Grid item xs = {5} >
-          <TextField fullWidth id="apellido" label="Apellido" variant="outlined" type = "text"
-          {...register('apellido', { required: true })}/>
-        </Grid>
+              <Grid item xs={5} >
+                <TextField fullWidth id="apellido" label="Apellido" variant="outlined" type="text"
+                  {...register('apellido', { required: true })} />
+              </Grid>
 
-        <Grid item xs = {5}>
-        <TextField
-                select
-                fullWidth
-                label="Especialidad"
-                defaultValue = {1}
-                {...register('id_especialidad', { required: true })}
-              >
-                {especialidades.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>))}
-          </TextField>
-        </Grid>
+              <Grid item xs={5}>
+                <TextField
+                  select
+                  fullWidth
+                  label="Especialidad"
+                  defaultValue={1}
+                  {...register('id_especialidad', { required: true })}
+                >
+                  {especialidades.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>))}
+                </TextField>
+              </Grid>
 
-        <Grid item xs = {5}>
-          <TextField fullWidth id="direccion" label="Direccion" variant="outlined"
-          {...register('direccion', { required: true })}/>
-        </Grid>
+              <Grid item xs={5}>
+                <TextField fullWidth id="direccion" label="Direccion" variant="outlined"
+                  {...register('direccion', { required: true })} />
+              </Grid>
 
-        <Grid item xs = {5}>
-          <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type = "number"
-          {...register('telefono', { required: true, minLength: 10 })}/>
-        </Grid>
+              <Grid item xs={5}>
+                <TextField fullWidth id="telefono" label="Telefono" variant="outlined" type="number"
+                  {...register('telefono', { required: true, minLength: 10 })} />
+              </Grid>
 
-        <Grid item xs = {5}>
-        </Grid>
+              <Grid item xs={5}>
+              </Grid>
 
-        <Grid item xs = {5}>
-          <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
-            returnTo: window.location.origin
-          })
-        }>
-          Atras</Button>
-        </Grid>
+              <Grid item xs={5}>
+                <Button variant="outlined" component={Link} to={'/'} onClick={() => logout({
+                  returnTo: window.location.origin
+                })
+                }>
+                  Atras</Button>
+              </Grid>
 
-        <Grid item xs = {5}>
-          <Button variant="contained" type = "submit" onClick={handleSubmit(onSubmit)}>Enviar</Button>
-        </Grid>
+              <Grid item xs={5}>
+                <Button variant="contained" type="submit" onClick={() => {
+                  handleSubmit(onSubmit)
+                  window.localStorage.setItem('isRegistrated', true)
+                }}>Enviar</Button>
+              </Grid>
 
-      </Grid></Paper>
-    </form>
+            </Grid></Paper>
+        </form>
+
+      </div>
 
     </div>
-
-  </div>
   )
 }

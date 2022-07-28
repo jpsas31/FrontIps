@@ -7,7 +7,7 @@ export const LoginButton = () => {
 
   return (
     <Button className="button__login" variant="outlined" size="small" onClick={() => loginWithRedirect()}>
-         Log in
+      Log in
     </Button>
 
   )

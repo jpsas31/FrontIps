@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { makeStyles } from '@mui/styles'
 import { Table, TableBody, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TableCell, TableContainer, TableHead, TableRow, Paper, Grid, Typography, TablePagination, CircularProgress } from '@mui/material'
 import Button from '@mui/material/Button'
+
 import { useExternalApi } from '../hooks/InfoCitaResponse'
 import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
@@ -20,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
   tableHeaderCell: {
     fontWeight: 'bold',
     backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.getContrastText(theme.palette.primary.dark)
+    color: theme.palette.getContrastText(theme.palette.primary.dark),
+    width: 200
   },
   status: {
     fontWeight: 'bold',
@@ -50,20 +52,26 @@ export default function CitasTable () {
     getCita,
     // deleteCita,
     // apiResponseCita,
+    cancelarCita,
     createCita
   } = useExternalApi()
   const { user } = useAuth0()
   const [loading, setIsLoading] = useState(true)
   const [tipoCita, setTipoCita] = useState()
   const [page, setPage] = React.useState(0)
+  const [isLoading, setLoading] = useState(true)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
   const [titulo, setTitulo] = React.useState('Cargando...')
   const [visible, setVisible] = useState(false)
+  const [visibleCancel, setVisibleCancel] = useState(false)
+  const [canceladas, setCanceladas] = useState([])
   const handleClose = () => { setVisible(false) }
+  const handleCancel = () => { setVisibleCancel(!visibleCancel) }
   const handleOpen = (row) => {
     setTipoCita(row.medio)
     setVisible(true)
   }
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -77,12 +85,9 @@ export default function CitasTable () {
 
   useEffect(() => {
     getCita(setCitas)
-    console.log(citas)
     setTitulo('Gestion de Citas')
     setIsLoading(false)
   }, [])
-
-  useEffect(() => { console.log(citas) }, [citas])
 
   // function handleClick (row) {
   //   const json = {
@@ -102,22 +107,22 @@ export default function CitasTable () {
     return (
       <Box sx={{ width: '100%' }}>
         <LinearProgress />
-        <Grid container alignItems = 'center' sx = {{ display: 'flex' }}>
-          <Grid item>{loading && <CircularProgress/>}</Grid>
-          <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+        <Grid container alignItems='center' sx={{ display: 'flex' }}>
+          <Grid item>{loading && <CircularProgress />}</Grid>
+          <Grid item><p className={classes.titulo}> {titulo} </p></Grid>
         </Grid>
       </Box>
     )
   } else {
     return (
 
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-        <Box className= {classes.fondo} >
-          <Grid container alignItems = 'center'>
-            <Grid item><p className= {classes.titulo}> {titulo} </p></Grid>
+      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+        <Box className={classes.fondo} >
+          <Grid container alignItems='center'>
+            <Grid item><p className={classes.titulo}> {titulo} </p></Grid>
           </Grid>
 
-          <TableContainer component={Paper} className = {classes.tableContainer}>
+          <TableContainer component={Paper} className={classes.tableContainer}>
             <Table className={classes.table} stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -128,69 +133,111 @@ export default function CitasTable () {
                   <TableCell className={classes.tableHeaderCell}>Hora de Entrada</TableCell>
                   <TableCell className={classes.tableHeaderCell}>Hora de Salida</TableCell>
                   <TableCell className={classes.tableHeaderCell}>Entrar a la cita</TableCell>
+                  <TableCell className={classes.tableHeaderCell}>Cancelación</TableCell>
                 </TableRow>
               </TableHead>
-            <TableBody>
-              {citas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell>
-                  <Typography color= 'primary' variant= 'subtitle1'>{row.tipoCita}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color= 'primary' variant= 'subtitle1'>{row.medio}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color= 'primary' variant= 'subtitle1'>{row.Precio}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color= 'primary' variant= 'subtitle1'>{row.fecha}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color= 'primary' variant= 'subtitle1'>{row.horaEntrada}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography color= 'primary' variant= 'subtitle1'>{row.horaSalida}</Typography>
-                  </TableCell>
-                  {/* <TableCell >{row.direccion}</TableCell> */}
-                  <TableCell ><Button variant = 'contained'
-                  onClick = {() => {
-                    const value = { ...row, email: user.email }
-                    createCita(value)
-                    handleOpen(row)
-                  }}>Obtener información de la cita</Button>
-                  </TableCell>
-            </TableRow>
-              ))}
-          </TableBody>
-          <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        // component="div"
-        count={citas.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-        </Table>
-      </TableContainer>
-      <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
+              <TableBody>
+                {citas.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.tipoCita}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.medio}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.Precio}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.fecha}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.horaEntrada}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography color='primary' variant='subtitle1'>{row.horaSalida}</Typography>
+                    </TableCell>
+                    {/* <TableCell >{row.direccion}</TableCell> */}
+                    <TableCell ><Button disabled={!row.aprobacion || row.cancelada} variant='contained'
+                      onClick={() => {
+                        const value = { ...row, email: user.email }
+                        createCita(value)
+                        handleOpen(row)
+                      }}>Obtener información de la cita</Button>
+                    </TableCell>
+                    <TableCell >
+                      {
+                        row.cancelada
+                          ? <Typography align='center' variant='h7' style={{ color: 'red', align: 'center' }}>
+                           CITA CANCELADA </Typography>
+                          : <Button
+                              variant="contained"
+                              color="primary"
+                              disabled={canceladas.includes(row.id)}
+                              size="small"
+                              onClick={async () => {
+                                setCanceladas([...canceladas, row.id])
+                                handleCancel()
+
+                                setVisibleCancel(true)
+                                setLoading(true)
+                                await cancelarCita([row.id])
+                                await getCita(setCitas)
+                                setLoading(false)
+                              }}>
+                              CANCELAR CITA
+                          </Button>
+                      }
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TablePagination
+                rowsPerPageOptions={[10, 25, 100]}
+                // component="div"
+                count={citas.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </Table>
+          </TableContainer>
+          <Dialog onClose={handleCancel} open={visibleCancel} fullWidth maxWidth="xs">
           <DialogTitle>
-          información de Cita
+            {isLoading && <div>Procesando</div>}
+            {!isLoading && <div>Completado</div>}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              {tipoCita === 'Chat' && <p>Para ir a la cita escriba al chat del este <a href='https://www.m.me/111935198225289' target="_blank" rel="noreferrer">link</a> y su medico se comunicara con usted</p>}
-              {(tipoCita === 'Llamada' || tipoCita === 'Video llamada') && <p>Para acceder a su cita debe usar el link que se le acaba de enviar a su correo</p>}
+              {isLoading && <CircularProgress />}
+              {!isLoading && <div></div>}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button variant="outlined" onClick={handleCancel}>
               Cerrar
             </Button>
           </DialogActions>
         </Dialog>
+          <Dialog onClose={handleClose} open={visible} fullWidth maxWidth="xs">
+            <DialogTitle>
+              información de Cita
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                {tipoCita === 'Chat' && <p>Para ir a la cita escriba al chat de este <a href='https://www.m.me/111935198225289' target="_blank" rel="noreferrer">link</a> y su medico se comunicara con usted</p>}
+                {(tipoCita === 'Llamada' || tipoCita === 'Video llamada') && <p>Para acceder a su cita debe usar el link que se le acaba de enviar a su correo</p>}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button variant="outlined" onClick={handleClose}>
+                Cerrar
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Box>
-        </Paper>
+      </Paper>
 
     )
   }
