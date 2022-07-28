@@ -234,7 +234,112 @@ export const useExternalApi = () => {
     setInfo(arr)
   }
 
+  const getCitaPorMedio = async (data) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/citasMedios')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/citasMedios`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        FInicio: data.Finicio,
+        FFinal: data.Ffinal
+
+      }
+    }
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+    return result
+  }
+
+  const getCitaPorEspecialidad = async (data) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/citasEspecialidad')
+
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/citasEspecialidad`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        FInicio: data.Finicio,
+        FFinal: data.Ffinal
+
+      }
+    }
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+    return result
+  }
+
+  const getPacientesxCitaChart = async (data, setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    setApiEndpointAdmin('POST /api/info-admin/pacientesxcitachart')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/pacientesxcitachart`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        id: data.id,
+        fechaInicial: data.fechaInicial,
+        fechaFinal: data.fechaFinal
+      }
+    }
+
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+
+    setInfo(result)
+  }
+
+  const getCumple = async (data, setInfo) => {
+    setSelectedAccessControlLevelAdmin(AccessControlLevel.PROTECTED)
+
+    console.log(data)
+    setApiEndpointAdmin('POST /api/info-admin/cumple')
+    const config = {
+      url: `${apiServerUrl}/api/info-admin/cumple`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      data: {
+        fechaInicial: data.fechaInicial,
+        fechaFinal: data.fechaFinal
+      }
+    }
+
+    const result = await makeRequest({ config, authenticated: true })
+    console.log(result)
+
+    const arr = result.map((item) => {
+      return [
+        item.id_paciente,
+        item.identificacion,
+        item.nombre + ' ' + item.apellido,
+        item.telefono,
+        item.correo,
+        item.nacimiento.split('T')[0]
+      ]
+    })
+
+    // console.log(arr)
+    setInfo(arr)
+  }
+
+  
   return {
+    getCitaPorMedio,
+    getCitaPorEspecialidad,
     selectedAccessControlLevelAdmin,
     apiEndpointAdmin,
     apiResponseAdmin,
@@ -243,7 +348,9 @@ export const useExternalApi = () => {
     updateAdmin,
     getPacientes,
     getAdmins,
-    getMedicos
+    getMedicos,
+    getPacientesxCitaChart,
+    getCumple
     // getRbacResource,
     // checkCorsAllowedMethod
   }
