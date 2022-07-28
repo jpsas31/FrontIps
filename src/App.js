@@ -21,6 +21,9 @@ import MedicosHM from './Medicos/MedHM'
 import RegistroHM from './Paciente/RegistroHM'
 import Archivos from './Paciente/Archivos'
 
+import CitasPorEspecialidad from './Admin/CitasPorEspecialidad'
+import CitasPorMedio from './Admin/CitasPorMedio'
+
 import {
 
   Routes,
@@ -56,6 +59,10 @@ export default function App () {
         <Route path="activa" element = {<ActivaUser/>} />
         <Route path="RegistroHM" element = {<MedicosHM/>}/>
         <Route path="entradas-hm" element = {<RegistroHM/>}/>
+
+        <Route path="citas-medio-report" element = {<CitasPorMedio/>}/>
+        <Route path="citas-especialidad-report" element = {<CitasPorEspecialidad/>}/>
+
       </Route>
     </Routes>
   </UserContext.Provider>
