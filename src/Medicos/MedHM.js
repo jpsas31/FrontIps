@@ -57,7 +57,8 @@ export default function MedHM () {
   } = ApiMedico()
 
   const {
-    getDeltaToHTML
+    getDeltaToHTML,
+    getCertificado
   } = ApiHTML()
 
   const [paciente, setPaciente] = useState([])
@@ -210,7 +211,7 @@ export default function MedHM () {
                       </Card>
                       <Dialog open = {cardOpen} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
                       <div>
-                        <MostrarHM aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM} />
+                        <MostrarHM aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM} functionDescargar2 = {getCertificado} />
                       </div>
                       </Dialog>
                     </Grid>

@@ -20,6 +20,8 @@ import SolicitarCita from './Paciente/SolicitarCita'
 import MedicosHM from './Medicos/MedHM'
 import RegistroHM from './Paciente/RegistroHM'
 import Archivos from './Paciente/Archivos'
+import CitaIntervalo from './Admin/Reportes/CitaIntervalo'
+import TurnosTop from './Admin/Reportes/ReportConfirm'
 
 import {
 
@@ -56,6 +58,8 @@ export default function App () {
         <Route path="activa" element = {<ActivaUser/>} />
         <Route path="RegistroHM" element = {<MedicosHM/>}/>
         <Route path="entradas-hm" element = {<RegistroHM/>}/>
+        <Route path="cita-intervalo" element = {<CitaIntervalo/>}/>
+        <Route path="turnostop" element = {<TurnosTop/>}/>
       </Route>
     </Routes>
   </UserContext.Provider>

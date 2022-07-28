@@ -53,7 +53,8 @@ export default function RegistroHM () {
   } = useExternalApi()
 
   const {
-    getDeltaToHTML
+    getDeltaToHTML,
+    getCertificado
   } = ApiHTML()
 
   useEffect(() => {
@@ -147,7 +148,7 @@ export default function RegistroHM () {
                       </Card>
                       <Dialog open = {cardOpen} PaperProps={{ sx: { minWidth: 900, maxWidth: 900, minHeight: 700, maxHeight: 700, top: 10, left: 10, m: 0 } }}>
                       <div>
-                        <MostrarHMPaciente aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM}/>
+                        <MostrarHMPaciente aparezco = {handleCloseCard} functionDescargar = {getDeltaToHTML} historia = {cardSelected} functionBuscar = {getInfoHM} functionDescargar2 = {getCertificado} />
                       </div>
                       </Dialog>
                     </Grid>

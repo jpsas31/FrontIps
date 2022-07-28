@@ -13,6 +13,7 @@ import LayersIcon from '@mui/icons-material/Layers'
 // import AddReactionIcon from '@mui/icons-material/AddReaction'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import PeopleIcon from '@mui/icons-material/People'
+import StackedLineChartIcon from '@mui/icons-material/StackedLineChart'
 
 export default function MainListItemsAdmin () {
   const { logout } = useAuth0()
@@ -35,6 +36,18 @@ export default function MainListItemsAdmin () {
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Reports" />
+    </ListItemButton>
+    <ListItemButton component = {Link} to = {'cita-intervalo'}>
+      <ListItemIcon>
+        <StackedLineChartIcon/>
+      </ListItemIcon>
+      <ListItemText style={{ whiteSpace: 'normal' }} primary="Intervalos" />
+    </ListItemButton>
+    <ListItemButton component = {Link} to = {'turnostop'}>
+      <ListItemIcon>
+        <StackedLineChartIcon/>
+      </ListItemIcon>
+      <ListItemText style = {{ whiteSpace: 'normal' }} primary = "Turnos"/>
     </ListItemButton>
     <ListItemButton component={Link} to={'info-admin'} >
         <ListItemIcon>

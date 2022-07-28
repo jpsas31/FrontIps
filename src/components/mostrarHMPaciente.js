@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Container, Grid, Typography, Button, TextField, LinearProgress } from '@mui/material'
 import Editor from './EditorTexto2/EditorUse'
-export default function MostrarHM ({ aparezco, functionDescargar, historia, functionBuscar }) {
+export default function MostrarHM ({ aparezco, functionDescargar, historia, functionBuscar, functionDescargar2 }) {
   const [doctor, setDoctor] = useState([])
   const [paciente, setPaciente] = useState([])
   const [formula, setFormula] = useState([])
@@ -80,6 +80,7 @@ export default function MostrarHM ({ aparezco, functionDescargar, historia, func
             <Box textAlign='center'>
               <Button variant = 'contained' onClick = {aparezco} sx = {{ mt: '2rem', mb: '1rem', mr: '1rem' }}> REGRESAR </Button>
               <Button variant = 'contained' onClick = {() => { functionDescargar([descripcion, descripcionForm, historia.fecha, historia.id_entrada, doctor.tipo_id, doctor.identificacion, doctor.nombre, doctor.apellido, doctor.correo, paciente.tipo_id, paciente.identificacion, paciente.nombre, paciente.apellido, paciente.edad, paciente.correo, paciente.direccion, paciente.telefono, historia.id_formula]) }} sx = {{ mt: '2rem', mb: '1rem', mr: '1rem' }}> DESCARGAR </Button>
+              <Button variant = 'contained' onClick = {() => { functionDescargar2([descripcion, descripcionForm, historia.fecha, historia.id_entrada, doctor.tipo_id, doctor.identificacion, doctor.nombre, doctor.apellido, doctor.correo, paciente.tipo_id, paciente.identificacion, paciente.nombre, paciente.apellido, paciente.edad, paciente.correo, paciente.direccion, paciente.telefono, historia.id_formula]) }} sx = {{ mt: '2rem', mb: '1rem', mr: '1rem' }}> CERTIFICADO </Button>
             </Box>
           </Container>
         </div>
