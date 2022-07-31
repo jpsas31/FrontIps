@@ -101,7 +101,6 @@ export const useExternalApi = () => {
       }
     }
     const data = await makeRequest({ config, authenticated: true })
-    console.log(data, 'que esta mandando')
     // window.open(data, '_blank')
 
     const blob = new Blob([data], { type: 'application/pdf' }) // --- 1.
