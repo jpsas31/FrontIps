@@ -17,7 +17,9 @@ function Header (props) {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'info.main' }}>
-        <MedicalInformationIcon sx={{ color: 'white' }} fontSize="large" />
+        <Button target="_blank" href="http://localhost:3000/">
+            <MedicalInformationIcon sx={{ color: 'white' }} fontSize="large" />
+        </Button>
         <Typography
           component="h2"
           variant="h5"

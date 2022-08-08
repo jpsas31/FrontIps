@@ -51,12 +51,6 @@ export default function MainListItemsAdmin () {
       <ListItemText style={{ whiteSpace: 'normal' }} primary="Reporte Citas Medio" />
     </ListItemButton>
 
-    <ListItemButton component={Link} to={'data'}>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText style={{ whiteSpace: 'normal' }} primary="Dashboard" />
-    </ListItemButton>
     <ListItemButton component = {Link} to = {'cita-intervalo'}>
       <ListItemIcon>
         <StackedLineChartIcon/>
